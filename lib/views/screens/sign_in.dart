@@ -23,7 +23,7 @@ class _SignInState extends State<SignIn> {
                     filled: true,
                     fillColor: Colors.white,
                     errorMaxLines: 1,
-                    errorStyle: TextStyle(height: 1, fontSize: ErrorFontSize),
+                    errorStyle: TextStyle(height: 1, fontSize: errorFontSize),
                     hintText: "Enter Your Email or Phone Number",
                     contentPadding: EdgeInsets.all(5),
                     border: OutlineInputBorder(
@@ -47,7 +47,7 @@ class _SignInState extends State<SignIn> {
                     filled: true,
                     fillColor: Colors.white,
                     errorMaxLines: 1,
-                    errorStyle: TextStyle(height: 1, fontSize: ErrorFontSize),
+                    errorStyle: TextStyle(height: 1, fontSize: errorFontSize),
                     hintText: "Enter Your Password",
                     contentPadding: EdgeInsets.all(5),
                     border: OutlineInputBorder(

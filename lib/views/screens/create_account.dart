@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_cmp_developers/Styles/Fonts/Fonts.dart';
 
-import '../../functions/create_account_functions.dart';
+import '../../controllers/create_account_controller.dart';
 
 class SignUp extends StatefulWidget {
   const SignUp({super.key});
@@ -56,7 +56,7 @@ class _SignUpState extends State<SignUp> {
             filled: true,
             fillColor: Colors.white,
             errorMaxLines: 1,
-            errorStyle: TextStyle(height: 1, fontSize: ErrorFontSize),
+            errorStyle: TextStyle(height: 1, fontSize: errorFontSize),
             hintText: "Enter Your Password!",
             contentPadding: EdgeInsets.all(5),
             border: OutlineInputBorder(
@@ -86,7 +86,7 @@ class _SignUpState extends State<SignUp> {
         decoration: const InputDecoration(
           filled: true,
           fillColor: Colors.white,
-          errorStyle: TextStyle(height: 1, fontSize: ErrorFontSize),
+          errorStyle: TextStyle(height: 1, fontSize: errorFontSize),
           hintText: "Enter your E-mail or Phone Number",
           contentPadding: EdgeInsets.all(5),
           border: OutlineInputBorder(
