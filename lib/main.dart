@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_cmp_developers/screens/CreateAccount.dart';
+import 'views/screens/create_account.dart';
 
 void main() {
   runApp(const MyApp());
@@ -17,7 +17,8 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: SignUp(), //Use Outer home. We use Scaffold, since it has an AppBar.
+      home:
+          const SignUp(), //Use Outer home. We use Scaffold, since it has an AppBar.
     );
   }
 }
