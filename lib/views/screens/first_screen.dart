@@ -26,7 +26,7 @@ class FirstScreen extends StatelessWidget {
               fit: BoxFit.fill,
             )*/
                 Image.asset(
-              'assets/first_screen.jpg',
+              'assets/images/first_screen.jpg',
               fit: BoxFit.fill,
             ),
           ),
@@ -61,7 +61,7 @@ class FirstScreen extends StatelessWidget {
                     height: 24 * screenHeightRatio,
                   ),
                   SizedBox(
-                    width: 328 * screenWidthRatio,
+                    width: MediaQuery.of(context).size.width * 0.8,
                     height: 51,
                     child: TextButton(
                       key: const Key("LOGIN_FIRST_SCREEN"),
@@ -81,7 +81,9 @@ class FirstScreen extends StatelessWidget {
                         shape:
                             MaterialStateProperty.all<RoundedRectangleBorder>(
                           RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(20),
+                            borderRadius: BorderRadius.circular(
+                              buttonRadius,
+                            ),
                             side: BorderSide(
                                 color: Theme.of(context).primaryColor),
                           ),
@@ -91,7 +93,7 @@ class FirstScreen extends StatelessWidget {
                         child: Text(
                           'LOGIN',
                           style: TextStyle(
-                            fontSize: 30,
+                            fontSize: 20,
                             color: myWhite,
                           ),
                         ),
@@ -135,7 +137,9 @@ class FirstScreen extends StatelessWidget {
                         shape:
                             MaterialStateProperty.all<RoundedRectangleBorder>(
                           RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(20),
+                            borderRadius: BorderRadius.circular(
+                              buttonRadius,
+                            ),
                             side: BorderSide(
                                 color: Theme.of(context).primaryColor),
                           ),

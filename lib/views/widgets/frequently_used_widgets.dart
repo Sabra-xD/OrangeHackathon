@@ -56,6 +56,10 @@ Widget textFormFieldInput(String hintText, String emptyInputError,
       keyboardType: keyBoardType,
       decoration: InputDecoration(
         hintText: hintText,
+        hintStyle: TextStyle(
+          color: textFieldTextColor,
+          fontSize: 16,
+        ),
         filled: true,
         fillColor: Colors.white,
         errorStyle: const TextStyle(
@@ -79,6 +83,6 @@ Widget textFormFieldInput(String hintText, String emptyInputError,
 
 Widget unformSpacing() {
   return const SizedBox(
-    height: 17,
+    height: 12,
   );
 }

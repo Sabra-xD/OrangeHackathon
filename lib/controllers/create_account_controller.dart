@@ -6,7 +6,11 @@ bool validatePassword(String pass) {
   if (passValid.hasMatch(password)) {
     return true;
   } else {
-    return false;
+    if (password.length < 6) {
+      return true;
+    } else {
+      return false;
+    }
   }
 }
 

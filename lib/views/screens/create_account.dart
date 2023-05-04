@@ -7,7 +7,9 @@ bool _passwordVisible = false;
 bool _confirmPasswordVisibile = false;
 
 class SignUp extends StatefulWidget {
-  const SignUp({super.key});
+  const SignUp({
+    super.key,
+  });
   static const routeName = '/SignUp';
   @override
   State<SignUp> createState() => _SignUpState();
@@ -27,8 +29,11 @@ class _SignUpState extends State<SignUp> {
           child: Container(
             decoration: const BoxDecoration(
               image: DecorationImage(
-                  image: AssetImage('assets/images/AdultSignUp.png'),
-                  fit: BoxFit.cover),
+                image: AssetImage(
+                  'assets/images/AdultSignUp.png',
+                ),
+                fit: BoxFit.cover,
+              ),
             ),
             child: Form(
               key: _formKey,
@@ -51,33 +56,37 @@ class _SignUpState extends State<SignUp> {
                         ),
                         IconButton(
                           onPressed: () {},
-                          icon: Image.asset('assets/images/childrenIcon.jfif'),
+                          icon: Image.asset(
+                            'assets/images/childrenIcon.jfif',
+                          ),
                           iconSize: 75,
                         ),
                       ],
                     ),
 
                     const SizedBox(
-                      height: 50,
+                      height: 24,
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         textFormFieldInput(
-                            "First Name",
-                            "Please enter your first name",
-                            TextInputType.name,
-                            0.4,
-                            context),
+                          "First Name",
+                          "Please enter your first name",
+                          TextInputType.name,
+                          0.4,
+                          context,
+                        ),
                         const SizedBox(
                           width: 3,
                         ),
                         textFormFieldInput(
-                            "Last Name",
-                            "Please enter your last name",
-                            TextInputType.name,
-                            0.4,
-                            context),
+                          "Last Name",
+                          "Please enter your last name",
+                          TextInputType.name,
+                          0.4,
+                          context,
+                        ),
                       ],
                     ),
 
@@ -87,31 +96,55 @@ class _SignUpState extends State<SignUp> {
 
                     unformSpacing(),
 
-                    phoneNumberInput("Enter your Phone Number", context),
+                    phoneNumberInput(
+                      "Enter your Phone Number",
+                      context,
+                    ),
 
                     unformSpacing(),
 
                     textFormFieldInput(
-                        "DD/MM/YYYY",
-                        "Please enter your birthday",
-                        TextInputType.datetime,
-                        0.8,
-                        context),
+                      "DD/MM/YYYY",
+                      "Please enter your birthday",
+                      TextInputType.datetime,
+                      0.8,
+                      context,
+                    ),
                     unformSpacing(),
                     passwordInput(),
                     //Spacing
                     unformSpacing(),
                     _confirmPasswordTextField(),
 
-                    unformSpacing(),
+                    const SizedBox(
+                      height: 24,
+                    ),
 
                     submit(),
 
-                    unformSpacing(),
+                    const SizedBox(
+                      height: 48,
+                    ),
 
-                    const Text("Already have an account? Login"),
-
-                    unformSpacing(),
+                    Row(
+                      children: [
+                        const Text(
+                          "Already have an account?   ",
+                          style: TextStyle(
+                            fontSize: 16,
+                            color: Colors.black,
+                          ),
+                        ),
+                        Text(
+                          "Login",
+                          style: TextStyle(
+                            fontSize: 16,
+                            color: Theme.of(context).primaryColor,
+                          ),
+                        ),
+                      ],
+                    ),
+                    //unformSpacing(),
                   ],
                 ),
               ),
@@ -128,30 +161,48 @@ class _SignUpState extends State<SignUp> {
       // height: MediaQuery.of(context).size.width * 0.8,
       height: 51,
       child: TextFormField(
+        maxLength: 6,
         obscureText: !_confirmPasswordVisibile,
         controller: _confirmPass,
         decoration: InputDecoration(
-            filled: true,
-            fillColor: Colors.white,
-            errorMaxLines: 1,
-            errorStyle: const TextStyle(
-              height: 1,
-              fontSize: errorFontSize,
+          filled: true,
+          fillColor: myWhite,
+          errorMaxLines: 1,
+          errorStyle: const TextStyle(
+            height: 1,
+            fontSize: errorFontSize,
+          ),
+          hintText: "Confirm your password",
+          hintStyle: TextStyle(
+            color: textFieldTextColor,
+            fontSize: 16,
+          ),
+          contentPadding: const EdgeInsets.all(
+            contentPadding,
+          ),
+          border: const OutlineInputBorder(
+            borderRadius: BorderRadius.all(
+              Radius.circular(
+                textFieldRadius,
+              ),
             ),
-            hintText: "Confirm your password",
-            contentPadding: const EdgeInsets.all(contentPadding),
-            border: const OutlineInputBorder(
-                borderRadius: BorderRadius.all(Radius.circular(15))),
-            suffixIcon: IconButton(
-              icon: Icon(_confirmPasswordVisibile
+          ),
+          suffixIcon: IconButton(
+            icon: Icon(
+              _confirmPasswordVisibile
                   ? Icons.visibility
-                  : Icons.visibility_off),
-              onPressed: () {
-                setState(() {
+                  : Icons.visibility_off,
+              color: textFieldTextColor,
+            ),
+            onPressed: () {
+              setState(
+                () {
                   _confirmPasswordVisibile = !_confirmPasswordVisibile;
-                });
-              },
-            )),
+                },
+              );
+            },
+          ),
+        ),
         validator: (value) {
           if (value!.isEmpty) {
             return "Please confirm the Password";
@@ -169,18 +220,27 @@ class _SignUpState extends State<SignUp> {
 
   SizedBox submit() {
     return SizedBox(
-      width: 329,
+      width: MediaQuery.of(context).size.width * 0.8,
       height: 51,
       child: ElevatedButton(
-          style: ElevatedButton.styleFrom(
-            backgroundColor: Theme.of(context).primaryColor,
-          ),
-          onPressed: () {
-            setState(() {
+        style: ElevatedButton.styleFrom(
+          backgroundColor: Theme.of(context).primaryColor,
+        ),
+        onPressed: () {
+          setState(
+            () {
               _formKey.currentState!.validate();
-            });
-          },
-          child: const Text("Register")),
+            },
+          );
+        },
+        child: Text(
+          "Register",
+          style: TextStyle(
+            fontSize: 20,
+            color: myWhite,
+          ),
+        ),
+      ),
     );
   }
 
@@ -189,29 +249,46 @@ class _SignUpState extends State<SignUp> {
       width: MediaQuery.of(context).size.width * 0.8,
       height: 51,
       child: TextFormField(
+        maxLength: 6,
         obscureText: !_passwordVisible,
         controller: _passowrdInput,
         decoration: InputDecoration(
-            suffixIcon: IconButton(
-                onPressed: () {
-                  setState(() {
-                    _passwordVisible = !_passwordVisible;
-                  });
+          suffixIcon: IconButton(
+            onPressed: () {
+              setState(
+                () {
+                  _passwordVisible = !_passwordVisible;
                 },
-                icon: Icon(_passwordVisible
-                    ? Icons.visibility
-                    : Icons.visibility_off)),
-            filled: true,
-            fillColor: Colors.white,
-            errorMaxLines: 1,
-            errorStyle: const TextStyle(
-              height: 1,
-              fontSize: errorFontSize,
+              );
+            },
+            icon: Icon(
+              _passwordVisible ? Icons.visibility : Icons.visibility_off,
+              color: textFieldTextColor,
             ),
-            hintText: "Enter Your Password",
-            contentPadding: const EdgeInsets.all(contentPadding),
-            border: const OutlineInputBorder(
-                borderRadius: BorderRadius.all(Radius.circular(15)))),
+          ),
+          filled: true,
+          fillColor: myWhite,
+          errorMaxLines: 1,
+          errorStyle: const TextStyle(
+            height: 1,
+            fontSize: errorFontSize,
+          ),
+          hintText: "Enter Your Password",
+          hintStyle: TextStyle(
+            color: textFieldTextColor,
+            fontSize: 16,
+          ),
+          contentPadding: const EdgeInsets.all(
+            contentPadding,
+          ),
+          border: const OutlineInputBorder(
+            borderRadius: BorderRadius.all(
+              Radius.circular(
+                textFieldRadius,
+              ),
+            ),
+          ),
+        ),
         validator: (value) {
           if (value!.isEmpty) {
             return "Please enter a Password";
@@ -234,14 +311,28 @@ class _SignUpState extends State<SignUp> {
       height: 51,
       child: TextFormField(
         controller: _email,
-        decoration: const InputDecoration(
+        decoration: InputDecoration(
           filled: true,
-          fillColor: Colors.white,
-          errorStyle: TextStyle(height: 1, fontSize: errorFontSize),
+          fillColor: myWhite,
+          errorStyle: const TextStyle(
+            height: 1,
+            fontSize: errorFontSize,
+          ),
           hintText: "Enter your email",
-          contentPadding: EdgeInsets.all(contentPadding),
-          border: OutlineInputBorder(
-              borderRadius: BorderRadius.all(Radius.circular(15))),
+          hintStyle: TextStyle(
+            color: textFieldTextColor,
+            fontSize: 16,
+          ),
+          contentPadding: const EdgeInsets.all(
+            contentPadding,
+          ),
+          border: const OutlineInputBorder(
+            borderRadius: BorderRadius.all(
+              Radius.circular(
+                textFieldRadius,
+              ),
+            ),
+          ),
         ),
         validator: (value) {
           if (value!.isEmpty) {
