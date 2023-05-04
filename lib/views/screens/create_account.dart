@@ -1,17 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_cmp_developers/Styles/Fonts/Fonts.dart';
-import 'package:flutter_cmp_developers/styles/colors/colors.dart';
 import 'package:flutter_cmp_developers/styles/constants/constants.dart';
 
 import '../../controllers/create_account_controller.dart';
 import '../widgets/frequently_used_widgets.dart';
+import '../../styles/fonts.dart';
 
 bool _passwordVisible = false;
 bool _confirmPasswordVisibile = false;
 
 class SignUp extends StatefulWidget {
   const SignUp({super.key});
-
+  static const routeName = '/SignUp';
   @override
   State<SignUp> createState() => _SignUpState();
 }
@@ -28,8 +27,8 @@ class _SignUpState extends State<SignUp> {
       body: SafeArea(
         child: SingleChildScrollView(
           child: Container(
-            decoration: BoxDecoration(
-              image: const DecorationImage(
+            decoration: const BoxDecoration(
+              image: DecorationImage(
                   image: AssetImage('assets/images/AdultSignUp.png'),
                   fit: BoxFit.cover),
             ),
@@ -39,7 +38,7 @@ class _SignUpState extends State<SignUp> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    SizedBox(
+                    const SizedBox(
                       height: 200,
                     ),
                     Row(
@@ -66,16 +65,16 @@ class _SignUpState extends State<SignUp> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        TextFormFieldInput(
+                        textFormFieldInput(
                             "First Name",
                             "Please enter your first name",
                             TextInputType.name,
                             0.4,
                             context),
-                        SizedBox(
+                        const SizedBox(
                           width: 3,
                         ),
-                        TextFormFieldInput(
+                        textFormFieldInput(
                             "Last Name",
                             "Please enter your last name",
                             TextInputType.name,
@@ -94,7 +93,7 @@ class _SignUpState extends State<SignUp> {
 
                     unformSpacing(),
 
-                    TextFormFieldInput(
+                    textFormFieldInput(
                         "DD/MM/YYYY",
                         "Please enter your birthday",
                         TextInputType.datetime,
@@ -112,7 +111,7 @@ class _SignUpState extends State<SignUp> {
 
                     unformSpacing(),
 
-                    Text("Already have an account? Login"),
+                    const Text("Already have an account? Login"),
 
                     unformSpacing(),
                   ],
@@ -125,8 +124,8 @@ class _SignUpState extends State<SignUp> {
     );
   }
 
-  Container _confirmPasswordTextField() {
-    return Container(
+  SizedBox _confirmPasswordTextField() {
+    return SizedBox(
       width: MediaQuery.of(context).size.width * 0.8,
       // height: MediaQuery.of(context).size.width * 0.8,
       height: 51,
@@ -137,7 +136,10 @@ class _SignUpState extends State<SignUp> {
             filled: true,
             fillColor: Colors.white,
             errorMaxLines: 1,
-            errorStyle: TextStyle(height: 1, fontSize: errorFontSize),
+            errorStyle: const TextStyle(
+              height: 1,
+              fontSize: errorFontSize,
+            ),
             hintText: "Confirm your password",
             contentPadding: const EdgeInsets.all(contentPadding),
             border: const OutlineInputBorder(
@@ -167,13 +169,13 @@ class _SignUpState extends State<SignUp> {
     );
   }
 
-  Container submit() {
-    return Container(
+  SizedBox submit() {
+    return SizedBox(
       width: 329,
       height: 51,
       child: ElevatedButton(
           style: ElevatedButton.styleFrom(
-            backgroundColor: buttonColor,
+            backgroundColor: Theme.of(context).primaryColor,
           ),
           onPressed: () {
             setState(() {
@@ -184,8 +186,8 @@ class _SignUpState extends State<SignUp> {
     );
   }
 
-  Container passwordInput() {
-    return Container(
+  SizedBox passwordInput() {
+    return SizedBox(
       width: MediaQuery.of(context).size.width * 0.8,
       height: 51,
       child: TextFormField(
@@ -204,9 +206,12 @@ class _SignUpState extends State<SignUp> {
             filled: true,
             fillColor: Colors.white,
             errorMaxLines: 1,
-            errorStyle: TextStyle(height: 1, fontSize: errorFontSize),
+            errorStyle: const TextStyle(
+              height: 1,
+              fontSize: errorFontSize,
+            ),
             hintText: "Enter Your Password",
-            contentPadding: EdgeInsets.all(contentPadding),
+            contentPadding: const EdgeInsets.all(contentPadding),
             border: const OutlineInputBorder(
                 borderRadius: BorderRadius.all(Radius.circular(15)))),
         validator: (value) {
@@ -225,8 +230,8 @@ class _SignUpState extends State<SignUp> {
     );
   }
 
-  Container emailInput() {
-    return Container(
+  SizedBox emailInput() {
+    return SizedBox(
       width: MediaQuery.of(context).size.width * 0.8,
       height: 51,
       child: TextFormField(
