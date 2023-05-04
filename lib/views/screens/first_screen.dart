@@ -124,7 +124,7 @@ class FirstScreen extends StatelessWidget {
                       onPressed: () {
                         Navigator.pushReplacementNamed(
                           context,
-                          '/SignUp',
+                          '/SignUpChild',
                         );
                       },
                       style: ButtonStyle(

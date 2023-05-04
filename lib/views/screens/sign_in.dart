@@ -278,7 +278,7 @@ class _SignInState extends State<SignIn> {
           if (value!.isEmpty) {
             return "Please enter a Password";
           } else {
-            bool result = validatePassword(value);
+            bool result = validatePassword(value, 6);
             if (result) {
               return null;
             } else {
