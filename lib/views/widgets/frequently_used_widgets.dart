@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_cmp_developers/styles/constants/constants.dart';
-
-import '../Styles/Fonts/Fonts.dart';
-import '../controllers/create_account_controller.dart';
+import '../../constants/constants.dart';
+import '../../controllers/create_account_controller.dart';
 
 //We've created global controls in order to POST to the backend.
 
@@ -12,7 +10,7 @@ import '../controllers/create_account_controller.dart';
 ///
 Widget phoneNumberInput(String hintText, BuildContext context) {
   TextEditingController phoneNumberInputController = TextEditingController();
-  return Container(
+  return SizedBox(
     width: MediaQuery.of(context).size.width * 0.8,
     height: 51,
     child: TextFormField(
@@ -38,12 +36,13 @@ Widget phoneNumberInput(String hintText, BuildContext context) {
             return "Please enter a valid phone number";
           }
         }
+        return null;
       },
     ),
   );
 }
 
-Widget TextFormFieldInput(String hintText, String emptyInputError,
+Widget textFormFieldInput(String hintText, String emptyInputError,
     TextInputType keyBoardType, double width, BuildContext context) {
   TextEditingController genericTextFormInputController =
       TextEditingController();
@@ -57,7 +56,6 @@ Widget TextFormFieldInput(String hintText, String emptyInputError,
       keyboardType: keyBoardType,
       decoration: InputDecoration(
         hintText: hintText,
-        hintStyle: TextStyle(),
         filled: true,
         fillColor: Colors.white,
         errorStyle: const TextStyle(
@@ -80,7 +78,7 @@ Widget TextFormFieldInput(String hintText, String emptyInputError,
 }
 
 Widget unformSpacing() {
-  return SizedBox(
+  return const SizedBox(
     height: 17,
   );
 }

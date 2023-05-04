@@ -1,6 +1,5 @@
 import "package:flutter/material.dart";
-import 'package:flutter_svg/flutter_svg.dart';
-import '../../styles/colors/colors.dart';
+import '../../constants/constants.dart';
 
 class FirstScreen extends StatelessWidget {
   ///Route for Navigating
@@ -26,11 +25,10 @@ class FirstScreen extends StatelessWidget {
               semanticsLabel: 'My Image',
               fit: BoxFit.fill,
             )*/
-            Image.asset(
+                Image.asset(
               'assets/first_screen.jpg',
               fit: BoxFit.fill,
-            )
-            ,
+            ),
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,

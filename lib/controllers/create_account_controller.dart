@@ -1,9 +1,9 @@
 //A function that validate user entered password
 
 bool validatePassword(String pass) {
-  RegExp pass_valid = RegExp(r"(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*\W)");
-  String _password = pass.trim();
-  if (pass_valid.hasMatch(_password)) {
+  RegExp passValid = RegExp(r"(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*\W)");
+  String password = pass.trim();
+  if (passValid.hasMatch(password)) {
     return true;
   } else {
     return false;

@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_cmp_developers/styles/constants/constants.dart';
-
+import 'package:flutter_cmp_developers/constants/constants.dart';
 import '../../controllers/create_account_controller.dart';
 import '../widgets/frequently_used_widgets.dart';
-import '../../styles/fonts.dart';
 
 bool _passwordVisible = false;
 bool _confirmPasswordVisibile = false;
