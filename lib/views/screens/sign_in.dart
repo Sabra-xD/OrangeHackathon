@@ -1,10 +1,8 @@
 import "package:flutter/material.dart";
 
-import '../../Styles/Fonts/Fonts.dart';
-
 class SignIn extends StatefulWidget {
   const SignIn({super.key});
-
+  static const routeName = '/SignInScreen';
   @override
   State<SignIn> createState() => _SignInState();
 }
@@ -13,8 +11,13 @@ class _SignInState extends State<SignIn> {
   final _formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Form(
+    return const Scaffold(
+      body: Center(
+        child: Text("Login",style:TextStyle(
+            fontSize:50,color:Colors.black,
+        ),),
+      ),
+      /*Form(
           key: _formKey,
           child: Column(
             children: [
@@ -75,7 +78,7 @@ class _SignInState extends State<SignIn> {
                   },
                   child: const Text("Submit")),
             ],
-          )),
+          )),*/
     );
   }
 }
