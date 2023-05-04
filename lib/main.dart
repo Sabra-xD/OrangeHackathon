@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'views/screens/create_account.dart';
+import 'views/screens/first_screen.dart';
+import 'views/screens/sign_in.dart';
+import 'views/screens/splash_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -12,13 +15,24 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Tap Cash',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primaryColor: const Color(0xffe26477),
+        fontFamily: 'Roboto', // set default font family
+        textTheme: const TextTheme(
+          bodyMedium: TextStyle(color: Colors.white), // set default text color
+        ),
       ),
+      initialRoute: '/',
+      routes: {
+        SplashScreen.routeName: (ctx) => const SplashScreen(),
+        FirstScreen.routeName: (ctx) => const FirstScreen(),
+        SignIn.routeName: (ctx) => const SignIn(),
+        SignUp.routeName: (ctx) => const SignUp(),
+      },
       home:
-          const SignUp(), //Use Outer home. We use Scaffold, since it has an AppBar.
+          const SplashScreen(), //Use Outer home. We use Scaffold, since it has an AppBar.
     );
   }
 }
