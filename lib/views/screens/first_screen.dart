@@ -41,27 +41,34 @@ class FirstScreen extends StatelessWidget {
                     height: height * 0.35, // * screenHeightRatio,
                   ),
                   Text(
-                    "Wallet App",
+                    "Tap Cash",
                     style: TextStyle(
                       fontSize: 50,
                       color: Theme.of(context).primaryColor,
                     ),
                   ),
-                  SizedBox(
-                    height: 16 * screenHeightRatio,
+                  const SizedBox(
+                    height: 16, //* screenHeightRatio,
                   ),
                   const Text(
-                    "Empower your money, Simplify your life.",
+                    "Empower your money, Simplify ",
                     style: TextStyle(
                       fontSize: 16,
                       color: Colors.black,
                     ),
                   ),
-                  SizedBox(
-                    height: 24 * screenHeightRatio,
+                  const Text(
+                    "your life.",
+                    style: TextStyle(
+                      fontSize: 16,
+                      color: Colors.black,
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 24, // * screenHeightRatio,
                   ),
                   SizedBox(
-                    width: MediaQuery.of(context).size.width * 0.8,
+                    width: width * 0.45, //328 * screenWidthRatio,
                     height: 51,
                     child: TextButton(
                       key: const Key("LOGIN_FIRST_SCREEN"),
@@ -117,7 +124,7 @@ class FirstScreen extends StatelessWidget {
                     height: 12,
                   ),
                   SizedBox(
-                    width: 328 * screenWidthRatio,
+                    width: width * 0.45, //328 * screenWidthRatio,
                     height: 51,
                     child: TextButton(
                       key: const Key("SIGN_UP_FIRST_SCREEN"),
@@ -149,7 +156,7 @@ class FirstScreen extends StatelessWidget {
                         child: Text(
                           'SIGN UP',
                           style: TextStyle(
-                            fontSize: 30,
+                            fontSize: 20,
                             color: myWhite,
                           ),
                         ),
