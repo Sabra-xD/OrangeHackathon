@@ -12,8 +12,6 @@ class FirstScreen extends StatelessWidget {
     final size = MediaQuery.of(context).size;
     final width = size.width;
     final height = size.height;
-    double screenHeightRatio = height / 926;
-    double screenWidthRatio = width / 428;
     return Scaffold(
       body: Stack(
         children: [

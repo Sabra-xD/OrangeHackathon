@@ -8,8 +8,11 @@ import '../../controllers/create_account_controller.dart';
 ///  Checking if the i/p field is empty and if the given phone nubmer starts with 01 and is valid.
 ///
 ///
-Widget phoneNumberInput(String hintText, BuildContext context,
-    TextEditingController phoneNumberInputController) {
+Widget phoneNumberInput(
+  String hintText,
+  BuildContext context,
+  TextEditingController phoneNumberInputController,
+) {
   return SizedBox(
     width: MediaQuery.of(context).size.width * 0.8,
     height: textFieldheight,

@@ -25,15 +25,13 @@ bool isEmailValid(String email) {
 ///
 ///
 bool hasRequiredNumberOfDigits(String input, int requiredDigits) {
-  String digitRegex = r'\d'; // regular expression for a single digit
-  int digitCount = RegExp(digitRegex)
-      .allMatches(input)
-      .length; // count the number of digits in the input
+  //String digitRegex = r'\d'; // regular expression for a single digit
+  //int digitCount = RegExp(digitRegex).allMatches(input).length; // count the number of digits in the input
 
-  final RegExp _phoneNumberRegExp = RegExp(r'^(?:01)[0-2]\d{8}$');
+  final RegExp phoneNumberRegExp = RegExp(r'^(?:01)[0-2]\d{8}$');
 
   if (double.tryParse(input) != null) {
-    if (!_phoneNumberRegExp.hasMatch(input)) {
+    if (!phoneNumberRegExp.hasMatch(input)) {
       return true;
     } else {
       return false;
