@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_cmp_developers/constants/constants.dart';
 import '../../controllers/create_account_controller.dart';
 import '../widgets/frequently_used_widgets.dart';
+import 'package:dob_input_field/dob_input_field.dart';
 
 bool _passwordVisible = false;
 bool _confirmPasswordVisibile = false;
@@ -20,22 +21,25 @@ class _SignUpState extends State<SignUp> {
   final _confirmPass = TextEditingController();
   final _email = TextEditingController();
   final _formKey = GlobalKey<FormState>();
+  final _phoneNumberInput = TextEditingController();
+  final _firstNameInput = TextEditingController();
+  final _lastNameInput = TextEditingController();
+  final _birthDayInput = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
-        child: SingleChildScrollView(
-          child: Container(
-            decoration: const BoxDecoration(
-              image: DecorationImage(
-                image: AssetImage(
-                  'assets/images/AdultSignUp.png',
-                ),
-                fit: BoxFit.cover,
+      body: SingleChildScrollView(
+        child: Container(
+          decoration: const BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage(
+                'assets/images/AdultSignUp.png',
               ),
+              fit: BoxFit.cover,
             ),
-            child: Form(
+          ),
+          child: Form(
               key: _formKey,
               child: Center(
                 child: Column(
@@ -52,14 +56,16 @@ class _SignUpState extends State<SignUp> {
                           icon: Image.asset(
                             'assets/images/Icon.jfif',
                           ),
-                          iconSize: 16,
+                          iconSize: 50,
                         ),
                         IconButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.pushNamed(context, '/SignUpChild');
+                          },
                           icon: Image.asset(
                             'assets/images/childrenIcon.jfif',
                           ),
-                          iconSize: 75,
+                          iconSize: 15,
                         ),
                       ],
                     ),
@@ -71,22 +77,22 @@ class _SignUpState extends State<SignUp> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         textFormFieldInput(
-                          "First Name",
-                          "Please enter your first name",
-                          TextInputType.name,
-                          0.4,
-                          context,
-                        ),
+                            "First Name",
+                            "Please enter your first name",
+                            TextInputType.name,
+                            0.4,
+                            context,
+                            _firstNameInput),
                         const SizedBox(
                           width: 3,
                         ),
                         textFormFieldInput(
-                          "Last Name",
-                          "Please enter your last name",
-                          TextInputType.name,
-                          0.4,
-                          context,
-                        ),
+                            "Last Name",
+                            "Please enter your last name",
+                            TextInputType.name,
+                            0.4,
+                            context,
+                            _lastNameInput),
                       ],
                     ),
 
@@ -97,24 +103,25 @@ class _SignUpState extends State<SignUp> {
                     unformSpacing(),
 
                     phoneNumberInput(
-                      "Enter your Phone Number",
-                      context,
-                    ),
+                        "Enter your Phone Number", context, _phoneNumberInput),
 
                     unformSpacing(),
 
                     textFormFieldInput(
-                      "DD/MM/YYYY",
-                      "Please enter your birthday",
-                      TextInputType.datetime,
-                      0.8,
-                      context,
-                    ),
+                        "Enter your birthday",
+                        "Please Enter your birthday",
+                        TextInputType.datetime,
+                        0.8,
+                        context,
+                        _birthDayInput),
+
                     unformSpacing(),
+
                     passwordInput(),
+
                     //Spacing
                     unformSpacing(),
-                    _confirmPasswordTextField(),
+                    confirmPasswordTextField(),
 
                     const SizedBox(
                       height: 24,
@@ -126,30 +133,11 @@ class _SignUpState extends State<SignUp> {
                       height: 48,
                     ),
 
-                    Row(
-                      children: [
-                        const Text(
-                          "Already have an account?   ",
-                          style: TextStyle(
-                            fontSize: 16,
-                            color: Colors.black,
-                          ),
-                        ),
-                        Text(
-                          "Login",
-                          style: TextStyle(
-                            fontSize: 16,
-                            color: Theme.of(context).primaryColor,
-                          ),
-                        ),
-                      ],
-                    ),
-                    //unformSpacing(),
+                    alreadyHaveAccount(context),
+                    unformSpacing(),
                   ],
                 ),
-              ),
-            ),
-          ),
+              ),),
         ),
       ),
     );
@@ -221,17 +209,6 @@ class _SignUpState extends State<SignUp> {
             },
           ),
         ),
-        validator: (value) {
-          if (value!.isEmpty) {
-            return "Please confirm the Password";
-          } else {
-            if (confirmPassword(_passowrdInput.text, _confirmPass.text)) {
-              return null;
-            } else {
-              return "Password is a mismatch";
-            }
-          }
-        },
       ),
     );
   }
@@ -239,7 +216,7 @@ class _SignUpState extends State<SignUp> {
   SizedBox submit() {
     return SizedBox(
       width: MediaQuery.of(context).size.width * 0.8,
-      height: 51,
+      height: textFieldheight,
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
           backgroundColor: Theme.of(context).primaryColor,
@@ -265,7 +242,7 @@ class _SignUpState extends State<SignUp> {
   SizedBox passwordInput() {
     return SizedBox(
       width: MediaQuery.of(context).size.width * 0.8,
-      height: 51,
+      height: textFieldheight,
       child: TextFormField(
         maxLength: 6,
         obscureText: !_passwordVisible,
@@ -291,7 +268,7 @@ class _SignUpState extends State<SignUp> {
             height: 1,
             fontSize: errorFontSize,
           ),
-          hintText: "Enter Your Password",
+          hintText: "Enter Your 6 digit pin",
           hintStyle: TextStyle(
             color: textFieldTextColor,
             fontSize: 16,
@@ -327,13 +304,73 @@ class _SignUpState extends State<SignUp> {
         ),
         validator: (value) {
           if (value!.isEmpty) {
-            return "Please enter a Password";
+            return "Please enter a 6 digit pin";
           } else {
-            bool result = validatePassword(value);
+            bool result = validatePassword(value, 6);
             if (result) {
               return null;
             } else {
-              return "Password should contain Capital,Small letters, Special Characters and numbers";
+              return "Pin Code must consist of 6 numbers";
+            }
+          }
+        },
+      ),
+    );
+  }
+
+  Widget confirmPasswordTextField() {
+    return SizedBox(
+      width: MediaQuery.of(context).size.width * 0.8,
+      height: textFieldheight,
+      child: TextFormField(
+        maxLength: 6,
+        obscureText: !_confirmPasswordVisibile,
+        controller: _confirmPass,
+        decoration: InputDecoration(
+          filled: true,
+          fillColor: myWhite,
+          errorMaxLines: 1,
+          errorStyle: const TextStyle(
+            height: 1,
+            fontSize: errorFontSize,
+          ),
+          hintText: "Confirm your pin",
+          hintStyle: TextStyle(
+            color: textFieldTextColor,
+            fontSize: 16,
+          ),
+          contentPadding: const EdgeInsets.all(
+            contentPadding,
+          ),
+          border: const OutlineInputBorder(
+            borderRadius: BorderRadius.all(
+              Radius.circular(
+                textFieldRadius,
+              ),
+            ),
+          ),
+          suffixIcon: IconButton(
+            icon: Icon(
+              _confirmPasswordVisibile
+                  ? Icons.visibility
+                  : Icons.visibility_off,
+              color: textFieldTextColor,
+            ),
+            onPressed: () {
+              setState() {
+                _confirmPasswordVisibile = !_confirmPasswordVisibile;
+              }
+            },
+          ),
+        ),
+        validator: (value) {
+          if (value!.isEmpty) {
+            return "Please confirm your pin";
+          } else {
+            if (confirmPassword(_passowrdInput.text, _confirmPass.text)) {
+              return null;
+            } else {
+              return "Pin is a mismatch";
             }
           }
         },
@@ -344,7 +381,7 @@ class _SignUpState extends State<SignUp> {
   SizedBox emailInput() {
     return SizedBox(
       width: MediaQuery.of(context).size.width * 0.8,
-      height: 51,
+      height: textFieldheight,
       child: TextFormField(
         controller: _email,
         decoration: InputDecoration(
@@ -403,3 +440,4 @@ class _SignUpState extends State<SignUp> {
     );
   }
 }
+

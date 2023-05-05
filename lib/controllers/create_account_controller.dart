@@ -1,16 +1,15 @@
 //A function that validate user entered password
 
-bool validatePassword(String pass) {
-  RegExp passValid = RegExp(r"(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*\W)");
-  String password = pass.trim();
-  if (passValid.hasMatch(password)) {
+bool validatePassword(String pass, int requriedNumberofDigits) {
+  String digitRegex = r'\d';
+  int digitCount = RegExp(digitRegex)
+      .allMatches(pass)
+      .length; // count the number of digits in the input
+
+  if (double.tryParse(pass) != null && digitCount == requriedNumberofDigits) {
     return true;
   } else {
-    if (password.length < 6) {
-      return true;
-    } else {
-      return false;
-    }
+    return false;
   }
 }
 
@@ -31,9 +30,11 @@ bool hasRequiredNumberOfDigits(String input, int requiredDigits) {
       .allMatches(input)
       .length; // count the number of digits in the input
 
+  final RegExp _phoneNumberRegExp = RegExp(r'^(?:01)[0-2]\d{8}$');
+
   if (double.tryParse(input) != null) {
-    if (input.startsWith("01")) {
-      return digitCount == requiredDigits;
+    if (!_phoneNumberRegExp.hasMatch(input)) {
+      return true;
     } else {
       return false;
     }
