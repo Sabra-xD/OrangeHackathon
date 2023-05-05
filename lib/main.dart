@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_cmp_developers/views/screens/create_account_child.dart';
+import 'package:flutter_cmp_developers/views/screens/forgot_password.dart';
+import 'package:flutter_cmp_developers/views/screens/new_password_create.dart';
+import 'package:flutter_cmp_developers/views/screens/otp_screen.dart';
 import 'views/screens/create_account.dart';
 import 'views/screens/first_screen.dart';
 import 'views/screens/sign_in.dart';
@@ -37,6 +40,9 @@ class MyApp extends StatelessWidget {
         SignIn.routeName: (ctx) => const SignIn(),
         SignUp.routeName: (ctx) => const SignUp(),
         createAccountChild.routeName: (ctx) => const createAccountChild(),
+        ForgotPassword.routeName: (ctx) => const ForgotPassword(),
+        NewPasswordCreate.routeName: (ctx) => const NewPasswordCreate(),
+        oneTimePassword.routeName: (ctx) => const oneTimePassword(),
       },
       home:
           const SplashScreen(), //Use Outer home. We use Scaffold, since it has an AppBar.

@@ -63,14 +63,14 @@ class _createAccountChildState extends State<createAccountChild> {
                         icon: Image.asset(
                           'assets/images/Icon.jfif',
                         ),
-                        iconSize: 15,
+                        iconSize: 5,
                       ),
                       IconButton(
                         onPressed: () {},
                         icon: Image.asset(
                           'assets/images/childrenIcon.jfif',
                         ),
-                        iconSize: 50,
+                        iconSize: 70,
                       ),
                     ],
                   ),

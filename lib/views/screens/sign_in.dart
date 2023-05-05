@@ -51,8 +51,8 @@ class _SignInState extends State<SignIn> {
                       ),
                     ),
                   ),
-                  const SizedBox(
-                    height: 24,
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height * 0.15,
                   ),
                   emailInput(),
                   unformSpacing(),
@@ -152,9 +152,9 @@ class _SignInState extends State<SignIn> {
                     child: TextButton(
                       key: const Key("Forget_Password"),
                       onPressed: () {
-                        Navigator.pushReplacementNamed(
+                        Navigator.pushNamed(
                           context,
-                          '/ForgetPasswordOne',
+                          '/ForgetPassword',
                         );
                       },
                       style: ButtonStyle(
@@ -176,6 +176,10 @@ class _SignInState extends State<SignIn> {
                       ),
                     ),
                   ),
+
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height * 0.15,
+                  )
                 ],
               ),
             ),

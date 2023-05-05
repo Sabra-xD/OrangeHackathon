@@ -31,6 +31,7 @@ dependencies:
   flutter:
     sdk: flutter
   dob_input_field: ^2.0.0
+  pin_code_fields: ^7.4.0
 
   # flutter_svg: ^0.22.0
   # The following adds the Cupertino Icons font to your application.

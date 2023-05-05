@@ -2,29 +2,22 @@ import 'package:flutter/material.dart';
 import 'package:flutter_cmp_developers/constants/constants.dart';
 import '../../controllers/create_account_controller.dart';
 import '../widgets/frequently_used_widgets.dart';
-import 'package:dob_input_field/dob_input_field.dart';
 
-bool _passwordVisible = false;
-bool _confirmPasswordVisibile = false;
-
-class SignUp extends StatefulWidget {
-  const SignUp({
+class NewPasswordCreate extends StatefulWidget {
+  static const routeName = '/NewPasswordCreate';
+  const NewPasswordCreate({
     super.key,
   });
-  static const routeName = '/SignUp';
   @override
-  State<SignUp> createState() => _SignUpState();
+  State<NewPasswordCreate> createState() => _NewPasswordCreate();
 }
 
-class _SignUpState extends State<SignUp> {
+class _NewPasswordCreate extends State<NewPasswordCreate> {
+  bool _passwordVisible = false;
+  bool _confirmPasswordVisibile = false;
   final _passowrdInput = TextEditingController();
   final _confirmPass = TextEditingController();
-  final _email = TextEditingController();
   final _formKey = GlobalKey<FormState>();
-  final _phoneNumberInput = TextEditingController();
-  final _firstNameInput = TextEditingController();
-  final _lastNameInput = TextEditingController();
-  final _birthDayInput = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +27,7 @@ class _SignUpState extends State<SignUp> {
           decoration: const BoxDecoration(
             image: DecorationImage(
               image: AssetImage(
-                'assets/images/AdultSignUp.png',
+                'assets/images/newPassword.png',
               ),
               fit: BoxFit.cover,
             ),
@@ -45,75 +38,20 @@ class _SignUpState extends State<SignUp> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    const SizedBox(
-                      height: 200,
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        IconButton(
-                          onPressed: () {},
-                          icon: Image.asset(
-                            'assets/images/Icon.jfif',
-                          ),
-                          iconSize: 50,
-                        ),
-                        IconButton(
-                          onPressed: () {
-                            Navigator.pushNamed(context, '/SignUpChild');
-                          },
-                          icon: Image.asset(
-                            'assets/images/childrenIcon.jfif',
-                          ),
-                          iconSize: 15,
-                        ),
-                      ],
+                    SizedBox(
+                      height: MediaQuery.of(context).size.height * 0.5,
                     ),
 
                     const SizedBox(
                       height: 24,
                     ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        textFormFieldInput(
-                            "First Name",
-                            "Please enter your first name",
-                            TextInputType.name,
-                            0.4,
-                            context,
-                            _firstNameInput),
-                        const SizedBox(
-                          width: 3,
-                        ),
-                        textFormFieldInput(
-                            "Last Name",
-                            "Please enter your last name",
-                            TextInputType.name,
-                            0.4,
-                            context,
-                            _lastNameInput),
-                      ],
+
+                    const Text(
+                      "New Password",
+                      style: TextStyle(fontSize: 20, color: Colors.black45),
                     ),
 
                     unformSpacing(),
-
-                    emailInput(),
-
-                    unformSpacing(),
-
-                    phoneNumberInput(
-                        "Enter your Phone Number", context, _phoneNumberInput),
-
-                    unformSpacing(),
-
-                    textFormFieldInput(
-                        "Enter your birthday",
-                        "Please Enter your birthday",
-                        TextInputType.datetime,
-                        0.8,
-                        context,
-                        _birthDayInput),
 
                     unformSpacing(),
 
@@ -133,8 +71,11 @@ class _SignUpState extends State<SignUp> {
                       height: 48,
                     ),
 
-                    alreadyHaveAccount(context),
                     unformSpacing(),
+
+                    SizedBox(
+                      height: MediaQuery.of(context).size.height * 0.1,
+                    )
                   ],
                 ),
               )),
@@ -170,11 +111,12 @@ class _SignUpState extends State<SignUp> {
           setState(
             () {
               _formKey.currentState!.validate();
+              print(_confirmPasswordVisibile);
             },
           );
         },
         child: Text(
-          "Register",
+          "Confirm",
           style: TextStyle(
             fontSize: 20,
             color: myWhite,
@@ -307,20 +249,23 @@ class _SignUpState extends State<SignUp> {
     );
   }
 
-  SizedBox emailInput() {
+  /*SizedBox confirmPasswordTextField() {
     return SizedBox(
       width: MediaQuery.of(context).size.width * 0.8,
       height: textFieldheight,
       child: TextFormField(
-        controller: _email,
+        maxLength: 6,
+        obscureText: !_confirmPasswordVisibile,
+        controller: _confirmPass,
         decoration: InputDecoration(
           filled: true,
           fillColor: myWhite,
+          errorMaxLines: 1,
           errorStyle: const TextStyle(
             height: 1,
             fontSize: errorFontSize,
           ),
-          hintText: "Enter your email",
+          hintText: "Confirm your pin",
           hintStyle: TextStyle(
             color: textFieldTextColor,
             fontSize: 16,
@@ -335,19 +280,34 @@ class _SignUpState extends State<SignUp> {
               ),
             ),
           ),
+          suffixIcon: IconButton(
+            icon: Icon(
+              _confirmPasswordVisibile
+                  ? Icons.visibility
+                  : Icons.visibility_off,
+              color: textFieldTextColor,
+            ),
+            onPressed: () {
+              setState() {
+                _confirmPasswordVisibile = !_confirmPasswordVisibile;
+                print(_confirmPasswordVisibile);
+              }
+            },
+          ),
         ),
         validator: (value) {
           if (value!.isEmpty) {
-            return "You must enter a valid Account!";
+            return "Please confirm your pin";
           } else {
-            if (isEmailValid(_email.text)) {
+            if (confirmPassword(_passowrdInput.text, _confirmPass.text)) {
               return null;
             } else {
-              return "You must enter a valid E-mail!";
+              return "Pin is a mismatch";
             }
           }
         },
       ),
     );
   }
+}*/
 }

@@ -26,7 +26,7 @@ class FirstScreen extends StatelessWidget {
               fit: BoxFit.fill,
             )*/
                 Image.asset(
-              'assets/images/first_screen.jpg',
+              'assets/images/first_screen.png',
               fit: BoxFit.fill,
             ),
           ),
@@ -66,7 +66,7 @@ class FirstScreen extends StatelessWidget {
                     child: TextButton(
                       key: const Key("LOGIN_FIRST_SCREEN"),
                       onPressed: () {
-                        Navigator.pushReplacementNamed(
+                        Navigator.pushNamed(
                           context,
                           '/SignInScreen',
                         );
@@ -93,7 +93,7 @@ class FirstScreen extends StatelessWidget {
                         child: Text(
                           'LOGIN',
                           style: TextStyle(
-                            fontSize: 20,
+                            fontSize: 25,
                             color: myWhite,
                           ),
                         ),
@@ -117,12 +117,12 @@ class FirstScreen extends StatelessWidget {
                     height: 12,
                   ),
                   SizedBox(
-                    width: 328 * screenWidthRatio,
+                    width: MediaQuery.of(context).size.width * 0.8,
                     height: 51,
                     child: TextButton(
                       key: const Key("SIGN_UP_FIRST_SCREEN"),
                       onPressed: () {
-                        Navigator.pushReplacementNamed(
+                        Navigator.pushNamed(
                           context,
                           '/SignUpChild',
                         );
@@ -149,7 +149,7 @@ class FirstScreen extends StatelessWidget {
                         child: Text(
                           'SIGN UP',
                           style: TextStyle(
-                            fontSize: 30,
+                            fontSize: 25,
                             color: myWhite,
                           ),
                         ),
