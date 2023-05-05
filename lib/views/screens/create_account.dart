@@ -137,7 +137,77 @@ class _SignUpState extends State<SignUp> {
                     unformSpacing(),
                   ],
                 ),
-              )),
+              ),),
+        ),
+      ),
+    );
+  }
+
+  SizedBox _confirmPasswordTextField() {
+    return SizedBox(
+      width: MediaQuery.of(context).size.width * 0.8,
+      // height: MediaQuery.of(context).size.width * 0.8,
+      height: 51,
+      child: TextFormField(
+        maxLength: 6,
+        obscureText: !_confirmPasswordVisibile,
+        controller: _confirmPass,
+        decoration: InputDecoration(
+          filled: true,
+          fillColor: myWhite,
+          errorMaxLines: 1,
+          errorStyle: const TextStyle(
+            height: 1,
+            fontSize: errorFontSize,
+          ),
+          hintText: "Confirm your password",
+          hintStyle: TextStyle(
+            color: textFieldTextColor,
+            fontSize: 16,
+          ),
+          contentPadding: const EdgeInsets.all(
+            contentPadding,
+          ),
+          border: OutlineInputBorder(
+            borderRadius: const BorderRadius.all(
+              Radius.circular(
+                textFieldRadius,
+              ),
+            ),
+            borderSide: BorderSide(
+              color: textFieldTextColor,
+            ),
+          ),
+          focusedBorder: OutlineInputBorder(
+            borderSide: BorderSide(
+              color: textFieldTextColor,
+            ),
+          ),
+          enabledBorder: OutlineInputBorder(
+            borderSide: BorderSide(
+              color: textFieldTextColor,
+            ),
+          ),
+          disabledBorder: OutlineInputBorder(
+            borderSide: BorderSide(
+              color: textFieldTextColor,
+            ),
+          ),
+          suffixIcon: IconButton(
+            icon: Icon(
+              _confirmPasswordVisibile
+                  ? Icons.visibility
+                  : Icons.visibility_off,
+              color: textFieldTextColor,
+            ),
+            onPressed: () {
+              setState(
+                () {
+                  _confirmPasswordVisibile = !_confirmPasswordVisibile;
+                },
+              );
+            },
+          ),
         ),
       ),
     );
@@ -206,11 +276,29 @@ class _SignUpState extends State<SignUp> {
           contentPadding: const EdgeInsets.all(
             contentPadding,
           ),
-          border: const OutlineInputBorder(
-            borderRadius: BorderRadius.all(
+          border: OutlineInputBorder(
+            borderRadius: const BorderRadius.all(
               Radius.circular(
                 textFieldRadius,
               ),
+            ),
+            borderSide: BorderSide(
+              color: textFieldTextColor,
+            ),
+          ),
+          focusedBorder: OutlineInputBorder(
+            borderSide: BorderSide(
+              color: textFieldTextColor,
+            ),
+          ),
+          enabledBorder: OutlineInputBorder(
+            borderSide: BorderSide(
+              color: textFieldTextColor,
+            ),
+          ),
+          disabledBorder: OutlineInputBorder(
+            borderSide: BorderSide(
+              color: textFieldTextColor,
             ),
           ),
         ),
@@ -311,11 +399,29 @@ class _SignUpState extends State<SignUp> {
           contentPadding: const EdgeInsets.all(
             contentPadding,
           ),
-          border: const OutlineInputBorder(
-            borderRadius: BorderRadius.all(
+          border: OutlineInputBorder(
+            borderRadius: const BorderRadius.all(
               Radius.circular(
                 textFieldRadius,
               ),
+            ),
+            borderSide: BorderSide(
+              color: textFieldTextColor,
+            ),
+          ),
+          focusedBorder: OutlineInputBorder(
+            borderSide: BorderSide(
+              color: textFieldTextColor,
+            ),
+          ),
+          enabledBorder: OutlineInputBorder(
+            borderSide: BorderSide(
+              color: textFieldTextColor,
+            ),
+          ),
+          disabledBorder: OutlineInputBorder(
+            borderSide: BorderSide(
+              color: textFieldTextColor,
             ),
           ),
         ),
@@ -334,3 +440,4 @@ class _SignUpState extends State<SignUp> {
     );
   }
 }
+
