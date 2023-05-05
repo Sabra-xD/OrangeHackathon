@@ -180,11 +180,29 @@ class _SignUpState extends State<SignUp> {
           contentPadding: const EdgeInsets.all(
             contentPadding,
           ),
-          border: const OutlineInputBorder(
-            borderRadius: BorderRadius.all(
+          border: OutlineInputBorder(
+            borderRadius: const BorderRadius.all(
               Radius.circular(
                 textFieldRadius,
               ),
+            ),
+            borderSide: BorderSide(
+              color: textFieldTextColor,
+            ),
+          ),
+          focusedBorder: OutlineInputBorder(
+            borderSide: BorderSide(
+              color: textFieldTextColor,
+            ),
+          ),
+          enabledBorder: OutlineInputBorder(
+            borderSide: BorderSide(
+              color: textFieldTextColor,
+            ),
+          ),
+          disabledBorder: OutlineInputBorder(
+            borderSide: BorderSide(
+              color: textFieldTextColor,
             ),
           ),
           suffixIcon: IconButton(
@@ -281,11 +299,29 @@ class _SignUpState extends State<SignUp> {
           contentPadding: const EdgeInsets.all(
             contentPadding,
           ),
-          border: const OutlineInputBorder(
-            borderRadius: BorderRadius.all(
+          border: OutlineInputBorder(
+            borderRadius: const BorderRadius.all(
               Radius.circular(
                 textFieldRadius,
               ),
+            ),
+            borderSide: BorderSide(
+              color: textFieldTextColor,
+            ),
+          ),
+          focusedBorder: OutlineInputBorder(
+            borderSide: BorderSide(
+              color: textFieldTextColor,
+            ),
+          ),
+          enabledBorder: OutlineInputBorder(
+            borderSide: BorderSide(
+              color: textFieldTextColor,
+            ),
+          ),
+          disabledBorder: OutlineInputBorder(
+            borderSide: BorderSide(
+              color: textFieldTextColor,
             ),
           ),
         ),
@@ -326,11 +362,29 @@ class _SignUpState extends State<SignUp> {
           contentPadding: const EdgeInsets.all(
             contentPadding,
           ),
-          border: const OutlineInputBorder(
-            borderRadius: BorderRadius.all(
+          border: OutlineInputBorder(
+            borderRadius: const BorderRadius.all(
               Radius.circular(
                 textFieldRadius,
               ),
+            ),
+            borderSide: BorderSide(
+              color: textFieldTextColor,
+            ),
+          ),
+          focusedBorder: OutlineInputBorder(
+            borderSide: BorderSide(
+              color: textFieldTextColor,
+            ),
+          ),
+          enabledBorder: OutlineInputBorder(
+            borderSide: BorderSide(
+              color: textFieldTextColor,
+            ),
+          ),
+          disabledBorder: OutlineInputBorder(
+            borderSide: BorderSide(
+              color: textFieldTextColor,
             ),
           ),
         ),
