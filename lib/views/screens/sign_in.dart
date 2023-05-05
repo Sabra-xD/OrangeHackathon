@@ -82,7 +82,7 @@ class _SignInState extends State<SignIn> {
                             MaterialStateProperty.all<RoundedRectangleBorder>(
                           RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(
-                              20,
+                              buttonRadius,
                             ),
                             side: BorderSide(
                                 color: Theme.of(context).primaryColor),
@@ -124,7 +124,7 @@ class _SignInState extends State<SignIn> {
                             MaterialStateProperty.all<RoundedRectangleBorder>(
                           RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(
-                              20,
+                              buttonRadius,
                             ),
                             side: BorderSide(
                               color: Theme.of(context).primaryColor,
@@ -203,16 +203,31 @@ class _SignInState extends State<SignIn> {
             ),
           ),
           focusedBorder: OutlineInputBorder(
+            borderRadius: const BorderRadius.all(
+              Radius.circular(
+                textFieldRadius,
+              ),
+            ),
             borderSide: BorderSide(
               color: textFieldTextColor,
             ),
           ),
           enabledBorder: OutlineInputBorder(
+            borderRadius: const BorderRadius.all(
+              Radius.circular(
+                textFieldRadius,
+              ),
+            ),
             borderSide: BorderSide(
               color: textFieldTextColor,
             ),
           ),
           disabledBorder: OutlineInputBorder(
+            borderRadius: const BorderRadius.all(
+              Radius.circular(
+                textFieldRadius,
+              ),
+            ),
             borderSide: BorderSide(
               color: textFieldTextColor,
             ),
@@ -295,16 +310,31 @@ class _SignInState extends State<SignIn> {
             ),
           ),
           focusedBorder: OutlineInputBorder(
+            borderRadius: const BorderRadius.all(
+              Radius.circular(
+                textFieldRadius,
+              ),
+            ),
             borderSide: BorderSide(
               color: textFieldTextColor,
             ),
           ),
           enabledBorder: OutlineInputBorder(
+            borderRadius: const BorderRadius.all(
+              Radius.circular(
+                textFieldRadius,
+              ),
+            ),
             borderSide: BorderSide(
               color: textFieldTextColor,
             ),
           ),
           disabledBorder: OutlineInputBorder(
+            borderRadius: const BorderRadius.all(
+              Radius.circular(
+                textFieldRadius,
+              ),
+            ),
             borderSide: BorderSide(
               color: textFieldTextColor,
             ),
