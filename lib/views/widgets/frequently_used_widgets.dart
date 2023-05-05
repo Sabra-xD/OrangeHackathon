@@ -8,29 +8,71 @@ import '../../controllers/create_account_controller.dart';
 ///  Checking if the i/p field is empty and if the given phone nubmer starts with 01 and is valid.
 ///
 ///
-Widget phoneNumberInput(String hintText, BuildContext context,
-    TextEditingController phoneNumberInputController) {
+Widget phoneNumberInput(
+  String hintText,
+  BuildContext context,
+  TextEditingController phoneNumberInputController,
+) {
   return SizedBox(
     width: MediaQuery.of(context).size.width * 0.8,
     height: textFieldheight,
     child: TextFormField(
+      cursorColor: textFieldTextColor,
       keyboardType: TextInputType.phone,
       controller: phoneNumberInputController,
       decoration: InputDecoration(
         hintText: hintText,
-        filled: true,
-        fillColor: myWhite,
-        errorStyle: const TextStyle(
-          height: 1,
-          fontSize: errorFontSize,
-        ),
         hintStyle: TextStyle(
           color: textFieldTextColor,
           fontSize: 16,
         ),
+        filled: true,
+        fillColor: Colors.white,
+        errorStyle: const TextStyle(
+          height: 1,
+          fontSize: errorFontSize,
+        ),
         contentPadding: const EdgeInsets.all(contentPadding),
-        border: const OutlineInputBorder(
-            borderRadius: BorderRadius.all(Radius.circular(15))),
+        border: OutlineInputBorder(
+          borderRadius: const BorderRadius.all(
+            Radius.circular(
+              textFieldRadius,
+            ),
+          ),
+          borderSide: BorderSide(
+            color: textFieldTextColor,
+          ),
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: const BorderRadius.all(
+            Radius.circular(
+              textFieldRadius,
+            ),
+          ),
+          borderSide: BorderSide(
+            color: textFieldTextColor,
+          ),
+        ),
+        enabledBorder: OutlineInputBorder(
+          borderRadius: const BorderRadius.all(
+            Radius.circular(
+              textFieldRadius,
+            ),
+          ),
+          borderSide: BorderSide(
+            color: textFieldTextColor,
+          ),
+        ),
+        disabledBorder: OutlineInputBorder(
+          borderRadius: const BorderRadius.all(
+            Radius.circular(
+              textFieldRadius,
+            ),
+          ),
+          borderSide: BorderSide(
+            color: textFieldTextColor,
+          ),
+        ),
       ),
       validator: (value) {
         if (value!.isEmpty) {
@@ -62,6 +104,7 @@ Widget textFormFieldInput(
     width: MediaQuery.of(context).size.width * width,
     height: textFieldheight,
     child: TextFormField(
+      cursorColor: textFieldTextColor,
       controller: genericTextFormInputController,
       keyboardType: keyBoardType,
       decoration: InputDecoration(
@@ -77,8 +120,46 @@ Widget textFormFieldInput(
           fontSize: errorFontSize,
         ),
         contentPadding: const EdgeInsets.all(contentPadding),
-        border: const OutlineInputBorder(
-            borderRadius: BorderRadius.all(Radius.circular(15))),
+        border: OutlineInputBorder(
+          borderRadius: const BorderRadius.all(
+            Radius.circular(
+              textFieldRadius,
+            ),
+          ),
+          borderSide: BorderSide(
+            color: textFieldTextColor,
+          ),
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: const BorderRadius.all(
+            Radius.circular(
+              textFieldRadius,
+            ),
+          ),
+          borderSide: BorderSide(
+            color: textFieldTextColor,
+          ),
+        ),
+        enabledBorder: OutlineInputBorder(
+          borderRadius: const BorderRadius.all(
+            Radius.circular(
+              textFieldRadius,
+            ),
+          ),
+          borderSide: BorderSide(
+            color: textFieldTextColor,
+          ),
+        ),
+        disabledBorder: OutlineInputBorder(
+          borderRadius: const BorderRadius.all(
+            Radius.circular(
+              textFieldRadius,
+            ),
+          ),
+          borderSide: BorderSide(
+            color: textFieldTextColor,
+          ),
+        ),
       ),
       validator: (value) {
         if (value!.isEmpty) {

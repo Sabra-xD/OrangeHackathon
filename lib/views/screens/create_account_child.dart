@@ -2,18 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:flutter_cmp_developers/constants/constants.dart';
 import '../../controllers/create_account_controller.dart';
 import '../widgets/frequently_used_widgets.dart';
-import 'package:dob_input_field/dob_input_field.dart';
+//import 'package:dob_input_field/dob_input_field.dart';
 
-class createAccountChild extends StatefulWidget {
-  const createAccountChild({
+class CreateAccountChild extends StatefulWidget {
+  const CreateAccountChild({
     super.key,
   });
   static const routeName = '/SignUpChild';
   @override
-  State<createAccountChild> createState() => _createAccountChildState();
+  State<CreateAccountChild> createState() => CreateAccountChildState();
 }
 
-class _createAccountChildState extends State<createAccountChild> {
+class CreateAccountChildState extends State<CreateAccountChild> {
   bool _passwordVisible = false;
   bool _confirmPasswordVisibile = false;
   final _passowrdInput = TextEditingController();
@@ -29,10 +29,10 @@ class _createAccountChildState extends State<createAccountChild> {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
-    final width = size.width;
+    // final width = size.width;
     final height = size.height;
-    double screenHeightRatio = height / 926;
-    double screenWidthRatio = width / 428;
+    // double screenHeightRatio = height / 926;
+    // double screenWidthRatio = width / 428;
     return Scaffold(
       body: SingleChildScrollView(
         child: Container(

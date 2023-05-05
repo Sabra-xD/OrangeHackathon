@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_cmp_developers/constants/constants.dart';
 import '../../controllers/create_account_controller.dart';
 import '../widgets/frequently_used_widgets.dart';
-import 'package:dob_input_field/dob_input_field.dart';
+//import 'package:dob_input_field/dob_input_field.dart';
 
 bool _passwordVisible = false;
 bool _confirmPasswordVisibile = false;
@@ -40,104 +40,134 @@ class _SignUpState extends State<SignUp> {
             ),
           ),
           child: Form(
-              key: _formKey,
-              child: Center(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    const SizedBox(
-                      height: 200,
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        IconButton(
-                          onPressed: () {},
-                          icon: Image.asset(
-                            'assets/images/Icon.jfif',
-                          ),
-                          iconSize: 50,
+            key: _formKey,
+            child: Center(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height * 0.22,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      IconButton(
+                        onPressed: () {},
+                        icon: Image.asset(
+                          'assets/images/Icon.jfif',
                         ),
-                        IconButton(
-                          onPressed: () {
-                            Navigator.pushNamed(context, '/SignUpChild');
-                          },
-                          icon: Image.asset(
-                            'assets/images/childrenIcon.jfif',
-                          ),
-                          iconSize: 15,
+                        iconSize: 50,
+                      ),
+                      IconButton(
+                        onPressed: () {
+                          Navigator.pushNamed(context, '/SignUpChild');
+                        },
+                        icon: Image.asset(
+                          'assets/images/childrenIcon.jfif',
                         ),
-                      ],
-                    ),
-
-                    const SizedBox(
-                      height: 24,
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        textFormFieldInput(
-                            "First Name",
-                            "Please enter your first name",
-                            TextInputType.name,
-                            0.4,
-                            context,
-                            _firstNameInput),
-                        const SizedBox(
-                          width: 3,
-                        ),
-                        textFormFieldInput(
-                            "Last Name",
-                            "Please enter your last name",
-                            TextInputType.name,
-                            0.4,
-                            context,
-                            _lastNameInput),
-                      ],
-                    ),
-
-                    unformSpacing(),
-
-                    emailInput(),
-
-                    unformSpacing(),
-
-                    phoneNumberInput(
-                        "Enter your Phone Number", context, _phoneNumberInput),
-
-                    unformSpacing(),
-
-                    textFormFieldInput(
-                        "Enter your birthday",
-                        "Please Enter your birthday",
-                        TextInputType.datetime,
-                        0.8,
+                        iconSize: 15,
+                      ),
+                    ],
+                  ),
+                  const SizedBox(
+                    height: 24,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      textFormFieldInput(
+                        "First Name",
+                        "Please enter your first name",
+                        TextInputType.name,
+                        0.4,
                         context,
-                        _birthDayInput),
-
-                    unformSpacing(),
-
-                    passwordInput(),
-
-                    //Spacing
-                    unformSpacing(),
-                    confirmPasswordTextField(),
-
-                    const SizedBox(
-                      height: 24,
-                    ),
-
-                    submit(),
-
-                    const SizedBox(
-                      height: 48,
-                    ),
-
-                    alreadyHaveAccount(context),
-                    unformSpacing(),
-                  ],
-                ),
-              )),
+                        _firstNameInput,
+                      ),
+                      const SizedBox(
+                        width: 3,
+                      ),
+                      textFormFieldInput(
+                        "Last Name",
+                        "Please enter your last name",
+                        TextInputType.name,
+                        0.4,
+                        context,
+                        _lastNameInput,
+                      ),
+                    ],
+                  ),
+                  unformSpacing(),
+                  emailInput(),
+                  unformSpacing(),
+                  phoneNumberInput(
+                    "Enter your Phone Number",
+                    context,
+                    _phoneNumberInput,
+                  ),
+                  unformSpacing(),
+                  textFormFieldInput(
+                    "Enter your birthday",
+                    "Please Enter your birthday",
+                    TextInputType.datetime,
+                    0.8,
+                    context,
+                    _birthDayInput,
+                  ),
+                  unformSpacing(),
+                  passwordInput(),
+                  confirmPasswordTextField(),
+                  const SizedBox(
+                    height: 8,
+                  ),
+                  submit(),
+                  const SizedBox(
+                    height: 48,
+                  ),
+                  Row(
+                    children: [
+                      SizedBox(
+                        width: MediaQuery.of(context).size.width * 0.1,
+                      ),
+                      Text(
+                        "Already have an account?    ",
+                        style: TextStyle(
+                          fontSize: 16,
+                          color: textFieldTextColor,
+                        ),
+                      ),
+                      TextButton(
+                        onPressed: () {
+                          Navigator.pushNamed(
+                            context,
+                            '/SignInScreen',
+                          );
+                        },
+                        style: ButtonStyle(
+                          backgroundColor:
+                              MaterialStateProperty.resolveWith<Color?>(
+                            (Set<MaterialState> states) {
+                              return myWhite;
+                            },
+                          ),
+                        ),
+                        child: Center(
+                          child: Text(
+                            "Login",
+                            style: TextStyle(
+                              fontSize: 16,
+                              color: Theme.of(context).primaryColor,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                  //alreadyHaveAccount(context),
+                  unformSpacing(),
+                ],
+              ),
+            ),
+          ),
         ),
       ),
     );
@@ -177,7 +207,7 @@ class _SignUpState extends State<SignUp> {
           "Register",
           style: TextStyle(
             fontSize: 20,
-            color: myWhite,
+            color: textFieldTextColor,
           ),
         ),
       ),
@@ -187,7 +217,7 @@ class _SignUpState extends State<SignUp> {
   SizedBox passwordInput() {
     return SizedBox(
       width: MediaQuery.of(context).size.width * 0.8,
-      height: textFieldheight,
+      height: 71,
       child: TextFormField(
         maxLength: 6,
         obscureText: !_passwordVisible,
@@ -213,7 +243,7 @@ class _SignUpState extends State<SignUp> {
             height: 1,
             fontSize: errorFontSize,
           ),
-          hintText: "Enter Your 6 digit pin",
+          hintText: "Enter Your Password",
           hintStyle: TextStyle(
             color: textFieldTextColor,
             fontSize: 16,
@@ -221,11 +251,44 @@ class _SignUpState extends State<SignUp> {
           contentPadding: const EdgeInsets.all(
             contentPadding,
           ),
-          border: const OutlineInputBorder(
-            borderRadius: BorderRadius.all(
+          border: OutlineInputBorder(
+            borderRadius: const BorderRadius.all(
               Radius.circular(
                 textFieldRadius,
               ),
+            ),
+            borderSide: BorderSide(
+              color: textFieldTextColor,
+            ),
+          ),
+          focusedBorder: OutlineInputBorder(
+            borderRadius: const BorderRadius.all(
+              Radius.circular(
+                textFieldRadius,
+              ),
+            ),
+            borderSide: BorderSide(
+              color: textFieldTextColor,
+            ),
+          ),
+          enabledBorder: OutlineInputBorder(
+            borderRadius: const BorderRadius.all(
+              Radius.circular(
+                textFieldRadius,
+              ),
+            ),
+            borderSide: BorderSide(
+              color: textFieldTextColor,
+            ),
+          ),
+          disabledBorder: OutlineInputBorder(
+            borderRadius: const BorderRadius.all(
+              Radius.circular(
+                textFieldRadius,
+              ),
+            ),
+            borderSide: BorderSide(
+              color: textFieldTextColor,
             ),
           ),
         ),
@@ -248,13 +311,14 @@ class _SignUpState extends State<SignUp> {
   SizedBox confirmPasswordTextField() {
     return SizedBox(
       width: MediaQuery.of(context).size.width * 0.8,
-      height: textFieldheight,
+      height: 71,
       child: TextFormField(
         maxLength: 6,
         obscureText: !_confirmPasswordVisibile,
         controller: _confirmPass,
         decoration: InputDecoration(
           suffixIcon: IconButton(
+
             onPressed: () {
               setState(
                 () {
@@ -268,6 +332,7 @@ class _SignUpState extends State<SignUp> {
                   : Icons.visibility_off,
               color: textFieldTextColor,
             ),
+
           ),
           filled: true,
           fillColor: myWhite,
@@ -284,11 +349,44 @@ class _SignUpState extends State<SignUp> {
           contentPadding: const EdgeInsets.all(
             contentPadding,
           ),
-          border: const OutlineInputBorder(
-            borderRadius: BorderRadius.all(
+          border: OutlineInputBorder(
+            borderRadius: const BorderRadius.all(
               Radius.circular(
                 textFieldRadius,
               ),
+            ),
+            borderSide: BorderSide(
+              color: textFieldTextColor,
+            ),
+          ),
+          focusedBorder: OutlineInputBorder(
+            borderRadius: const BorderRadius.all(
+              Radius.circular(
+                textFieldRadius,
+              ),
+            ),
+            borderSide: BorderSide(
+              color: textFieldTextColor,
+            ),
+          ),
+          enabledBorder: OutlineInputBorder(
+            borderRadius: const BorderRadius.all(
+              Radius.circular(
+                textFieldRadius,
+              ),
+            ),
+            borderSide: BorderSide(
+              color: textFieldTextColor,
+            ),
+          ),
+          disabledBorder: OutlineInputBorder(
+            borderRadius: const BorderRadius.all(
+              Radius.circular(
+                textFieldRadius,
+              ),
+            ),
+            borderSide: BorderSide(
+              color: textFieldTextColor,
             ),
           ),
         ),
@@ -328,11 +426,44 @@ class _SignUpState extends State<SignUp> {
           contentPadding: const EdgeInsets.all(
             contentPadding,
           ),
-          border: const OutlineInputBorder(
-            borderRadius: BorderRadius.all(
+          border: OutlineInputBorder(
+            borderRadius: const BorderRadius.all(
               Radius.circular(
                 textFieldRadius,
               ),
+            ),
+            borderSide: BorderSide(
+              color: textFieldTextColor,
+            ),
+          ),
+          focusedBorder: OutlineInputBorder(
+            borderRadius: const BorderRadius.all(
+              Radius.circular(
+                textFieldRadius,
+              ),
+            ),
+            borderSide: BorderSide(
+              color: textFieldTextColor,
+            ),
+          ),
+          enabledBorder: OutlineInputBorder(
+            borderRadius: const BorderRadius.all(
+              Radius.circular(
+                textFieldRadius,
+              ),
+            ),
+            borderSide: BorderSide(
+              color: textFieldTextColor,
+            ),
+          ),
+          disabledBorder: OutlineInputBorder(
+            borderRadius: const BorderRadius.all(
+              Radius.circular(
+                textFieldRadius,
+              ),
+            ),
+            borderSide: BorderSide(
+              color: textFieldTextColor,
             ),
           ),
         ),

@@ -20,35 +20,35 @@ class _SignInState extends State<SignIn> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SingleChildScrollView(
-        child: Container(
-          decoration: const BoxDecoration(
-            image: DecorationImage(
-              image: AssetImage(
-                'assets/images/login.png',
-              ),
+      body: Stack(
+        children: [
+          SizedBox(
+            width: double.infinity,
+            height: double.infinity,
+            child: /*SvgPicture.asset(
+              'assets/image.svg',
+              semanticsLabel: 'My Image',
+              fit: BoxFit.fill,
+            )*/
+                Image.asset(
+              'assets/images/first_screen.jpg',
               fit: BoxFit.fill,
             ),
           ),
-          child: Form(
+          Form(
             key: _formKey,
             child: Center(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   SizedBox(
-                    height: MediaQuery.of(context).size.height * 0.35,
+                    height: MediaQuery.of(context).size.height * 0.45,
                   ),
                   const Text(
                     'LOGIN',
                     style: TextStyle(
                       fontSize: 20,
-                      color: Color.fromRGBO(
-                        79,
-                        76,
-                        76,
-                        255,
-                      ),
+                      color: Colors.black,
                     ),
                   ),
                   SizedBox(
@@ -58,10 +58,10 @@ class _SignInState extends State<SignIn> {
                   unformSpacing(),
                   passwordInput(),
                   const SizedBox(
-                    height: 24,
+                    height: 8,
                   ),
                   SizedBox(
-                    width: MediaQuery.of(context).size.width * 0.8,
+                    width: MediaQuery.of(context).size.width * 0.76,
                     height: 51,
                     child: TextButton(
                       key: const Key("LOGIN_Second_SCREEN"),
@@ -82,7 +82,7 @@ class _SignInState extends State<SignIn> {
                             MaterialStateProperty.all<RoundedRectangleBorder>(
                           RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(
-                              20,
+                              buttonRadius,
                             ),
                             side: BorderSide(
                                 color: Theme.of(context).primaryColor),
@@ -103,12 +103,12 @@ class _SignInState extends State<SignIn> {
                   unformSpacing(),
                   //Register Button
                   SizedBox(
-                    width: MediaQuery.of(context).size.width * 0.8,
+                    width: MediaQuery.of(context).size.width * 0.76,
                     height: 51,
                     child: TextButton(
                       key: const Key("Register_Second_SCREEN"),
                       onPressed: () {
-                        Navigator.pushReplacementNamed(
+                        Navigator.pushNamed(
                           context,
                           '/SignUp',
                         );
@@ -124,7 +124,7 @@ class _SignInState extends State<SignIn> {
                             MaterialStateProperty.all<RoundedRectangleBorder>(
                           RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(
-                              20,
+                              buttonRadius,
                             ),
                             side: BorderSide(
                               color: Theme.of(context).primaryColor,
@@ -144,11 +144,11 @@ class _SignInState extends State<SignIn> {
                     ),
                   ),
                   const SizedBox(
-                    height: 16,
+                    height: 12,
                   ),
                   SizedBox(
-                    width: MediaQuery.of(context).size.width * 0.8,
-                    height: 51,
+                    width: MediaQuery.of(context).size.width * 0.76,
+                    height: 20,
                     child: TextButton(
                       key: const Key("Forget_Password"),
                       onPressed: () {
@@ -167,9 +167,9 @@ class _SignInState extends State<SignIn> {
                       ),
                       child: Center(
                         child: Text(
-                          'Forget Password',
+                          'Forget Password?',
                           style: TextStyle(
-                            fontSize: 20,
+                            fontSize: 16,
                             color: textFieldTextColor,
                           ),
                         ),
@@ -184,38 +184,71 @@ class _SignInState extends State<SignIn> {
               ),
             ),
           ),
-        ),
+        ],
       ),
     );
   }
 
   SizedBox emailInput() {
     return SizedBox(
-      width: MediaQuery.of(context).size.width * 0.8,
+      width: MediaQuery.of(context).size.width * 0.76,
       height: 51,
       child: TextFormField(
         controller: _email,
         decoration: InputDecoration(
+          border: OutlineInputBorder(
+            borderRadius: const BorderRadius.all(
+              Radius.circular(
+                textFieldRadius,
+              ),
+            ),
+            borderSide: BorderSide(
+              color: textFieldTextColor,
+            ),
+          ),
+          focusedBorder: OutlineInputBorder(
+            borderRadius: const BorderRadius.all(
+              Radius.circular(
+                textFieldRadius,
+              ),
+            ),
+            borderSide: BorderSide(
+              color: textFieldTextColor,
+            ),
+          ),
+          enabledBorder: OutlineInputBorder(
+            borderRadius: const BorderRadius.all(
+              Radius.circular(
+                textFieldRadius,
+              ),
+            ),
+            borderSide: BorderSide(
+              color: textFieldTextColor,
+            ),
+          ),
+          disabledBorder: OutlineInputBorder(
+            borderRadius: const BorderRadius.all(
+              Radius.circular(
+                textFieldRadius,
+              ),
+            ),
+            borderSide: BorderSide(
+              color: textFieldTextColor,
+            ),
+          ),
           filled: true,
           fillColor: myWhite,
           errorStyle: const TextStyle(
             height: 1,
             fontSize: errorFontSize,
           ),
-          hintText: "Enter your email",
+          hintText: "Phone number",
           hintStyle: TextStyle(
             color: textFieldTextColor,
             fontSize: 16,
           ),
           contentPadding: const EdgeInsets.all(
             contentPadding,
-          ),
-          border: const OutlineInputBorder(
-            borderRadius: BorderRadius.all(
-              Radius.circular(
-                textFieldRadius,
-              ),
-            ),
           ),
         ),
         validator: (value) {
@@ -235,8 +268,8 @@ class _SignInState extends State<SignIn> {
 
   SizedBox passwordInput() {
     return SizedBox(
-      width: MediaQuery.of(context).size.width * 0.8,
-      height: 51,
+      width: MediaQuery.of(context).size.width * 0.76,
+      height: 71,
       child: TextFormField(
         maxLength: 6,
         obscureText: !_passwordVisible,
@@ -262,7 +295,7 @@ class _SignInState extends State<SignIn> {
             height: 1,
             fontSize: errorFontSize,
           ),
-          hintText: "Enter Your Password",
+          hintText: "Password",
           hintStyle: TextStyle(
             color: textFieldTextColor,
             fontSize: 16,
@@ -270,11 +303,44 @@ class _SignInState extends State<SignIn> {
           contentPadding: const EdgeInsets.all(
             contentPadding,
           ),
-          border: const OutlineInputBorder(
-            borderRadius: BorderRadius.all(
+          border: OutlineInputBorder(
+            borderRadius: const BorderRadius.all(
               Radius.circular(
                 textFieldRadius,
               ),
+            ),
+            borderSide: BorderSide(
+              color: textFieldTextColor,
+            ),
+          ),
+          focusedBorder: OutlineInputBorder(
+            borderRadius: const BorderRadius.all(
+              Radius.circular(
+                textFieldRadius,
+              ),
+            ),
+            borderSide: BorderSide(
+              color: textFieldTextColor,
+            ),
+          ),
+          enabledBorder: OutlineInputBorder(
+            borderRadius: const BorderRadius.all(
+              Radius.circular(
+                textFieldRadius,
+              ),
+            ),
+            borderSide: BorderSide(
+              color: textFieldTextColor,
+            ),
+          ),
+          disabledBorder: OutlineInputBorder(
+            borderRadius: const BorderRadius.all(
+              Radius.circular(
+                textFieldRadius,
+              ),
+            ),
+            borderSide: BorderSide(
+              color: textFieldTextColor,
             ),
           ),
         ),
@@ -286,7 +352,7 @@ class _SignInState extends State<SignIn> {
             if (result) {
               return null;
             } else {
-              return "Password should contain Capital,Small letters, Special Characters and numbers";
+              return "Password should be 6 digits";
             }
           }
         },
