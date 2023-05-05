@@ -6,3 +6,4 @@ const double contentPadding = 7;
 const double errorFontSize = 10;
 const double buttonRadius = 25;
 const double textFieldRadius = 15;
+const double textFieldheight = 51;
