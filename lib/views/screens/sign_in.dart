@@ -20,39 +20,34 @@ class _SignInState extends State<SignIn> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Stack(
-        children: [
-          SizedBox(
-            width: double.infinity,
-            height: double.infinity,
-            child: /*SvgPicture.asset(
-              'assets/image.svg',
-              semanticsLabel: 'My Image',
-              fit: BoxFit.fill,
-            )*/
-                Image.asset(
-              'assets/images/first_screen.jpg',
-              fit: BoxFit.fill,
+      body: SingleChildScrollView(
+        child: Container(
+          decoration: const BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage(
+                'assets/images/first_screen.png',
+              ),
+              fit: BoxFit.cover,
             ),
           ),
-          Form(
+          child: Form(
             key: _formKey,
             child: Center(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   SizedBox(
-                    height: MediaQuery.of(context).size.height * 0.45,
+                    height: MediaQuery.of(context).size.height * 0.52,
                   ),
-                  const Text(
+                  Text(
                     'LOGIN',
                     style: TextStyle(
                       fontSize: 20,
-                      color: Colors.black,
+                      color: Theme.of(context).primaryColor,
                     ),
                   ),
-                  SizedBox(
-                    height: MediaQuery.of(context).size.height * 0.15,
+                  const SizedBox(
+                    height: 24,
                   ),
                   emailInput(),
                   unformSpacing(),
@@ -127,8 +122,7 @@ class _SignInState extends State<SignIn> {
                               buttonRadius,
                             ),
                             side: BorderSide(
-                              color: Theme.of(context).primaryColor,
-                            ),
+                                color: Theme.of(context).primaryColor),
                           ),
                         ),
                       ),
@@ -148,7 +142,7 @@ class _SignInState extends State<SignIn> {
                   ),
                   SizedBox(
                     width: MediaQuery.of(context).size.width * 0.76,
-                    height: 20,
+                    height: 50,
                     child: TextButton(
                       key: const Key("Forget_Password"),
                       onPressed: () {
@@ -167,7 +161,7 @@ class _SignInState extends State<SignIn> {
                       ),
                       child: Center(
                         child: Text(
-                          'Forget Password?',
+                          'Forgot Your Password?',
                           style: TextStyle(
                             fontSize: 16,
                             color: textFieldTextColor,
@@ -176,15 +170,11 @@ class _SignInState extends State<SignIn> {
                       ),
                     ),
                   ),
-
-                  SizedBox(
-                    height: MediaQuery.of(context).size.height * 0.15,
-                  )
                 ],
               ),
             ),
           ),
-        ],
+        ),
       ),
     );
   }
@@ -194,6 +184,7 @@ class _SignInState extends State<SignIn> {
       width: MediaQuery.of(context).size.width * 0.76,
       height: 51,
       child: TextFormField(
+        cursorColor: textFieldTextColor,
         controller: _email,
         decoration: InputDecoration(
           border: OutlineInputBorder(
@@ -271,6 +262,7 @@ class _SignInState extends State<SignIn> {
       width: MediaQuery.of(context).size.width * 0.76,
       height: 71,
       child: TextFormField(
+        cursorColor: textFieldTextColor,
         maxLength: 6,
         obscureText: !_passwordVisible,
         controller: _passowrdInput,

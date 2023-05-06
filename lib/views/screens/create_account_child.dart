@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_cmp_developers/constants/constants.dart';
 import '../../controllers/create_account_controller.dart';
 import '../widgets/frequently_used_widgets.dart';
-//import 'package:dob_input_field/dob_input_field.dart';
 
 class CreateAccountChild extends StatefulWidget {
   const CreateAccountChild({
@@ -156,7 +155,7 @@ class CreateAccountChildState extends State<CreateAccountChild> {
     return SizedBox(
       width: MediaQuery.of(context).size.width * 0.8,
       // height: MediaQuery.of(context).size.width * 0.8,
-      height: 51,
+      height: 71,
       child: TextFormField(
         maxLength: 6,
         obscureText: !_confirmPasswordVisibile,
@@ -182,6 +181,16 @@ class CreateAccountChildState extends State<CreateAccountChild> {
               Radius.circular(
                 textFieldRadius,
               ),
+            ),
+          ),
+          disabledBorder: OutlineInputBorder(
+            borderRadius: const BorderRadius.all(
+              Radius.circular(
+                textFieldRadius,
+              ),
+            ),
+            borderSide: BorderSide(
+              color: textFieldTextColor,
             ),
           ),
           suffixIcon: IconButton(
@@ -215,13 +224,28 @@ class CreateAccountChildState extends State<CreateAccountChild> {
     );
   }
 
-  SizedBox submit() {
-    return SizedBox(
+  Container submit() {
+    return Container(
       width: MediaQuery.of(context).size.width * 0.8,
-      height: 51,
+      height: textFieldheight,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(buttonRadius),
+      ),
       child: ElevatedButton(
-        style: ElevatedButton.styleFrom(
-          backgroundColor: Theme.of(context).primaryColor,
+        style: ButtonStyle(
+          backgroundColor: MaterialStateProperty.resolveWith<Color?>(
+            (Set<MaterialState> states) {
+              return Theme.of(context).primaryColor;
+            },
+          ),
+          shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+            RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(
+                buttonRadius,
+              ),
+              side: BorderSide(color: Theme.of(context).primaryColor),
+            ),
+          ),
         ),
         onPressed: () {
           setState(
@@ -244,12 +268,22 @@ class CreateAccountChildState extends State<CreateAccountChild> {
   SizedBox passwordInput() {
     return SizedBox(
       width: MediaQuery.of(context).size.width * 0.8,
-      height: 51,
+      height: 71,
       child: TextFormField(
         maxLength: 6,
         obscureText: !_passwordVisible,
         controller: _passowrdInput,
         decoration: InputDecoration(
+          disabledBorder: OutlineInputBorder(
+            borderRadius: const BorderRadius.all(
+              Radius.circular(
+                textFieldRadius,
+              ),
+            ),
+            borderSide: BorderSide(
+              color: textFieldTextColor,
+            ),
+          ),
           suffixIcon: IconButton(
             onPressed: () {
               setState(

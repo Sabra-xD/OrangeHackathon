@@ -19,66 +19,73 @@ class _NewPasswordCreate extends State<NewPasswordCreate> {
   final _confirmPass = TextEditingController();
   final _formKey = GlobalKey<FormState>();
 
+  Future<bool> _onWillPop() async {
+    return false;
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SingleChildScrollView(
-        child: Container(
-          decoration: const BoxDecoration(
-            image: DecorationImage(
-              image: AssetImage(
-                'assets/images/newPassword.png',
-              ),
-              fit: BoxFit.cover,
-            ),
-          ),
-          child: Form(
-              key: _formKey,
-              child: Center(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    SizedBox(
-                      height: MediaQuery.of(context).size.height * 0.5,
-                    ),
-
-                    const SizedBox(
-                      height: 24,
-                    ),
-
-                    const Text(
-                      "New Password",
-                      style: TextStyle(fontSize: 20, color: Colors.black45),
-                    ),
-
-                    unformSpacing(),
-
-                    unformSpacing(),
-
-                    passwordInput(),
-
-                    //Spacing
-                    unformSpacing(),
-                    confirmPasswordTextField(),
-
-                    const SizedBox(
-                      height: 24,
-                    ),
-
-                    submit(),
-
-                    const SizedBox(
-                      height: 48,
-                    ),
-
-                    unformSpacing(),
-
-                    SizedBox(
-                      height: MediaQuery.of(context).size.height * 0.1,
-                    )
-                  ],
+    return WillPopScope(
+      onWillPop: _onWillPop,
+      child: Scaffold(
+        body: SingleChildScrollView(
+          child: Container(
+            decoration: const BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage(
+                  'assets/images/newPassword.png',
                 ),
-              )),
+                fit: BoxFit.cover,
+              ),
+            ),
+            child: Form(
+                key: _formKey,
+                child: Center(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      SizedBox(
+                        height: MediaQuery.of(context).size.height * 0.5,
+                      ),
+
+                      const SizedBox(
+                        height: 24,
+                      ),
+
+                      const Text(
+                        "New Password",
+                        style: TextStyle(fontSize: 20, color: Colors.black45),
+                      ),
+
+                      unformSpacing(),
+
+                      unformSpacing(),
+
+                      passwordInput(),
+
+                      //Spacing
+                      unformSpacing(),
+                      confirmPasswordTextField(),
+
+                      const SizedBox(
+                        height: 24,
+                      ),
+
+                      submit(),
+
+                      const SizedBox(
+                        height: 48,
+                      ),
+
+                      unformSpacing(),
+
+                      SizedBox(
+                        height: MediaQuery.of(context).size.height * 0.1,
+                      )
+                    ],
+                  ),
+                )),
+          ),
         ),
       ),
     );
@@ -129,7 +136,7 @@ class _NewPasswordCreate extends State<NewPasswordCreate> {
   SizedBox passwordInput() {
     return SizedBox(
       width: MediaQuery.of(context).size.width * 0.8,
-      height: textFieldheight,
+      height: 71,
       child: TextFormField(
         maxLength: 6,
         obscureText: !_passwordVisible,
@@ -190,7 +197,7 @@ class _NewPasswordCreate extends State<NewPasswordCreate> {
   SizedBox confirmPasswordTextField() {
     return SizedBox(
       width: MediaQuery.of(context).size.width * 0.8,
-      height: textFieldheight,
+      height: 71,
       child: TextFormField(
         maxLength: 6,
         obscureText: !_confirmPasswordVisibile,
@@ -218,7 +225,7 @@ class _NewPasswordCreate extends State<NewPasswordCreate> {
             height: 1,
             fontSize: errorFontSize,
           ),
-          hintText: "Enter Your 6 digit pin",
+          hintText: "Confirm Your 6 digit pin",
           hintStyle: TextStyle(
             color: textFieldTextColor,
             fontSize: 16,

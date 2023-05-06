@@ -45,13 +45,11 @@ class MyApp extends StatelessWidget {
         FirstScreen.routeName: (ctx) => const FirstScreen(),
         SignIn.routeName: (ctx) => const SignIn(),
         SignUp.routeName: (ctx) => const SignUp(),
-
-        createAccountChild.routeName: (ctx) => const createAccountChild(),
+        CreateAccountChild.routeName: (ctx) => const CreateAccountChild(),
         ForgotPassword.routeName: (ctx) => const ForgotPassword(),
         NewPasswordCreate.routeName: (ctx) => const NewPasswordCreate(),
-        oneTimePassword.routeName: (ctx) => const oneTimePassword(),
+        OneTimePassword.routeName: (ctx) => const OneTimePassword(),
         HomeScreen.routeName: (ctx) => const HomeScreen(),
-
       },
       home:
           const SplashScreen(), //Use Outer home. We use Scaffold, since it has an AppBar.

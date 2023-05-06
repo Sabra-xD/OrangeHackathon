@@ -1,20 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_cmp_developers/constants/constants.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
-import '../../controllers/create_account_controller.dart';
 import '../widgets/frequently_used_widgets.dart';
-import 'package:dob_input_field/dob_input_field.dart';
 
-class oneTimePassword extends StatefulWidget {
-  const oneTimePassword({
+class OneTimePassword extends StatefulWidget {
+  const OneTimePassword({
     super.key,
   });
   static const routeName = '/OneTimePassword';
   @override
-  State<oneTimePassword> createState() => _oneTimePassword();
+  State<OneTimePassword> createState() => OneTimePasswordState();
 }
 
-class _oneTimePassword extends State<oneTimePassword> {
+class OneTimePasswordState extends State<OneTimePassword> {
   final _formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
@@ -37,22 +35,23 @@ class _oneTimePassword extends State<oneTimePassword> {
                   children: [
                     SizedBox(height: MediaQuery.of(context).size.height * 0.55),
                     SizedBox(
-                      // width: MediaQuery.of(context).size.width * 0.8,
+                      // width: MediaQuery.of(context).size.width * 0.2,
+                      // width: ,
                       // height: MediaQuery.of(context).size.height * 0.3,
                       child: PinCodeTextField(
                         keyboardType: TextInputType.number,
                         length: 6,
                         blinkWhenObscuring: true,
                         obscuringCharacter: '*',
-                        // obscuringWidget: FlutterLogo(),
+                        obscuringWidget: Icon(Icons.one_x_mobiledata,),
                         animationType: AnimationType.fade,
-                        onChanged: (value) {
-                          print(value);
-                        },
+                        onChanged: (value) {},
                         validator: (value) {
-                          if (value!.isEmpty) {
+                          if (value!.isEmpty && value.length < 6) {
                             return "Enter the OTP";
-                          } else {}
+                          } else {
+                            return null; //Here we should post the OTP to the backend.
+                          }
                         },
                         pastedTextStyle: TextStyle(
                           color: Colors.green.shade600,

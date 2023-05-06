@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_cmp_developers/constants/constants.dart';
-import 'package:pin_code_fields/pin_code_fields.dart';
-import '../../controllers/create_account_controller.dart';
+//import 'package:pin_code_fields/pin_code_fields.dart';
 import '../widgets/frequently_used_widgets.dart';
-import 'package:dob_input_field/dob_input_field.dart';
 
 class ForgotPassword extends StatefulWidget {
   const ForgotPassword({
@@ -45,7 +43,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                         onPressed: () {
                           Navigator.pushNamed(context, "/SignInScreen");
                         },
-                        child: Text(
+                        child: const Text(
                           "Back to Login",
                           style: TextStyle(fontSize: 16, color: Colors.black45),
                         )),
