@@ -10,9 +10,6 @@ class SettingsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // appBar: AppBar(
-      //   title: Text('Settings'),
-      // ),
       body: Stack(children: [
         Positioned.fill(
           child: Image.asset(
@@ -57,6 +54,7 @@ class SettingsScreen extends StatelessWidget {
                 ],
               ),
               unformSpacing(),
+
               _buildTile(
                   context, '  Manage other account', const Icon(Icons.person)),
 

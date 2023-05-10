@@ -121,6 +121,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "6.1.4"
+  flushbar:
+    dependency: "direct main"
+    description:
+      name: flushbar
+      sha256: "60ba8410a3b3ad50b117d2a5ae0052f9f828b52cb4b3b23cf2a91abdf17eb181"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.10.4"
   flutter:
     dependency: "direct main"
     description: flutter

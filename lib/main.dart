@@ -60,7 +60,7 @@ class MyApp extends StatelessWidget {
         SettingsScreen.routeName: (ctx) => const SettingsScreen(),
       },
       home:
-          FirstScreen(), //Use Outer home. We use Scaffold, since it has an AppBar.
+          const FirstScreen(), //Use Outer home. We use Scaffold, since it has an AppBar.
     );
   }
 }
