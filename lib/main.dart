@@ -4,12 +4,16 @@ import 'package:flutter_cmp_developers/views/screens/create_account_child.dart';
 import 'package:flutter_cmp_developers/views/screens/forgot_password.dart';
 import 'package:flutter_cmp_developers/views/screens/new_password_create.dart';
 import 'package:flutter_cmp_developers/views/screens/otp_screen.dart';
+import 'package:flutter_cmp_developers/views/screens/send_request.dart';
+import 'package:flutter_cmp_developers/views/screens/services_screen.dart';
+import 'package:flutter_cmp_developers/views/screens/settings.dart';
 import 'views/screens/create_account.dart';
 import 'views/screens/first_screen.dart';
 import 'views/screens/forget_password_one.dart';
 import 'views/screens/home.dart';
 import 'views/screens/sign_in.dart';
 import 'views/screens/splash_screen.dart';
+import 'views/screens/virtualCard.dart';
 
 void main() {
   SystemChrome.setSystemUIOverlayStyle(
@@ -49,10 +53,14 @@ class MyApp extends StatelessWidget {
         ForgotPassword.routeName: (ctx) => const ForgotPassword(),
         NewPasswordCreate.routeName: (ctx) => const NewPasswordCreate(),
         OneTimePassword.routeName: (ctx) => const OneTimePassword(),
-        HomeScreen.routeName: (ctx) => const HomeScreen(),
+        HomeScreen.routeName: (ctx) => HomeScreen(),
+        myServices.routeName: (ctx) => const myServices(),
+        SendReceive.routeName: (ctx) => SendReceive(),
+        CardScreen.routeName: (ctx) => CardScreen(),
+        SettingsScreen.routeName: (ctx) => const SettingsScreen(),
       },
       home:
-          const SplashScreen(), //Use Outer home. We use Scaffold, since it has an AppBar.
+          FirstScreen(), //Use Outer home. We use Scaffold, since it has an AppBar.
     );
   }
 }

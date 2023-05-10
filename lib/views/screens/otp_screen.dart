@@ -35,35 +35,38 @@ class OneTimePasswordState extends State<OneTimePassword> {
                   children: [
                     SizedBox(height: MediaQuery.of(context).size.height * 0.55),
                     SizedBox(
+                      width: MediaQuery.of(context).size.width * 0.6,
                       // width: MediaQuery.of(context).size.width * 0.2,
                       // width: ,
                       // height: MediaQuery.of(context).size.height * 0.3,
                       child: PinCodeTextField(
                         keyboardType: TextInputType.number,
-                        length: 6,
+                        length: 4,
                         blinkWhenObscuring: true,
                         obscuringCharacter: '*',
-                        obscuringWidget: Icon(Icons.one_x_mobiledata,),
+                        obscuringWidget: const Icon(
+                          Icons.one_x_mobiledata,
+                        ),
                         animationType: AnimationType.fade,
                         onChanged: (value) {},
                         validator: (value) {
-                          if (value!.isEmpty && value.length < 6) {
+                          if (value!.isEmpty && value.length < 4) {
                             return "Enter the OTP";
                           } else {
                             return null; //Here we should post the OTP to the backend.
                           }
                         },
-                        pastedTextStyle: TextStyle(
-                          color: Colors.green.shade600,
+                        pastedTextStyle: const TextStyle(
+                          // color: Colors.green.shade600,
                           fontWeight: FontWeight.bold,
                         ),
                         pinTheme: PinTheme(
                           fieldHeight: 50,
-                          fieldWidth: 40,
+                          fieldWidth: 30,
                           shape: PinCodeFieldShape.circle,
                           selectedColor: Colors.amber,
                           activeColor: Colors.blue,
-                          borderRadius: BorderRadius.circular(25),
+                          borderRadius: BorderRadius.circular(30),
                         ),
                         appContext: context,
                       ),

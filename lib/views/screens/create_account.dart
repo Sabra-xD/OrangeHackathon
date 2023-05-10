@@ -1,8 +1,18 @@
+import 'dart:convert';
+
+import 'package:flutter_cmp_developers/constants/apiBack.dart';
+import 'package:http/http.dart' as http;
+
 import 'package:flutter/material.dart';
 import 'package:flutter_cmp_developers/constants/constants.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import '../../controllers/create_account_controller.dart';
 import '../widgets/frequently_used_widgets.dart';
-//import 'package:dob_input_field/dob_input_field.dart';
+
+String token = '';
+
+late SharedPreferences SignUpPrefs;
+late int StatusCode = 0;
 
 bool _passwordVisible = false;
 bool _confirmPasswordVisibile = false;
@@ -18,6 +28,7 @@ class SignUp extends StatefulWidget {
 
 class _SignUpState extends State<SignUp> {
   final _passowrdInput = TextEditingController();
+  String gender = 'Male';
   final _confirmPass = TextEditingController();
   final _email = TextEditingController();
   final _formKey = GlobalKey<FormState>();
@@ -60,7 +71,8 @@ class _SignUpState extends State<SignUp> {
                       ),
                       IconButton(
                         onPressed: () {
-                          Navigator.pushNamed(context, '/SignUpChild');
+                          Navigator.pushReplacementNamed(
+                              context, '/SignUpChild');
                         },
                         icon: Image.asset(
                           'assets/images/childrenIcon.jfif',
@@ -114,11 +126,62 @@ class _SignUpState extends State<SignUp> {
                     _birthDayInput,
                   ),
                   unformSpacing(),
+                  Container(
+                    height: textFieldheight,
+
+                    // color: myWhite,
+                    width: MediaQuery.of(context).size.width * 0.8,
+                    decoration:
+                        BoxDecoration(borderRadius: BorderRadius.circular(25)),
+                    child: DropdownButtonFormField<String>(
+                      decoration: InputDecoration(
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(textFieldRadius),
+                        ),
+                        enabledBorder: OutlineInputBorder(
+                          borderSide: BorderSide(
+                            color: Colors.grey,
+                          ),
+                          borderRadius: BorderRadius.circular(textFieldRadius),
+                        ),
+                        filled: true,
+                        fillColor: myWhite,
+                        contentPadding:
+                            EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                      ),
+                      borderRadius: BorderRadius.circular(textFieldRadius),
+                      value: gender,
+                      onChanged: (String? newValue) {
+                        setState(() {
+                          gender = newValue!;
+                        });
+                      },
+                      items: <String>['Male', 'Female']
+                          .map<DropdownMenuItem<String>>((String value) {
+                        return DropdownMenuItem<String>(
+                          value: value,
+                          child: Text(
+                            value,
+                            style: TextStyle(color: Colors.grey),
+                          ),
+                        );
+                      }).toList(),
+                    ),
+                  ),
+                  unformSpacing(),
                   passwordInput(),
                   confirmPasswordTextField(),
-                  const SizedBox(
-                    height: 8,
-                  ),
+                  unformSpacing(),
+
+                  if (StatusCode == 400) ...[
+                    const Text(
+                      "E-mail or Phone nubmer are already in use",
+                      style: TextStyle(
+                        color: Colors.red,
+                        fontSize: 10,
+                      ),
+                    )
+                  ],
                   submit(),
                   const SizedBox(
                     height: 48,
@@ -196,12 +259,22 @@ class _SignUpState extends State<SignUp> {
             ),
           ),
         ),
-        onPressed: () {
-          setState(
-            () {
-              _formKey.currentState!.validate();
-            },
-          );
+        onPressed: () async {
+          if (_formKey.currentState!.validate()) {
+            _formKey.currentState!.save();
+            final int result = await SignUpPost(
+                _phoneNumberInput.text,
+                _confirmPass.text,
+                _firstNameInput.text,
+                _email.text,
+                _birthDayInput.text);
+            setState(() {
+              StatusCode = result;
+              if (result == 201) {
+                Navigator.pushReplacementNamed(context, '/HomeScreen');
+              }
+            });
+          }
         },
         child: Text(
           "Register",
@@ -479,4 +552,58 @@ class _SignUpState extends State<SignUp> {
       ),
     );
   }
+}
+
+Future<int> SignUpPost(String phonenumber, String confirmpass, String name,
+    String email, String birthday) async {
+  // "2023-05-08T22:47:31.160Z" birthday format?
+  var url = Uri.parse(signUPURL);
+  // confirmpass = "123456";
+  // phonenumber = "01159744240";
+
+  print(phonenumber);
+  print(confirmpass);
+  print(name);
+  print(email);
+  print(birthday);
+  // confirmpass = "12345678";
+  String gender = 'male';
+
+  var response = await http.post(url, body: {
+    "email": email,
+    "phoneNumber": phonenumber,
+    "password": confirmpass,
+    "name": name,
+    "dateOfBirth": birthday,
+    "role": "parent",
+    'gender': gender
+  });
+  print(response.body);
+
+  var jsonResponse = jsonDecode(response.body);
+  String responsebody = response.body;
+
+  Map<String, dynamic> data = json.decode(response.body);
+  print("DATA FROM THE SIGN UP");
+  print(data['accessToken']);
+  token = data['accessToken'];
+  print("Token stored in a variable");
+  print(token);
+  print(response.body);
+  print(response.statusCode);
+
+  // int? x = jsonResponse['statusCode'];
+  if (response.statusCode == 201) {
+    SignUpPrefs = await SharedPreferences.getInstance();
+    SignUpPrefs.setString('accessToken', data['accessToken']);
+    SignUpPrefs.setString('role', jsonEncode(jsonResponse['user']['role']));
+    SignUpPrefs.setString('name', jsonEncode(jsonResponse['user']['name']));
+    SignUpPrefs.setString(
+        'phoneNumber', jsonEncode(jsonResponse['user']['phoneNumber']));
+    SignUpPrefs.setString('gender', jsonEncode(jsonResponse['user']['gender']));
+    print(
+        "We're inside status code 200--------------------------------------------------");
+  }
+
+  return response.statusCode;
 }

@@ -1,7 +1,14 @@
+import 'dart:convert';
+
 import "package:flutter/material.dart";
+import 'package:flutter_cmp_developers/constants/apiBack.dart';
 import 'package:flutter_cmp_developers/constants/constants.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import '../../controllers/create_account_controller.dart';
 import '../widgets/frequently_used_widgets.dart';
+import 'package:http/http.dart' as http;
+
+late SharedPreferences SignInPref;
 
 class SignIn extends StatefulWidget {
   const SignIn({
@@ -13,10 +20,12 @@ class SignIn extends StatefulWidget {
 }
 
 class _SignInState extends State<SignIn> {
-  final _passowrdInput = TextEditingController();
+  late int StatusCode = 0;
+  final _passwordInput = TextEditingController();
   final _email = TextEditingController();
   final _formKey = GlobalKey<FormState>();
   bool _passwordVisible = false;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,7 +34,7 @@ class _SignInState extends State<SignIn> {
           decoration: const BoxDecoration(
             image: DecorationImage(
               image: AssetImage(
-                'assets/images/first_screen.png',
+                'assets/images/first_screen.jpg',
               ),
               fit: BoxFit.cover,
             ),
@@ -49,9 +58,24 @@ class _SignInState extends State<SignIn> {
                   const SizedBox(
                     height: 24,
                   ),
-                  emailInput(),
+                  emailInput(StatusCode),
                   unformSpacing(),
                   passwordInput(),
+                  unformSpacing(),
+
+                  if (StatusCode == 400) ...[
+                    const Text(
+                      "User already logged in",
+                      style: TextStyle(color: Colors.red, fontSize: 10),
+                    )
+                  ] else ...[
+                    if (StatusCode == 401) ...[
+                      const Text(
+                        "Wrong Credentials",
+                        style: TextStyle(color: Colors.red, fontSize: 10),
+                      ),
+                    ]
+                  ],
                   const SizedBox(
                     height: 8,
                   ),
@@ -60,11 +84,33 @@ class _SignInState extends State<SignIn> {
                     height: 51,
                     child: TextButton(
                       key: const Key("LOGIN_Second_SCREEN"),
-                      onPressed: () {
-                        Navigator.pushReplacementNamed(
-                          context,
-                          '/HomeScreen',
-                        );
+                      onPressed: () async {
+                        if (_formKey.currentState!.validate()) {
+                          _formKey.currentState!.save();
+                          print("Entering the login");
+                          final int result =
+                              await loginPost(_email.text, _passwordInput.text);
+                          print("Stuck?");
+                          if (result == 400) {
+                            StatusCode = result;
+                            print("Result is finally 400");
+                            StatusCode = result;
+                          } else {
+                            if (result == 201) {
+                              print("We're status code 200, SUCCESS");
+                            }
+                          }
+                          setState(() {
+                            print(result);
+                            print("We're inside the set State");
+                            print(_formKey.currentState!.validate());
+                            if (result == 201) {
+                              Navigator.pushNamed(context, "/HomeScreen");
+                            }
+
+                            Navigator.pushNamed(context, "/HomeScreen");
+                          });
+                        }
                       },
                       style: ButtonStyle(
                         backgroundColor:
@@ -89,7 +135,7 @@ class _SignInState extends State<SignIn> {
                           'LOGIN',
                           style: TextStyle(
                             fontSize: 20,
-                            color: myWhite,
+                            color: buttonTextColor,
                           ),
                         ),
                       ),
@@ -179,11 +225,47 @@ class _SignInState extends State<SignIn> {
     );
   }
 
-  SizedBox emailInput() {
+  Future<int> loginPost(
+    String phonenumber,
+    String password,
+  ) async {
+    var url = Uri.parse(loginURL);
+
+    var response = await http.post(url, body: {
+      'phoneNumber': phonenumber,
+      'password': password,
+    });
+    print(phonenumber);
+    print(response.body);
+    var jsonResponse = jsonDecode(response.body);
+    if (response.statusCode == 201) {
+      // SignInPrefs = await SharedPreferences.getInstance();
+      // SignInPrefs.setString('accessToken', jsonResponse['accesToken']);
+      // SignInPrefs.setString('role', jsonResponse['role']);
+      // SignInPrefs.setString('name', jsonResponse['name']);
+      // SignInPrefs.setString('phoneNumber', jsonResponse['phoneNumber']);
+      // SignInPrefs.setString('gender', jsonResponse['gender']);
+      print(
+          "We're inside status code 200--------------------------------------------------");
+    }
+    var body = jsonDecode(response.body);
+    return response.statusCode;
+  }
+
+  Text errorText() {
+    return Text(
+      "Error 400",
+      style: TextStyle(color: Colors.black),
+    );
+  }
+
+  SizedBox emailInput(final int StatusCode) {
+    Future<String> login;
     return SizedBox(
       width: MediaQuery.of(context).size.width * 0.76,
       height: 51,
       child: TextFormField(
+        maxLength: 11,
         cursorColor: textFieldTextColor,
         controller: _email,
         decoration: InputDecoration(
@@ -244,12 +326,12 @@ class _SignInState extends State<SignIn> {
         ),
         validator: (value) {
           if (value!.isEmpty) {
-            return "You must enter a valid Account!";
+            return "You must enter a valid Phone number";
           } else {
-            if (isEmailValid(_email.text)) {
+            if (!hasRequiredNumberOfDigits(value, 11)) {
               return null;
             } else {
-              return "You must enter a valid E-mail!";
+              return "You must enter a valid Phone number!";
             }
           }
         },
@@ -265,7 +347,7 @@ class _SignInState extends State<SignIn> {
         cursorColor: textFieldTextColor,
         maxLength: 6,
         obscureText: !_passwordVisible,
-        controller: _passowrdInput,
+        controller: _passwordInput,
         decoration: InputDecoration(
           suffixIcon: IconButton(
             onPressed: () {
@@ -344,7 +426,7 @@ class _SignInState extends State<SignIn> {
             if (result) {
               return null;
             } else {
-              return "Password should be 6 digits";
+              return "Enter a valid password";
             }
           }
         },
