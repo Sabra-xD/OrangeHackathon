@@ -263,7 +263,7 @@ class _SignInState extends State<SignIn> {
     Future<String> login;
     return SizedBox(
       width: MediaQuery.of(context).size.width * 0.76,
-      height: 51,
+      height: 71,
       child: TextFormField(
         maxLength: 11,
         cursorColor: textFieldTextColor,

@@ -10,6 +10,12 @@ class CardScreen extends StatefulWidget {
 }
 
 class _CardScreenState extends State<CardScreen> {
+  final _formKey = GlobalKey<FormState>();
+  int lastthreedigits = 123;
+  double balance = 2789.12;
+  bool success = false;
+  bool failed = false;
+  int errorCount = 0;
   String _pinCode = '';
 
   void _submitPinCode() {
@@ -18,14 +24,11 @@ class _CardScreenState extends State<CardScreen> {
 
   @override
   Widget build(BuildContext context) {
-    int lastthreedigits = 123;
-    double balance = 2789.12;
-    final _formKey = GlobalKey<FormState>();
-
     return Scaffold(
-      body: Form(
-        key: _formKey,
-        child: SingleChildScrollView(
+      bottomNavigationBar: bottomNavigatiohBar(context),
+      body: SingleChildScrollView(
+        child: Form(
+          key: _formKey,
           child: Stack(
             children: [
               Positioned.fill(
@@ -83,7 +86,7 @@ class _CardScreenState extends State<CardScreen> {
                     ),
                     unformSpacing(),
                     uniformtopSpacing(),
-                    Center(
+                    const Center(
                       child: Text("Enter your Pin Code"),
                     ),
                     uniformtopSpacing(),
@@ -94,7 +97,7 @@ class _CardScreenState extends State<CardScreen> {
                         length: 4,
                         blinkWhenObscuring: true,
                         obscuringCharacter: '*',
-                        obscuringWidget: Icon(
+                        obscuringWidget: const Icon(
                           Icons.one_x_mobiledata,
                         ),
                         animationType: AnimationType.fade,
@@ -106,7 +109,7 @@ class _CardScreenState extends State<CardScreen> {
                             return null; //Here we should post the OTP to the backend.
                           }
                         },
-                        pastedTextStyle: TextStyle(
+                        pastedTextStyle: const TextStyle(
                           // color: Colors.green.shade600,
                           fontWeight: FontWeight.bold,
                         ),
@@ -123,31 +126,24 @@ class _CardScreenState extends State<CardScreen> {
                       ),
                     ),
                     unformSpacing(),
+                    // emailInput(),
+                    unformSpacing(),
+                    if (errorCount < 3) ...[
+                      pinInput(errorCount, success, failed),
+                    ] else ...[
+                      const Text(
+                        "You have exceeded the number of tries, please try again later",
+                        style: TextStyle(color: Colors.redAccent, fontSize: 16),
+                      ),
+                    ],
+
+                    unformSpacing(),
                     SizedBox(
                       width: MediaQuery.of(context).size.width * 0.76,
                       height: 51,
                       child: ElevatedButton(
                         // key: const Key("LOGIN_Second_SCREEN"),
-                        onPressed: () async {
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            SnackBar(
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(30),
-                                ),
-                                backgroundColor: myWhite,
-                                content: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  children: [
-                                    const Text(
-                                      "The process is done sucessfully",
-                                      style: TextStyle(
-                                          color: Colors.greenAccent,
-                                          fontSize: 17),
-                                    ),
-                                    Image.asset("assets/images/sucess.png")
-                                  ],
-                                )),
-                          );
+                        onPressed: () {
                           if (_formKey.currentState!.validate()) {
                             setState(() {
                               // Navigator.pushNamed(context, "/HomeScreen");
@@ -189,6 +185,175 @@ class _CardScreenState extends State<CardScreen> {
             ],
           ),
         ),
+      ),
+    );
+  }
+
+  SizedBox pinInput(int errorCount, bool sucess, bool failed) {
+    // Future<String> login;
+    return SizedBox(
+      width: MediaQuery.of(context).size.width * 0.76,
+      height: 51,
+      child: TextFormField(
+        // maxLength: 4,
+        keyboardType: TextInputType.phone,
+        cursorColor: textFieldTextColor,
+        controller: null,
+        decoration: InputDecoration(
+          border: OutlineInputBorder(
+            borderRadius: const BorderRadius.all(
+              Radius.circular(
+                textFieldRadius,
+              ),
+            ),
+            borderSide: BorderSide(
+              color: textFieldTextColor,
+            ),
+          ),
+          focusedBorder: OutlineInputBorder(
+            borderRadius: const BorderRadius.all(
+              Radius.circular(
+                textFieldRadius,
+              ),
+            ),
+            borderSide: BorderSide(
+              color: textFieldTextColor,
+            ),
+          ),
+          enabledBorder: OutlineInputBorder(
+            borderRadius: const BorderRadius.all(
+              Radius.circular(
+                textFieldRadius,
+              ),
+            ),
+            borderSide: BorderSide(
+              color: textFieldTextColor,
+            ),
+          ),
+          disabledBorder: OutlineInputBorder(
+            borderRadius: const BorderRadius.all(
+              Radius.circular(
+                textFieldRadius,
+              ),
+            ),
+            borderSide: BorderSide(
+              color: textFieldTextColor,
+            ),
+          ),
+          filled: true,
+          fillColor: myWhite,
+          errorStyle: const TextStyle(
+            height: 1,
+            fontSize: errorFontSize,
+          ),
+          hintText: "Enter The Amount to verify",
+          hintStyle: TextStyle(
+            color: textFieldTextColor,
+            fontSize: 16,
+          ),
+          contentPadding: const EdgeInsets.all(
+            contentPadding,
+          ),
+        ),
+        validator: (value) {
+          if (value!.isEmpty) {
+            return "You must a valid amount";
+          } else {
+            if (value != "354") {
+              setState(() {
+                errorCount++;
+                print(errorCount);
+              });
+              if (errorCount >= 3) {
+                setState(() {
+                  sucess = false;
+                  failed = true;
+                });
+              } else {
+                if (value == 354) {
+                  setState(() {
+                    sucess = true;
+                    failed = false;
+                  });
+                }
+              }
+            }
+          }
+        },
+      ),
+    );
+  }
+
+  SizedBox emailInput() {
+    // Future<String> login;
+    return SizedBox(
+      width: MediaQuery.of(context).size.width * 0.76,
+      height: 51,
+      child: TextFormField(
+        // maxLength: 4,
+        cursorColor: textFieldTextColor,
+        controller: null,
+        decoration: InputDecoration(
+          border: OutlineInputBorder(
+            borderRadius: const BorderRadius.all(
+              Radius.circular(
+                textFieldRadius,
+              ),
+            ),
+            borderSide: BorderSide(
+              color: textFieldTextColor,
+            ),
+          ),
+          focusedBorder: OutlineInputBorder(
+            borderRadius: const BorderRadius.all(
+              Radius.circular(
+                textFieldRadius,
+              ),
+            ),
+            borderSide: BorderSide(
+              color: textFieldTextColor,
+            ),
+          ),
+          enabledBorder: OutlineInputBorder(
+            borderRadius: const BorderRadius.all(
+              Radius.circular(
+                textFieldRadius,
+              ),
+            ),
+            borderSide: BorderSide(
+              color: textFieldTextColor,
+            ),
+          ),
+          disabledBorder: OutlineInputBorder(
+            borderRadius: const BorderRadius.all(
+              Radius.circular(
+                textFieldRadius,
+              ),
+            ),
+            borderSide: BorderSide(
+              color: textFieldTextColor,
+            ),
+          ),
+          filled: true,
+          fillColor: myWhite,
+          errorStyle: const TextStyle(
+            height: 1,
+            fontSize: errorFontSize,
+          ),
+          hintText: "",
+          hintStyle: TextStyle(
+            color: textFieldTextColor,
+            fontSize: 16,
+          ),
+          contentPadding: const EdgeInsets.all(
+            contentPadding,
+          ),
+        ),
+        validator: (value) {
+          if (value!.isEmpty) {
+            return "You must a valid Phone number";
+          } else {}
+        },
       ),
     );
   }
