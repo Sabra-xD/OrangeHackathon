@@ -23,7 +23,9 @@ class HomeScreen extends StatefulWidget {
   State<HomeScreen> createState() => _HomeScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _HomeScreenState extends State<HomeScreen>
+    with SingleTickerProviderStateMixin {
+  late TabController controller;
   late String _accessToken = '';
   late String Response = '';
   late String Income = '';
@@ -151,7 +153,16 @@ class _HomeScreenState extends State<HomeScreen> {
     Trash();
     // outComeGet();
     // incomeget();
+    controller = TabController(length: 4, vsync: this);
+    controller.index = 3;
+
     super.initState();
+  }
+
+  @override
+  void dispose() {
+    controller.dispose();
+    super.dispose();
   }
 
   final transactionList = History.historyList();
@@ -159,7 +170,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: bottomNavigatiohBar(context),
+      bottomNavigationBar: bottomNavigatiohBar(context, controller),
       body: Stack(
         children: <Widget>[
           Container(

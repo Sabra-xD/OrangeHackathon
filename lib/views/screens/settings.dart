@@ -57,6 +57,7 @@ class SettingsScreen extends StatelessWidget {
 
               _buildTile(
                   context, '  Manage other account', const Icon(Icons.person)),
+              unformSpacing(),
 
               Row(
                 mainAxisAlignment: MainAxisAlignment.start,
@@ -66,6 +67,7 @@ class SettingsScreen extends StatelessWidget {
                           color: Colors.black, fontWeight: FontWeight.bold)),
                 ],
               ),
+              unformSpacing(),
 
               _buildTile(context, '  Send feedback', const Icon(Icons.email)),
 
@@ -134,22 +136,18 @@ class SettingsScreen extends StatelessWidget {
             children: [
               Row(
                 children: [
-                  Icon(
+                  const Icon(
                     Icons.logout,
                     color: Colors.red,
                   ),
                   Text(
                     title,
-                    style: TextStyle(
+                    style: const TextStyle(
                       color: Colors.redAccent,
                     ),
                   ),
                 ],
               ),
-              // const Icon(
-              //   Icons.arrow_forward_ios_rounded,
-              //   color: Colors.grey,
-              // ),
             ],
           ),
         ),

@@ -1,14 +1,23 @@
+import 'dart:ui';
+
 import "package:flutter/material.dart";
 import '../../constants/constants.dart';
 
-class FirstScreen extends StatelessWidget {
+class FirstScreen extends StatefulWidget {
   ///Route for Navigating
   static const routeName = '/FirstScreen';
   const FirstScreen({
     Key? key,
   }) : super(key: key);
+
+  @override
+  State<FirstScreen> createState() => _FirstScreenState();
+}
+
+class _FirstScreenState extends State<FirstScreen> {
   @override
   Widget build(BuildContext context) {
+    bool display = false;
     final size = MediaQuery.of(context).size;
     final width = size.width;
     final height = size.height;
@@ -105,19 +114,6 @@ class FirstScreen extends StatelessWidget {
                       ),
                     ),
                   ),
-                  // ButtonComponent(
-                  //   hintText: 'LOGIN',
-                  //   width: 328 * screenWidthRatio,
-                  //   height: 51,
-                  //   keyName: "LOGIN_FIRST_SCREEN",
-                  //   onPressed: () {
-                  //     Navigator.pushReplacementNamed(
-                  //       context,
-                  //       '/SignInScreen',
-                  //     );
-                  //   },
-                  //   isWhite: false,
-                  // ),
                   const SizedBox(
                     height: 12,
                   ),
@@ -160,20 +156,7 @@ class FirstScreen extends StatelessWidget {
                         ),
                       ),
                     ),
-                  )
-                  // ButtonComponent(
-                  //   hintText: 'SIGN UP',
-                  //   width: 328 * screenWidthRatio,
-                  //   height: 51,
-                  //   keyName: "SIGN_UP_FIRST_SCREEN",
-                  //   onPressed: () {
-                  //     Navigator.pushReplacementNamed(
-                  //       context,
-                  //       '/SignUp',
-                  //     );
-                  //   },
-                  //   isWhite: false,
-                  // ),
+                  ),
                 ],
               ),
             ],

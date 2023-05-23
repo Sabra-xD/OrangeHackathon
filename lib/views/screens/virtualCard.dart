@@ -9,7 +9,24 @@ class CardScreen extends StatefulWidget {
   static const routeName = '/VirtualCard';
 }
 
-class _CardScreenState extends State<CardScreen> {
+class _CardScreenState extends State<CardScreen>
+    with SingleTickerProviderStateMixin {
+  late TabController controller;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    controller = TabController(length: 4, vsync: this);
+    controller.index = 2;
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    controller.dispose();
+    super.dispose();
+  }
+
   final _formKey = GlobalKey<FormState>();
   int lastthreedigits = 123;
   double balance = 2789.12;
@@ -25,7 +42,7 @@ class _CardScreenState extends State<CardScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: bottomNavigatiohBar(context),
+      bottomNavigationBar: bottomNavigatiohBar(context, controller),
       body: SingleChildScrollView(
         child: Form(
           key: _formKey,

@@ -1,6 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_cmp_developers/constants/apiBack.dart';
+import 'package:flutter_cmp_developers/controllers/checkConnection.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../../constants/constants.dart';
 import '../../controllers/create_account_controller.dart';
@@ -231,39 +232,71 @@ TextStyle uniformTextStyle() {
 ///
 ///
 
-BottomAppBar bottomNavigatiohBar(BuildContext context) {
-  return BottomAppBar(
-    shape: const CircularNotchedRectangle(),
-    child: Row(
-      mainAxisSize: MainAxisSize.max,
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: <Widget>[
-        IconButton(
+TabBar bottomNavigatiohBar(BuildContext context, TabController controller) {
+  return TabBar(
+    controller: controller,
+    unselectedLabelColor: Colors.grey,
+    labelColor: Colors.blue,
+    onTap: (index) {
+      print(controller.index);
+      print(controller.index);
+      print(controller.index);
+      print(controller.index);
+      print(controller.index);
+      print(controller.index);
+    },
+    tabs: [
+      Tab(
+        icon: IconButton(
           icon: Image.asset('assets/images/menuIcon.png'),
           onPressed: () {
-            Navigator.pushNamed(context, '/HomeScreen');
+            adjustTabBarControllerIndex(controller, 0);
+            print(controller.index);
+            print(controller.index);
+            print(controller.index);
+            print(controller.index);
+            print(controller.index);
+            print(controller.index);
+            // Navigator.pushNamed(context, '/HomeScreen');
           },
         ),
-        IconButton(
+      ),
+      Tab(
+        icon: IconButton(
           icon: Image.asset('assets/images/settingIcon.png'),
           onPressed: () {
-            Navigator.pushNamed(context, '/myServices');
+            adjustTabBarControllerIndex(controller, 1);
+
+            print(controller.index);
+            print(controller.index);
+            print(controller.index);
+            print(controller.index);
+            print(controller.index);
+            print(controller.index);
+            Navigator.pushReplacementNamed(context, '/myServices');
           },
         ),
-        IconButton(
+      ),
+      Tab(
+        icon: IconButton(
           icon: Image.asset('assets/images/walletIcon.jpg'),
           onPressed: () {
-            Navigator.pushNamed(context, "/VirtualCard");
+            adjustTabBarControllerIndex(controller, 2);
+
+            Navigator.pushReplacementNamed(context, "/VirtualCard");
           },
         ),
-        IconButton(
+      ),
+      Tab(
+        icon: IconButton(
           icon: Image.asset('assets/images/homeIcon.png'),
           onPressed: () {
-            Navigator.pushNamed(context, "/HomeScreen");
+            adjustTabBarControllerIndex(controller, 3);
+            Navigator.pushReplacementNamed(context, "/HomeScreen");
           },
         ),
-      ],
-    ),
+      )
+    ],
   );
 }
 

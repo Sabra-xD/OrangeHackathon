@@ -3,14 +3,37 @@ import 'package:flutter_cmp_developers/views/widgets/frequently_used_widgets.dar
 
 import '../../constants/constants.dart';
 
-class myServices extends StatelessWidget {
+// ignore: camel_case_types
+class myServices extends StatefulWidget {
   static const routeName = "/myServices";
   const myServices({super.key});
 
   @override
+  State<myServices> createState() => _myServicesState();
+}
+
+class _myServicesState extends State<myServices>
+    with SingleTickerProviderStateMixin {
+  late final TabController controller;
+  @override
+  void initState() {
+    // TODO: implement initState
+    controller = TabController(length: 4, vsync: this);
+    controller.index = 1;
+
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    controller.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: bottomNavigatiohBar(context),
+      bottomNavigationBar: bottomNavigatiohBar(context, controller),
       body: Stack(children: [
         SizedBox(
           width: double.infinity,
@@ -23,7 +46,7 @@ class myServices extends StatelessWidget {
         Column(
           children: [
             uniformtopSpacing(),
-            topName("DEvin", context),
+            topName("Devin", context),
             SizedBox(
               height: MediaQuery.of(context).size.height * 0.1,
             ),
