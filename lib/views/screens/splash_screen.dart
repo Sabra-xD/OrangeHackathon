@@ -1,9 +1,9 @@
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:easy_splash_screen/easy_splash_screen.dart';
+import 'package:flutter_cmp_developers/constants/constants.dart';
 import 'dart:async';
 import 'package:flutter_cmp_developers/controllers/checkConnection.dart';
-import 'package:flutter_cmp_developers/views/screens/first_screen.dart';
 
 class SplashPage extends StatefulWidget {
   static const routeName = '/SplashScreen';
@@ -40,21 +40,22 @@ class _SplashPageState extends State<SplashPage> {
         stream: Connectivity().onConnectivityChanged,
         builder: (context, snapshot) {
           return EasySplashScreen(
-            title: Text(
-              "Tap Cash",
+            title: const Text(
+              "Tap Cash\n\ Dealing with Money has never been easier! =)",
+              textAlign: TextAlign.center,
               style: TextStyle(
-                fontSize: 50,
-                color: Theme.of(context).primaryColor,
-              ),
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                  // color: Theme.of(context).primaryColor,
+                  color: Colors.white),
             ),
-            logo: Image.network(
-                'https://cdn4.iconfinder.com/data/icons/logos-brands-5/24/flutter-512.png'),
-            backgroundColor: Colors.blueGrey,
-            logoWidth: 170,
+            logo: Image.asset("assets/images/splashIcon.jfif"),
+            backgroundColor: splashScreenColor,
+            logoWidth: 70,
             showLoader: true,
             loadingText: connect
                 ? snapshot.data != ConnectivityResult.none
-                    ? const Text("Loading...")
+                    ? const Text("Loading... Please wait")
                     : const Text("Please check your internet connection")
                 : const Text("Please check your internet conenction"),
             durationInSeconds: 5,

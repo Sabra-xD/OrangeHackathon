@@ -170,188 +170,192 @@ class _HomeScreenState extends State<HomeScreen>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: bottomNavigatiohBar(context, controller),
-      body: Stack(
-        children: <Widget>[
-          Container(
-            width: double.infinity,
-            height: double.infinity,
-            child: Image.asset(
-              'assets/images/Home.png',
-              fit: BoxFit.cover,
-            ),
+      // bottomNavigationBar: bottomNavigatiohBar(context, controller),
+      body: homePage(context),
+    );
+  }
+
+  Stack homePage(BuildContext context) {
+    return Stack(
+      children: <Widget>[
+        Container(
+          width: double.infinity,
+          height: double.infinity,
+          child: Image.asset(
+            'assets/images/Home.png',
+            fit: BoxFit.cover,
           ),
-          Column(children: [
-            uniformtopSpacing(),
-            topName(SignUpPrefs.getString('name') ?? "David",
-                context), //Pick and Chosoe between login and Sign Up Prefs.
-            coursal_Slider(context, Response, Income,
-                OutCome), //Slider get SharedPrefs of Sign Up OR Sign In.
-            SizedBox(
-              width: MediaQuery.of(context).size.width * 0.8,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  Text(
-                    "Most popular operations:",
-                    style: TextStyle(
-                      fontSize: textFontSize,
-                      color: myWhite,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            unformSpacing(),
-            SizedBox(
-              width: MediaQuery.of(context).size.width * 0.8,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Container(
-                    width: 50,
-                    height: 50,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(25),
-                      color: myWhite,
-                    ),
-                    child: IconButton(
-                        onPressed: () {
-                          setState(() async {
-                            // String balance = await fetchBalance(SignUpPrefs);
-                          });
-                          print("Pressed 1 ");
-                        },
-                        icon: Image.asset('assets/images/virtualCard.png')),
-                  ),
-                  uniformWidth(),
-                  Container(
-                    width: 50,
-                    height: 50,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(25),
-                      color: myWhite,
-                    ),
-                    child: IconButton(
-                        onPressed: () {
-                          print("Pressed 1 ");
-                        },
-                        icon: Image.asset('assets/images/virtualCard.png')),
-                  ),
-                  uniformWidth(),
-                  Container(
-                    width: 50,
-                    height: 50,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(25),
-                      color: myWhite,
-                    ),
-                    child: IconButton(
-                        onPressed: () {
-                          print("Pressed 1 ");
-                        },
-                        icon: Image.asset('assets/images/virtualCard.png')),
-                  ),
-                  uniformWidth(),
-                  Container(
-                    width: 50,
-                    height: 50,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(25),
-                      color: myWhite,
-                    ),
-                    child: IconButton(
-                        onPressed: () {
-                          print("Pressed 1 ");
-                        },
-                        icon: Image.asset('assets/images/virtualCard.png')),
-                  ),
-                ],
-              ),
-            ),
-            SizedBox(
-              height: MediaQuery.of(context).size.height * 0.02,
-            ),
-            Column(
+        ),
+        Column(children: [
+          uniformtopSpacing(),
+          // topName(SignUpPrefs.getString('name') ?? "David",
+          //     context), //Pick and Chosoe between login and Sign Up Prefs.
+          coursal_Slider(context, Response, Income,
+              OutCome), //Slider get SharedPrefs of Sign Up OR Sign In.
+          SizedBox(
+            width: MediaQuery.of(context).size.width * 0.8,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                SizedBox(
-                  width: MediaQuery.of(context).size.width * 0.8,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      Text(
-                        "Last Activity",
-                        style: TextStyle(color: myWhite),
-                      ),
-                      ElevatedButton(
-                          style: ButtonStyle(
-                            backgroundColor:
-                                MaterialStateProperty.resolveWith<Color?>(
-                              (Set<MaterialState> states) {
-                                return Theme.of(context).primaryColor;
-                              },
-                            ),
-                            shape: MaterialStateProperty.all<
-                                RoundedRectangleBorder>(
-                              RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(
-                                  buttonRadius,
-                                ),
-                                side: BorderSide(
-                                    color: Theme.of(context).primaryColor),
-                              ),
-                            ),
-                          ),
-                          onPressed: () {},
-                          child: Text(
-                            "View All",
-                            style: TextStyle(color: myWhite),
-                          ))
-                    ],
-                  ),
-                ),
-                unformSpacing(),
-                Material(
-                  elevation: 5,
-                  borderRadius: BorderRadius.circular(20),
-                  child: Container(
-                    padding: const EdgeInsets.all(15),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(20),
-                      color: Colors.white,
-                    ),
-                    width: MediaQuery.of(context).size.width * 0.8,
-                    height: MediaQuery.of(context).size.height * 0.3,
-                    child: transactionList.isNotEmpty
-                        ? ListView(
-                            children: [
-                              for (History his in transactionList.reversed)
-                                transactionHistory(history: his),
-                            ],
-                          )
-                        : Material(
-                            elevation: 5,
-                            borderRadius: BorderRadius.circular(20),
-                            child: Container(
-                              width: MediaQuery.of(context).size.width * 0.8,
-                              height: MediaQuery.of(context).size.height * 0.3,
-                              child: const Text(
-                                "You've no transactions",
-                                style: TextStyle(
-                                  fontSize: 16,
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                            ),
-                          ),
+                Text(
+                  "Most popular operations:",
+                  style: TextStyle(
+                    fontSize: textFontSize,
+                    color: myWhite,
                   ),
                 ),
               ],
             ),
-          ])
-        ],
-      ),
+          ),
+          unformSpacing(),
+          SizedBox(
+            width: MediaQuery.of(context).size.width * 0.8,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Container(
+                  width: 50,
+                  height: 50,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(25),
+                    color: myWhite,
+                  ),
+                  child: IconButton(
+                      onPressed: () {
+                        setState(() async {
+                          // String balance = await fetchBalance(SignUpPrefs);
+                        });
+                        print("Pressed 1 ");
+                      },
+                      icon: Image.asset('assets/images/virtualCard.png')),
+                ),
+                uniformWidth(),
+                Container(
+                  width: 50,
+                  height: 50,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(25),
+                    color: myWhite,
+                  ),
+                  child: IconButton(
+                      onPressed: () {
+                        print("Pressed 1 ");
+                      },
+                      icon: Image.asset('assets/images/virtualCard.png')),
+                ),
+                uniformWidth(),
+                Container(
+                  width: 50,
+                  height: 50,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(25),
+                    color: myWhite,
+                  ),
+                  child: IconButton(
+                      onPressed: () {
+                        print("Pressed 1 ");
+                      },
+                      icon: Image.asset('assets/images/virtualCard.png')),
+                ),
+                uniformWidth(),
+                Container(
+                  width: 50,
+                  height: 50,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(25),
+                    color: myWhite,
+                  ),
+                  child: IconButton(
+                      onPressed: () {
+                        print("Pressed 1 ");
+                      },
+                      icon: Image.asset('assets/images/virtualCard.png')),
+                ),
+              ],
+            ),
+          ),
+          SizedBox(
+            height: MediaQuery.of(context).size.height * 0.02,
+          ),
+          Column(
+            children: [
+              SizedBox(
+                width: MediaQuery.of(context).size.width * 0.8,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    Text(
+                      "Last Activity",
+                      style: TextStyle(color: myWhite),
+                    ),
+                    ElevatedButton(
+                        style: ButtonStyle(
+                          backgroundColor:
+                              MaterialStateProperty.resolveWith<Color?>(
+                            (Set<MaterialState> states) {
+                              return Theme.of(context).primaryColor;
+                            },
+                          ),
+                          shape:
+                              MaterialStateProperty.all<RoundedRectangleBorder>(
+                            RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(
+                                buttonRadius,
+                              ),
+                              side: BorderSide(
+                                  color: Theme.of(context).primaryColor),
+                            ),
+                          ),
+                        ),
+                        onPressed: () {},
+                        child: Text(
+                          "View All",
+                          style: TextStyle(color: myWhite),
+                        ))
+                  ],
+                ),
+              ),
+              unformSpacing(),
+              Material(
+                elevation: 5,
+                borderRadius: BorderRadius.circular(20),
+                child: Container(
+                  padding: const EdgeInsets.all(15),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(20),
+                    color: Colors.white,
+                  ),
+                  width: MediaQuery.of(context).size.width * 0.8,
+                  height: MediaQuery.of(context).size.height * 0.3,
+                  child: transactionList.isNotEmpty
+                      ? ListView(
+                          children: [
+                            for (History his in transactionList.reversed)
+                              transactionHistory(history: his),
+                          ],
+                        )
+                      : Material(
+                          elevation: 5,
+                          borderRadius: BorderRadius.circular(20),
+                          child: Container(
+                            width: MediaQuery.of(context).size.width * 0.8,
+                            height: MediaQuery.of(context).size.height * 0.3,
+                            child: const Text(
+                              "You've no transactions",
+                              style: TextStyle(
+                                fontSize: 16,
+                                color: Colors.black,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ),
+                        ),
+                ),
+              ),
+            ],
+          ),
+        ])
+      ],
     );
   }
 }

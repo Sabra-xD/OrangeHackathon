@@ -19,7 +19,8 @@ Widget phoneNumberInput(
 ) {
   return SizedBox(
     width: MediaQuery.of(context).size.width * 0.8,
-    height: textFieldheight,
+    // height: textFieldheight,
+    height: 71,
     child: TextFormField(
       maxLength: 11,
       cursorColor: textFieldTextColor,
@@ -105,7 +106,6 @@ Widget textFormFieldInput(
     BuildContext context,
     TextEditingController genericTextFormInputController) {
   return SizedBox(
-    //Also in this function we need to add a controller so that it would send it to the backend?
     width: MediaQuery.of(context).size.width * width,
     height: textFieldheight,
     child: TextFormField(
@@ -232,32 +232,21 @@ TextStyle uniformTextStyle() {
 ///
 ///
 
-TabBar bottomNavigatiohBar(BuildContext context, TabController controller) {
+TabBar bottomNavigatiohBar(BuildContext context, TabController controller,
+    PageController _pageController) {
   return TabBar(
     controller: controller,
+    indicatorSize: TabBarIndicatorSize.tab,
     unselectedLabelColor: Colors.grey,
-    labelColor: Colors.blue,
-    onTap: (index) {
-      print(controller.index);
-      print(controller.index);
-      print(controller.index);
-      print(controller.index);
-      print(controller.index);
-      print(controller.index);
-    },
+    labelColor: Colors.pink[400],
+    onTap: (index) {},
     tabs: [
       Tab(
         icon: IconButton(
-          icon: Image.asset('assets/images/menuIcon.png'),
+          icon: Image.asset('assets/images/homeIcon.png'),
           onPressed: () {
-            adjustTabBarControllerIndex(controller, 0);
-            print(controller.index);
-            print(controller.index);
-            print(controller.index);
-            print(controller.index);
-            print(controller.index);
-            print(controller.index);
-            // Navigator.pushNamed(context, '/HomeScreen');
+            _pageController.jumpToPage(0);
+            // Navigator.pushReplacementNamed(context, "/HomeScreen");
           },
         ),
       ),
@@ -265,15 +254,8 @@ TabBar bottomNavigatiohBar(BuildContext context, TabController controller) {
         icon: IconButton(
           icon: Image.asset('assets/images/settingIcon.png'),
           onPressed: () {
-            adjustTabBarControllerIndex(controller, 1);
-
-            print(controller.index);
-            print(controller.index);
-            print(controller.index);
-            print(controller.index);
-            print(controller.index);
-            print(controller.index);
-            Navigator.pushReplacementNamed(context, '/myServices');
+            _pageController.jumpToPage(1);
+            // Navigator.pushReplacementNamed(context, '/myServices');
           },
         ),
       ),
@@ -281,21 +263,21 @@ TabBar bottomNavigatiohBar(BuildContext context, TabController controller) {
         icon: IconButton(
           icon: Image.asset('assets/images/walletIcon.jpg'),
           onPressed: () {
-            adjustTabBarControllerIndex(controller, 2);
+            _pageController.jumpToPage(2);
 
-            Navigator.pushReplacementNamed(context, "/VirtualCard");
+            // Navigator.pushReplacementNamed(context, "/VirtualCard");
           },
         ),
       ),
       Tab(
         icon: IconButton(
-          icon: Image.asset('assets/images/homeIcon.png'),
+          icon: Image.asset('assets/images/menuIcon.png'),
           onPressed: () {
-            adjustTabBarControllerIndex(controller, 3);
-            Navigator.pushReplacementNamed(context, "/HomeScreen");
+            _pageController.jumpToPage(3);
+            // Navigator.pushNamed(context, '/HomeScreen');
           },
         ),
-      )
+      ),
     ],
   );
 }
@@ -417,8 +399,13 @@ Widget coursal_Slider(
 }
 
 //This function is used to display Icons within the grid.
-Widget gridIconDisplay(BuildContext context, String imageAsset,
-    String bottomText, String onPressedRoute) {
+Widget gridIconDisplay(
+    BuildContext context,
+    String imageAsset,
+    String bottomText,
+    String onPressedRoute,
+    PageController _pageController,
+    int _PageNumber) {
   return Material(
     elevation: 5,
     color: myWhite,
@@ -430,8 +417,6 @@ Widget gridIconDisplay(BuildContext context, String imageAsset,
             margin: const EdgeInsets.only(top: 5, bottom: 5),
             child: IconButton(
               icon: SizedBox(
-                // height: 100,
-                // width: 50,
                 child: CircleAvatar(
                   backgroundImage: AssetImage(imageAsset),
                   backgroundColor: iconColor,
@@ -440,7 +425,11 @@ Widget gridIconDisplay(BuildContext context, String imageAsset,
               ),
               onPressed: () {
                 //Add the onPressed Route here.
-                Navigator.pushNamed(context, onPressedRoute);
+                if (_PageNumber == 2) {
+                  _pageController.jumpToPage(_PageNumber);
+                } else {
+                  Navigator.pushNamed(context, onPressedRoute);
+                }
               },
             ),
           ),
@@ -455,7 +444,8 @@ Widget gridIconDisplay(BuildContext context, String imageAsset,
 }
 
 //This function displays the name of user and the Icon in each page.
-Widget topName(String Name, BuildContext context) {
+Widget topName(
+    String Name, BuildContext context, PageController _pageController) {
   return Container(
     padding: const EdgeInsets.all(10),
     child: Row(
@@ -471,7 +461,7 @@ Widget topName(String Name, BuildContext context) {
               ),
             ),
             Text(
-              Name,
+              "David",
               style: TextStyle(
                 fontSize: textFontSize,
                 color: myWhite,
@@ -484,7 +474,7 @@ Widget topName(String Name, BuildContext context) {
           height: 50,
           child: IconButton(
               onPressed: () {
-                Navigator.pushNamed(context, "/SettingScreen");
+                _pageController.jumpToPage(3);
               },
               icon: Image.asset('assets/images/malecon.png')),
         ),

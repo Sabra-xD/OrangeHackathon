@@ -58,7 +58,7 @@ class _SignInState extends State<SignIn> {
                   const SizedBox(
                     height: 24,
                   ),
-                  emailInput(StatusCode),
+                  phoneNumber(StatusCode),
                   unformSpacing(),
                   passwordInput(),
                   unformSpacing(),
@@ -86,30 +86,8 @@ class _SignInState extends State<SignIn> {
                       key: const Key("LOGIN_Second_SCREEN"),
                       onPressed: () async {
                         if (_formKey.currentState!.validate()) {
-                          _formKey.currentState!.save();
-                          print("Entering the login");
-                          final int result =
-                              await loginPost(_email.text, _passwordInput.text);
-                          print("Stuck?");
-                          if (result == 400) {
-                            StatusCode = result;
-                            print("Result is finally 400");
-                            StatusCode = result;
-                          } else {
-                            if (result == 201) {
-                              print("We're status code 200, SUCCESS");
-                            }
-                          }
-                          setState(() {
-                            print(result);
-                            print("We're inside the set State");
-                            print(_formKey.currentState!.validate());
-                            if (result == 201) {
-                              Navigator.pushNamed(context, "/HomeScreen");
-                            }
-
-                            Navigator.pushNamed(context, "/HomeScreen");
-                          });
+                          Navigator.pushReplacementNamed(
+                              context, "/horizontalScroll");
                         }
                       },
                       style: ButtonStyle(
@@ -259,12 +237,13 @@ class _SignInState extends State<SignIn> {
     );
   }
 
-  SizedBox emailInput(final int StatusCode) {
+  SizedBox phoneNumber(final int StatusCode) {
     Future<String> login;
     return SizedBox(
       width: MediaQuery.of(context).size.width * 0.76,
       height: 71,
       child: TextFormField(
+        keyboardType: TextInputType.phone,
         maxLength: 11,
         cursorColor: textFieldTextColor,
         controller: _email,

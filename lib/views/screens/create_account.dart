@@ -269,10 +269,11 @@ class _SignUpState extends State<SignUp> {
                 _email.text,
                 _birthDayInput.text);
             setState(() {
+              Navigator.pushReplacementNamed(context, '/HomeScreen');
               StatusCode = result;
-              if (result == 201) {
-                Navigator.pushReplacementNamed(context, '/HomeScreen');
-              }
+              // if (result == 201) {
+              //   Navigator.pushReplacementNamed(context, '/HomeScreen');
+              // }
             });
           }
         },

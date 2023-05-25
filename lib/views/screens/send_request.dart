@@ -35,146 +35,207 @@ class _SendReceive extends State<SendReceive> {
     return null;
   }
 
-  void _submitForm() {
-    if (_formKey.currentState!.validate()) {
-      // Submit form
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Stack(
-        children: [
-          Positioned.fill(
-            child: Image.asset(
-              'assets/images/Home.png',
-              fit: BoxFit.cover,
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 50),
-            child: Column(
-              children: [
-                Row(
+      body: SingleChildScrollView(
+        child: Expanded(
+          child: Stack(
+            children: [
+              Positioned.fill(
+                child: Image.asset(
+                  'assets/images/Home.png',
+                  fit: BoxFit.cover,
+                ),
+              ),
+              Padding(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 20, vertical: 50),
+                child: Column(
                   children: [
-                    Expanded(
-                      child: Padding(
-                        padding: const EdgeInsets.all(10),
-                        child: Container(
-                          height: MediaQuery.of(context).size.height * 0.4,
-                          width: MediaQuery.of(context).size.width * 0.5,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(20),
-                            color: _pick ? Colors.grey : myWhite,
-                          ),
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              SizedBox(
-                                height:
-                                    MediaQuery.of(context).size.height * 0.3,
-                                width: MediaQuery.of(context).size.width * 0.3,
-                                child: IconButton(
-                                  onPressed: () {
-                                    setState(() {
-                                      _pick = !_pick;
-                                    });
-                                  },
-                                  icon: Image.asset(
-                                      'assets/images/requestIcon.png'),
-                                ),
+                    Row(
+                      children: [
+                        Expanded(
+                          child: Padding(
+                            padding: const EdgeInsets.all(10),
+                            child: Container(
+                              height: MediaQuery.of(context).size.height * 0.4,
+                              width: MediaQuery.of(context).size.width * 0.5,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(20),
+                                color: _pick ? Colors.grey : myWhite,
                               ),
-                              Text(
-                                'Send',
-                                style: uniformTextStyle(),
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  SizedBox(
+                                    height: MediaQuery.of(context).size.height *
+                                        0.3,
+                                    width:
+                                        MediaQuery.of(context).size.width * 0.3,
+                                    child: IconButton(
+                                      onPressed: () {
+                                        setState(() {
+                                          _pick = !_pick;
+                                        });
+                                      },
+                                      icon: Image.asset(
+                                          'assets/images/sendIcon.png'),
+                                    ),
+                                  ),
+                                  Text(
+                                    'Send',
+                                    style: uniformTextStyle(),
+                                  ),
+                                ],
                               ),
-                            ],
+                            ),
                           ),
                         ),
-                      ),
+                        Expanded(
+                          child: Padding(
+                            padding: const EdgeInsets.all(10),
+                            child: Container(
+                              height: MediaQuery.of(context).size.height * 0.4,
+                              width: MediaQuery.of(context).size.width * 0.5,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(20),
+                                color: _pick ? myWhite : Colors.grey,
+                              ),
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  SizedBox(
+                                    height: MediaQuery.of(context).size.height *
+                                        0.3,
+                                    width:
+                                        MediaQuery.of(context).size.width * 0.3,
+                                    child: IconButton(
+                                      onPressed: () {
+                                        setState(() {
+                                          _pick = !_pick;
+                                        });
+                                      },
+                                      icon: Image.asset(
+                                          'assets/images/requestIcon.png'),
+                                    ),
+                                  ),
+                                  Text(
+                                    'Request',
+                                    style: uniformTextStyle(),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
-                    Expanded(
-                      child: Padding(
-                        padding: const EdgeInsets.all(10),
-                        child: Container(
-                          height: MediaQuery.of(context).size.height * 0.4,
-                          width: MediaQuery.of(context).size.width * 0.5,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(20),
-                            color: _pick ? myWhite : Colors.grey,
-                          ),
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              SizedBox(
-                                height:
-                                    MediaQuery.of(context).size.height * 0.3,
-                                width: MediaQuery.of(context).size.width * 0.3,
-                                child: IconButton(
-                                  onPressed: () {
-                                    setState(() {
-                                      _pick = !_pick;
-                                    });
+                    const SizedBox(height: 50),
+                    Form(
+                      key: _formKey,
+                      child: Column(
+                        children: [
+                          amount("Enter the amount", "Please enter the amount",
+                              TextInputType.number, .8, context, _amount),
+                          const SizedBox(height: 20),
+                          phoneNumberInput("Enter the phone number", context,
+                              _phoneNumberInputController),
+                          unformSpacing(),
+                          if (!_pick) ...[
+                            passwordInput(),
+                          ],
+                          // passwordInput(),
+                          unformSpacing(),
+                          Container(
+                            width: MediaQuery.of(context).size.width * 0.8,
+                            height: textFieldheight,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(buttonRadius),
+                            ),
+                            child: ElevatedButton(
+                              onPressed: () {
+                                if (_formKey.currentState!.validate()) {
+                                  if (!_pick) {
+                                    final snackbar;
+                                    final scaffoldMessanger =
+                                        ScaffoldMessenger.of(context);
+                                    int _xBalance = int.parse(Balance);
+                                    int _xamount = int.parse(_amount.text);
+                                    if (_xBalance >= _xamount) {
+                                      setState(() {
+                                        _xBalance = _xBalance - _xamount;
+                                        Balance = _xBalance.toString();
+                                      });
+                                      snackbar = snackBarStatus(
+                                          'assets/images/sucess.png',
+                                          "Transaction has been processesed successfully!");
+                                    } else {
+                                      snackbar = snackBarStatus(
+                                          'assets/images/error.jfif',
+                                          "Transaction has failed!");
+                                    }
+
+                                    scaffoldMessanger.showSnackBar(snackbar);
+                                  } else {
+                                    final scaffoldMessanger =
+                                        ScaffoldMessenger.of(context);
+                                    final snackbar = snackBarStatus(
+                                        'assets/images/sucess.png',
+                                        "Request has been processed successfully!"); //SnackBar for Request Success.
+                                    scaffoldMessanger.showSnackBar(snackbar);
+                                  }
+                                }
+                              },
+                              style: ButtonStyle(
+                                backgroundColor:
+                                    MaterialStateProperty.resolveWith<Color?>(
+                                  (Set<MaterialState> states) {
+                                    return Theme.of(context).primaryColor;
                                   },
-                                  icon: Image.asset(
-                                      'assets/images/requestIcon.png'),
                                 ),
                               ),
-                              Text(
-                                'Receive',
-                                style: uniformTextStyle(),
+                              child: Text(
+                                'Submit',
+                                style: TextStyle(color: myWhite),
                               ),
-                            ],
+                            ),
                           ),
-                        ),
+                        ],
                       ),
                     ),
                   ],
                 ),
-                SizedBox(height: 50),
-                Form(
-                  key: _formKey,
-                  child: Column(
-                    children: [
-                      amount("Enter the amount", "Please enter the amount",
-                          TextInputType.number, .8, context, _amount),
-                      SizedBox(height: 20),
-                      phoneNumberInput("Enter the phone number", context,
-                          _phoneNumberInputController),
-                      unformSpacing(),
-                      passwordInput(),
-                      unformSpacing(),
-                      Container(
-                        width: MediaQuery.of(context).size.width * 0.8,
-                        height: textFieldheight,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(buttonRadius),
-                        ),
-                        child: ElevatedButton(
-                          onPressed: _submitForm,
-                          style: ButtonStyle(
-                            backgroundColor:
-                                MaterialStateProperty.resolveWith<Color?>(
-                              (Set<MaterialState> states) {
-                                return Theme.of(context).primaryColor;
-                              },
-                            ),
-                          ),
-                          child: Text(
-                            'Submit',
-                            style: TextStyle(color: myWhite),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ],
-            ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  SnackBar snackBarStatus(String image, String _Message) {
+    String mess = "loading...";
+    if (_Message != null) {
+      setState(() {
+        mess = _Message;
+      });
+    }
+    String f = "FUDK";
+    return SnackBar(
+      content: Column(
+        children: [
+          Image.asset(
+            image,
+            width: 100,
+            height: 100,
+          ),
+          Center(
+            child: Text(mess),
           ),
         ],
       ),
+      duration: const Duration(seconds: 3),
     );
   }
 

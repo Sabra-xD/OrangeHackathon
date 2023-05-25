@@ -39,7 +39,7 @@ class History {
           amount: 30),
       History(
           id: '04',
-          purchaseLocation: "Your Mama's",
+          purchaseLocation: "Dennie's",
           status: true,
           transactionType: true,
           timeofTransaction: "4",
