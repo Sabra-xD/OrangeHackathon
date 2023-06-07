@@ -13,64 +13,149 @@
 13         to allow setting breakpoints, to provide hot reload, etc.
 14    -->
 15    <uses-permission android:name="android.permission.INTERNET" />
-15-->C:\Users\RTX\Desktop\OrangeHackathon\corss-platform\android\app\src\debug\AndroidManifest.xml:7:5-66
-15-->C:\Users\RTX\Desktop\OrangeHackathon\corss-platform\android\app\src\debug\AndroidManifest.xml:7:22-64
-16    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-16-->[:connectivity_plus] C:\Users\RTX\Desktop\OrangeHackathon\corss-platform\build\connectivity_plus\intermediates\merged_manifest\debug\AndroidManifest.xml:9:5-79
-16-->[:connectivity_plus] C:\Users\RTX\Desktop\OrangeHackathon\corss-platform\build\connectivity_plus\intermediates\merged_manifest\debug\AndroidManifest.xml:9:22-76
+15-->E:\OrangeHackathon\corss-platform\android\app\src\debug\AndroidManifest.xml:7:5-66
+15-->E:\OrangeHackathon\corss-platform\android\app\src\debug\AndroidManifest.xml:7:22-64
+16    <uses-permission android:name="android.permission.CAMERA" />
+16-->[:flutter_barcode_scanner] E:\OrangeHackathon\corss-platform\build\flutter_barcode_scanner\intermediates\merged_manifest\debug\AndroidManifest.xml:9:5-65
+16-->[:flutter_barcode_scanner] E:\OrangeHackathon\corss-platform\build\flutter_barcode_scanner\intermediates\merged_manifest\debug\AndroidManifest.xml:9:22-62
 17
-18    <application
-19        android:name="android.app.Application"
-20        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
-20-->[androidx.core:core:1.6.0] C:\Users\RTX\.gradle\caches\transforms-3\7e9df2ac2213a6bd3cef0f2f27870d79\transformed\core-1.6.0\AndroidManifest.xml:24:18-86
-21        android:debuggable="true"
-22        android:icon="@mipmap/ic_launcher"
-23        android:label="flutter_cmp_developers" >
-24        <activity
-25            android:name="com.example.flutter_cmp_developers.MainActivity"
-26            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
-27            android:exported="true"
-28            android:hardwareAccelerated="true"
-29            android:launchMode="singleTop"
-30            android:theme="@style/LaunchTheme"
-31            android:windowSoftInputMode="adjustResize" >
-32
-33            <!--
-34                 Specifies an Android theme to apply to this Activity as soon as
-35                 the Android process has started. This theme is visible to the user
-36                 while the Flutter UI initializes. After that, this theme continues
-37                 to determine the Window background behind the Flutter UI.
-38            -->
-39            <meta-data
-40                android:name="io.flutter.embedding.android.NormalTheme"
-41                android:resource="@style/NormalTheme" />
-42
-43            <intent-filter>
-44                <action android:name="android.intent.action.MAIN" />
-45
-46                <category android:name="android.intent.category.LAUNCHER" />
-47            </intent-filter>
-48        </activity>
-49        <!--
-50             Don't delete the meta-data below.
-51             This is used by the Flutter tool to generate GeneratedPluginRegistrant.java
-52        -->
-53        <meta-data
-54            android:name="flutterEmbedding"
-55            android:value="2" />
-56
-57        <uses-library
-57-->[androidx.window:window:1.0.0-beta04] C:\Users\RTX\.gradle\caches\transforms-3\25cee5f028ac2a6b79fd6278ff5b59e2\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:25:9-27:40
-58            android:name="androidx.window.extensions"
-58-->[androidx.window:window:1.0.0-beta04] C:\Users\RTX\.gradle\caches\transforms-3\25cee5f028ac2a6b79fd6278ff5b59e2\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:26:13-54
-59            android:required="false" />
-59-->[androidx.window:window:1.0.0-beta04] C:\Users\RTX\.gradle\caches\transforms-3\25cee5f028ac2a6b79fd6278ff5b59e2\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:27:13-37
-60        <uses-library
-60-->[androidx.window:window:1.0.0-beta04] C:\Users\RTX\.gradle\caches\transforms-3\25cee5f028ac2a6b79fd6278ff5b59e2\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:28:9-30:40
-61            android:name="androidx.window.sidecar"
-61-->[androidx.window:window:1.0.0-beta04] C:\Users\RTX\.gradle\caches\transforms-3\25cee5f028ac2a6b79fd6278ff5b59e2\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:29:13-51
-62            android:required="false" />
-62-->[androidx.window:window:1.0.0-beta04] C:\Users\RTX\.gradle\caches\transforms-3\25cee5f028ac2a6b79fd6278ff5b59e2\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:30:13-37
-63    </application>
-64
-65</manifest>
+18    <uses-feature android:name="android.hardware.camera" />
+18-->[:flutter_barcode_scanner] E:\OrangeHackathon\corss-platform\build\flutter_barcode_scanner\intermediates\merged_manifest\debug\AndroidManifest.xml:11:5-60
+18-->[:flutter_barcode_scanner] E:\OrangeHackathon\corss-platform\build\flutter_barcode_scanner\intermediates\merged_manifest\debug\AndroidManifest.xml:11:19-57
+19
+20    <uses-permission android:name="android.permission.FLASHLIGHT" />
+20-->[:flutter_barcode_scanner] E:\OrangeHackathon\corss-platform\build\flutter_barcode_scanner\intermediates\merged_manifest\debug\AndroidManifest.xml:13:5-69
+20-->[:flutter_barcode_scanner] E:\OrangeHackathon\corss-platform\build\flutter_barcode_scanner\intermediates\merged_manifest\debug\AndroidManifest.xml:13:22-66
+21    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+21-->[:flutter_local_notifications] E:\OrangeHackathon\corss-platform\build\flutter_local_notifications\intermediates\merged_manifest\debug\AndroidManifest.xml:9:5-81
+21-->[:flutter_local_notifications] E:\OrangeHackathon\corss-platform\build\flutter_local_notifications\intermediates\merged_manifest\debug\AndroidManifest.xml:9:22-78
+22    <uses-permission android:name="android.permission.VIBRATE" />
+22-->[:flutter_local_notifications] E:\OrangeHackathon\corss-platform\build\flutter_local_notifications\intermediates\merged_manifest\debug\AndroidManifest.xml:10:5-66
+22-->[:flutter_local_notifications] E:\OrangeHackathon\corss-platform\build\flutter_local_notifications\intermediates\merged_manifest\debug\AndroidManifest.xml:10:22-63
+23    <uses-permission android:name="android.permission.USE_FULL_SCREEN_INTENT" />
+23-->[:flutter_local_notifications] E:\OrangeHackathon\corss-platform\build\flutter_local_notifications\intermediates\merged_manifest\debug\AndroidManifest.xml:11:5-81
+23-->[:flutter_local_notifications] E:\OrangeHackathon\corss-platform\build\flutter_local_notifications\intermediates\merged_manifest\debug\AndroidManifest.xml:11:22-78
+24    <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" />
+24-->[:flutter_local_notifications] E:\OrangeHackathon\corss-platform\build\flutter_local_notifications\intermediates\merged_manifest\debug\AndroidManifest.xml:12:5-79
+24-->[:flutter_local_notifications] E:\OrangeHackathon\corss-platform\build\flutter_local_notifications\intermediates\merged_manifest\debug\AndroidManifest.xml:12:22-76
+25    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+25-->[:flutter_local_notifications] E:\OrangeHackathon\corss-platform\build\flutter_local_notifications\intermediates\merged_manifest\debug\AndroidManifest.xml:13:5-77
+25-->[:flutter_local_notifications] E:\OrangeHackathon\corss-platform\build\flutter_local_notifications\intermediates\merged_manifest\debug\AndroidManifest.xml:13:22-74
+26    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+26-->[:connectivity_plus] E:\OrangeHackathon\corss-platform\build\connectivity_plus\intermediates\merged_manifest\debug\AndroidManifest.xml:9:5-79
+26-->[:connectivity_plus] E:\OrangeHackathon\corss-platform\build\connectivity_plus\intermediates\merged_manifest\debug\AndroidManifest.xml:9:22-76
+27
+28    <application
+29        android:name="android.app.Application"
+30        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+30-->[androidx.core:core:1.6.0] C:\Users\RTX\.gradle\caches\transforms-3\7e9df2ac2213a6bd3cef0f2f27870d79\transformed\core-1.6.0\AndroidManifest.xml:24:18-86
+31        android:debuggable="true"
+32        android:icon="@mipmap/ic_launcher"
+33        android:label="flutter_cmp_developers"
+34        android:largeHeap="true"
+34-->[:flutter_barcode_scanner] E:\OrangeHackathon\corss-platform\build\flutter_barcode_scanner\intermediates\merged_manifest\debug\AndroidManifest.xml:16:9-33
+35        android:theme="@style/Theme.AppCompat.NoActionBar" >
+35-->[:flutter_barcode_scanner] E:\OrangeHackathon\corss-platform\build\flutter_barcode_scanner\intermediates\merged_manifest\debug\AndroidManifest.xml:17:9-59
+36        <activity
+37            android:name="com.example.flutter_cmp_developers.MainActivity"
+38            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
+39            android:exported="true"
+40            android:hardwareAccelerated="true"
+41            android:launchMode="singleTop"
+42            android:theme="@style/LaunchTheme"
+43            android:windowSoftInputMode="adjustResize" >
+44
+45            <!--
+46                 Specifies an Android theme to apply to this Activity as soon as
+47                 the Android process has started. This theme is visible to the user
+48                 while the Flutter UI initializes. After that, this theme continues
+49                 to determine the Window background behind the Flutter UI.
+50            -->
+51            <meta-data
+52                android:name="io.flutter.embedding.android.NormalTheme"
+53                android:resource="@style/NormalTheme" />
+54
+55            <intent-filter>
+56                <action android:name="android.intent.action.MAIN" />
+57
+58                <category android:name="android.intent.category.LAUNCHER" />
+59            </intent-filter>
+60        </activity>
+61        <!--
+62             Don't delete the meta-data below.
+63             This is used by the Flutter tool to generate GeneratedPluginRegistrant.java
+64        -->
+65        <meta-data
+66            android:name="flutterEmbedding"
+67            android:value="2" />
+68
+69        <activity android:name="com.amolg.flutterbarcodescanner.BarcodeCaptureActivity" />
+69-->[:flutter_barcode_scanner] E:\OrangeHackathon\corss-platform\build\flutter_barcode_scanner\intermediates\merged_manifest\debug\AndroidManifest.xml:18:9-91
+69-->[:flutter_barcode_scanner] E:\OrangeHackathon\corss-platform\build\flutter_barcode_scanner\intermediates\merged_manifest\debug\AndroidManifest.xml:18:19-88
+70
+71        <receiver
+71-->[:flutter_local_notifications] E:\OrangeHackathon\corss-platform\build\flutter_local_notifications\intermediates\merged_manifest\debug\AndroidManifest.xml:16:9-18:40
+72            android:name="com.dexterous.flutterlocalnotifications.ActionBroadcastReceiver"
+72-->[:flutter_local_notifications] E:\OrangeHackathon\corss-platform\build\flutter_local_notifications\intermediates\merged_manifest\debug\AndroidManifest.xml:17:13-91
+73            android:exported="false" />
+73-->[:flutter_local_notifications] E:\OrangeHackathon\corss-platform\build\flutter_local_notifications\intermediates\merged_manifest\debug\AndroidManifest.xml:18:13-37
+74        <receiver
+74-->[:flutter_local_notifications] E:\OrangeHackathon\corss-platform\build\flutter_local_notifications\intermediates\merged_manifest\debug\AndroidManifest.xml:19:9-21:40
+75            android:name="com.dexterous.flutterlocalnotifications.ScheduledNotificationReceiver"
+75-->[:flutter_local_notifications] E:\OrangeHackathon\corss-platform\build\flutter_local_notifications\intermediates\merged_manifest\debug\AndroidManifest.xml:20:13-97
+76            android:exported="false" />
+76-->[:flutter_local_notifications] E:\OrangeHackathon\corss-platform\build\flutter_local_notifications\intermediates\merged_manifest\debug\AndroidManifest.xml:21:13-37
+77        <receiver
+77-->[:flutter_local_notifications] E:\OrangeHackathon\corss-platform\build\flutter_local_notifications\intermediates\merged_manifest\debug\AndroidManifest.xml:22:9-31:20
+78            android:name="com.dexterous.flutterlocalnotifications.ScheduledNotificationBootReceiver"
+78-->[:flutter_local_notifications] E:\OrangeHackathon\corss-platform\build\flutter_local_notifications\intermediates\merged_manifest\debug\AndroidManifest.xml:23:13-101
+79            android:exported="false" >
+79-->[:flutter_local_notifications] E:\OrangeHackathon\corss-platform\build\flutter_local_notifications\intermediates\merged_manifest\debug\AndroidManifest.xml:24:13-37
+80            <intent-filter>
+80-->[:flutter_local_notifications] E:\OrangeHackathon\corss-platform\build\flutter_local_notifications\intermediates\merged_manifest\debug\AndroidManifest.xml:25:13-30:29
+81                <action android:name="android.intent.action.BOOT_COMPLETED" />
+81-->[:flutter_local_notifications] E:\OrangeHackathon\corss-platform\build\flutter_local_notifications\intermediates\merged_manifest\debug\AndroidManifest.xml:26:17-79
+81-->[:flutter_local_notifications] E:\OrangeHackathon\corss-platform\build\flutter_local_notifications\intermediates\merged_manifest\debug\AndroidManifest.xml:26:25-76
+82                <action android:name="android.intent.action.MY_PACKAGE_REPLACED" />
+82-->[:flutter_local_notifications] E:\OrangeHackathon\corss-platform\build\flutter_local_notifications\intermediates\merged_manifest\debug\AndroidManifest.xml:27:17-84
+82-->[:flutter_local_notifications] E:\OrangeHackathon\corss-platform\build\flutter_local_notifications\intermediates\merged_manifest\debug\AndroidManifest.xml:27:25-81
+83                <action android:name="android.intent.action.QUICKBOOT_POWERON" />
+83-->[:flutter_local_notifications] E:\OrangeHackathon\corss-platform\build\flutter_local_notifications\intermediates\merged_manifest\debug\AndroidManifest.xml:28:17-82
+83-->[:flutter_local_notifications] E:\OrangeHackathon\corss-platform\build\flutter_local_notifications\intermediates\merged_manifest\debug\AndroidManifest.xml:28:25-79
+84                <action android:name="com.htc.intent.action.QUICKBOOT_POWERON" />
+84-->[:flutter_local_notifications] E:\OrangeHackathon\corss-platform\build\flutter_local_notifications\intermediates\merged_manifest\debug\AndroidManifest.xml:29:17-82
+84-->[:flutter_local_notifications] E:\OrangeHackathon\corss-platform\build\flutter_local_notifications\intermediates\merged_manifest\debug\AndroidManifest.xml:29:25-79
+85            </intent-filter>
+86        </receiver>
+87
+88        <uses-library
+88-->[androidx.window:window:1.0.0-beta04] C:\Users\RTX\.gradle\caches\transforms-3\25cee5f028ac2a6b79fd6278ff5b59e2\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:25:9-27:40
+89            android:name="androidx.window.extensions"
+89-->[androidx.window:window:1.0.0-beta04] C:\Users\RTX\.gradle\caches\transforms-3\25cee5f028ac2a6b79fd6278ff5b59e2\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:26:13-54
+90            android:required="false" />
+90-->[androidx.window:window:1.0.0-beta04] C:\Users\RTX\.gradle\caches\transforms-3\25cee5f028ac2a6b79fd6278ff5b59e2\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:27:13-37
+91        <uses-library
+91-->[androidx.window:window:1.0.0-beta04] C:\Users\RTX\.gradle\caches\transforms-3\25cee5f028ac2a6b79fd6278ff5b59e2\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:28:9-30:40
+92            android:name="androidx.window.sidecar"
+92-->[androidx.window:window:1.0.0-beta04] C:\Users\RTX\.gradle\caches\transforms-3\25cee5f028ac2a6b79fd6278ff5b59e2\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:29:13-51
+93            android:required="false" />
+93-->[androidx.window:window:1.0.0-beta04] C:\Users\RTX\.gradle\caches\transforms-3\25cee5f028ac2a6b79fd6278ff5b59e2\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:30:13-37
+94
+95        <activity
+95-->[com.google.android.gms:play-services-base:17.4.0] C:\Users\RTX\.gradle\caches\transforms-3\1a7d33a1dd6289df9ecade9fe9e3ac6f\transformed\jetified-play-services-base-17.4.0\AndroidManifest.xml:23:9-26:75
+96            android:name="com.google.android.gms.common.api.GoogleApiActivity"
+96-->[com.google.android.gms:play-services-base:17.4.0] C:\Users\RTX\.gradle\caches\transforms-3\1a7d33a1dd6289df9ecade9fe9e3ac6f\transformed\jetified-play-services-base-17.4.0\AndroidManifest.xml:24:13-79
+97            android:exported="false"
+97-->[com.google.android.gms:play-services-base:17.4.0] C:\Users\RTX\.gradle\caches\transforms-3\1a7d33a1dd6289df9ecade9fe9e3ac6f\transformed\jetified-play-services-base-17.4.0\AndroidManifest.xml:25:13-37
+98            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+98-->[com.google.android.gms:play-services-base:17.4.0] C:\Users\RTX\.gradle\caches\transforms-3\1a7d33a1dd6289df9ecade9fe9e3ac6f\transformed\jetified-play-services-base-17.4.0\AndroidManifest.xml:26:13-72
+99
+100        <meta-data
+100-->[com.google.android.gms:play-services-basement:17.4.0] C:\Users\RTX\.gradle\caches\transforms-3\e400f5504a9bef5c23ec6dbeeb3aa8aa\transformed\jetified-play-services-basement-17.4.0\AndroidManifest.xml:23:9-25:69
+101            android:name="com.google.android.gms.version"
+101-->[com.google.android.gms:play-services-basement:17.4.0] C:\Users\RTX\.gradle\caches\transforms-3\e400f5504a9bef5c23ec6dbeeb3aa8aa\transformed\jetified-play-services-basement-17.4.0\AndroidManifest.xml:24:13-58
+102            android:value="@integer/google_play_services_version" />
+102-->[com.google.android.gms:play-services-basement:17.4.0] C:\Users\RTX\.gradle\caches\transforms-3\e400f5504a9bef5c23ec6dbeeb3aa8aa\transformed\jetified-play-services-basement-17.4.0\AndroidManifest.xml:25:13-66
+103    </application>
+104
+105</manifest>

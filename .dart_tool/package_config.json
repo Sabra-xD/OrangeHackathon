@@ -140,6 +140,12 @@
       "languageVersion": "2.17"
     },
     {
+      "name": "flutter_barcode_scanner",
+      "rootUri": "file:///C:/Users/RTX/AppData/Local/Pub/Cache/hosted/pub.dev/flutter_barcode_scanner-2.0.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "flutter_lints",
       "rootUri": "file:///C:/Users/RTX/AppData/Local/Pub/Cache/hosted/pub.dev/flutter_lints-2.0.1",
       "packageUri": "lib/",
@@ -166,6 +172,12 @@
     {
       "name": "flutter_native_splash",
       "rootUri": "file:///C:/Users/RTX/AppData/Local/Pub/Cache/hosted/pub.dev/flutter_native_splash-2.2.19",
+      "packageUri": "lib/",
+      "languageVersion": "2.18"
+    },
+    {
+      "name": "flutter_plugin_android_lifecycle",
+      "rootUri": "file:///C:/Users/RTX/AppData/Local/Pub/Cache/hosted/pub.dev/flutter_plugin_android_lifecycle-2.0.15",
       "packageUri": "lib/",
       "languageVersion": "2.18"
     },
@@ -458,7 +470,7 @@
       "languageVersion": "2.17"
     }
   ],
-  "generated": "2023-05-26T05:32:40.997318Z",
+  "generated": "2023-06-07T17:13:48.952819Z",
   "generator": "pub",
   "generatorVersion": "2.19.6"
 }

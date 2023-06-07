@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import "package:flutter/material.dart";
+import 'package:flutter_cmp_developers/controllers/qr_code.dart';
 import '../../constants/constants.dart';
 
 class FirstScreen extends StatefulWidget {

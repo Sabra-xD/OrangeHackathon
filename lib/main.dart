@@ -7,6 +7,7 @@ import 'package:flutter_cmp_developers/views/screens/new_password_create.dart';
 import 'package:flutter_cmp_developers/views/screens/notification_screen.dart';
 import 'package:flutter_cmp_developers/views/screens/otp_screen.dart';
 import 'package:flutter_cmp_developers/views/screens/send_request.dart';
+import 'package:flutter_cmp_developers/views/screens/test.dart';
 
 import 'views/screens/create_account.dart';
 import 'views/screens/first_screen.dart';
@@ -57,7 +58,7 @@ class MyApp extends StatelessWidget {
         horizontalScroll.routeName: (ctx) => horizontalScroll(),
       },
       home:
-          Notifications(), //Use Outer home. We use Scaffold, since it has an AppBar.
+          qrtetst(), //Use Outer home. We use Scaffold, since it has an AppBar.
     );
   }
 }

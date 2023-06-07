@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_cmp_developers/controllers/qr_code.dart';
 import 'package:flutter_cmp_developers/views/widgets/frequently_used_widgets.dart';
 
 import '../../constants/constants.dart';
@@ -35,7 +36,7 @@ Scaffold settings(BuildContext context, PageController _pageController) {
             ),
             _buildTile(context, '  Edit Profile', Icon(Icons.person)),
             _buildTile(context, '  Change Password', const Icon(Icons.lock)),
-            _buildTile(context, '  QR Scan', const Icon(Icons.qr_code)),
+            _buildTile(context, '  QR Scan', const Icon(Icons.qr_code), ID: 0),
             _buildTile(context, '  Support', const Icon(Icons.person)),
             // _buildTile(context, '  Edit Profile', Icon(Icons.person)),
             unformSpacing(),
@@ -77,9 +78,14 @@ Scaffold settings(BuildContext context, PageController _pageController) {
   );
 }
 
-Widget _buildTile(BuildContext context, String title, Icon IconType) {
+Widget _buildTile(BuildContext context, String title, Icon IconType,
+    {int? ID}) {
   return InkWell(
-    onTap: () {},
+    onTap: () {
+      if (ID == 0) {
+        scanQR();
+      }
+    },
     child: Padding(
       padding: const EdgeInsets.symmetric(
         horizontal: 16,

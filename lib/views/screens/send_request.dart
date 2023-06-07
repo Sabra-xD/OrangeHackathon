@@ -166,6 +166,7 @@ class _SendReceive extends State<SendReceive> {
                                       setState(() {
                                         _xBalance = _xBalance - _xamount;
                                         Balance = _xBalance.toString();
+                                        print(Balance);
                                       });
                                       snackbar = snackBarStatus(
                                           'assets/images/sucess.png',
