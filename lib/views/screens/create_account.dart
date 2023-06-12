@@ -1,6 +1,8 @@
 import 'dart:convert';
 
 import 'package:flutter_cmp_developers/constants/apiBack.dart';
+import 'package:get/get.dart';
+
 import 'package:http/http.dart' as http;
 
 import 'package:flutter/material.dart';
@@ -71,8 +73,9 @@ class _SignUpState extends State<SignUp> {
                       ),
                       IconButton(
                         onPressed: () {
-                          Navigator.pushReplacementNamed(
-                              context, '/SignUpChild');
+                          // Navigator.pushReplacementNamed(
+                          //     context, '/SignUpChild');
+                          Get.offNamed("/SignUpChild");
                         },
                         icon: Image.asset(
                           'assets/images/childrenIcon.jfif',

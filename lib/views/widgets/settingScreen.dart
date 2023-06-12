@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_cmp_developers/controllers/qr_code.dart';
 import 'package:flutter_cmp_developers/views/widgets/frequently_used_widgets.dart';
+import 'package:get/get.dart';
 
 import '../../constants/constants.dart';
 
@@ -80,38 +81,42 @@ Scaffold settings(BuildContext context, PageController _pageController) {
 
 Widget _buildTile(BuildContext context, String title, Icon IconType,
     {int? ID}) {
-  return InkWell(
-    onTap: () {
-      if (ID == 0) {
-        scanQR();
-      }
-    },
-    child: Padding(
-      padding: const EdgeInsets.symmetric(
-        horizontal: 16,
-        vertical: 5,
-      ),
-      child: Container(
-        height: 40,
-        decoration: BoxDecoration(
-            color: myWhite, borderRadius: BorderRadius.circular(15)),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Row(
-              children: [
-                IconType,
-                Text(
-                  title,
-                  style: Theme.of(context).textTheme.bodyText1,
-                ),
-              ],
-            ),
-            const Icon(
-              Icons.arrow_forward_ios_rounded,
-              color: Colors.grey,
-            ),
-          ],
+  return GetBuilder<QRController>(
+    init: QRController(),
+    builder: (controller) => InkWell(
+      onTap: () {
+        if (ID == 0) {
+          controller
+              .scanQR(); //Scanning QR code if the pressed in the Settings Screen.
+        }
+      },
+      child: Padding(
+        padding: const EdgeInsets.symmetric(
+          horizontal: 16,
+          vertical: 5,
+        ),
+        child: Container(
+          height: 40,
+          decoration: BoxDecoration(
+              color: myWhite, borderRadius: BorderRadius.circular(15)),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Row(
+                children: [
+                  IconType,
+                  Text(
+                    title,
+                    style: Theme.of(context).textTheme.bodyText1,
+                  ),
+                ],
+              ),
+              const Icon(
+                Icons.arrow_forward_ios_rounded,
+                color: Colors.grey,
+              ),
+            ],
+          ),
         ),
       ),
     ),

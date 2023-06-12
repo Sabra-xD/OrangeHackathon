@@ -3,6 +3,8 @@ import 'dart:convert';
 import "package:flutter/material.dart";
 import 'package:flutter_cmp_developers/constants/apiBack.dart';
 import 'package:flutter_cmp_developers/constants/constants.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../../controllers/create_account_controller.dart';
 import '../widgets/frequently_used_widgets.dart';
@@ -86,8 +88,9 @@ class _SignInState extends State<SignIn> {
                       key: const Key("LOGIN_Second_SCREEN"),
                       onPressed: () async {
                         if (_formKey.currentState!.validate()) {
-                          Navigator.pushReplacementNamed(
-                              context, "/horizontalScroll");
+                          // Navigator.pushReplacementNamed(
+                          //     context, "/horizontalScroll");
+                          Get.offAllNamed("/HomeScreen");
                         }
                       },
                       style: ButtonStyle(
@@ -127,10 +130,12 @@ class _SignInState extends State<SignIn> {
                     child: TextButton(
                       key: const Key("Register_Second_SCREEN"),
                       onPressed: () {
-                        Navigator.pushNamed(
-                          context,
-                          '/SignUp',
-                        );
+                        // Navigator.pushNamed(
+                        //   context,
+                        //   '/SignUp',
+                        // );
+
+                        Get.offNamed("/SignUp");
                       },
                       style: ButtonStyle(
                         backgroundColor:
