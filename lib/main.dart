@@ -51,7 +51,7 @@ class MyApp extends StatelessWidget {
           name: "/SignUpChild",
           page: () => const CreateAccountChild(),
         ),
-        GetPage(name: "/SplashPage", page: () => const SplashPage()),
+        GetPage(name: "/SplashPage", page: () => SplashPage()),
         GetPage(name: "/FirstScreen", page: () => const FirstScreen()),
         GetPage(name: "/ForgetPassword", page: () => const ForgotPassword()),
         GetPage(
@@ -61,7 +61,7 @@ class MyApp extends StatelessWidget {
         GetPage(name: "/horizontalScroll", page: () => horizontalScroll()),
       ],
       routes: {
-        SplashPage.routeName: (ctx) => const SplashPage(),
+        // SplashPage.routeName: (ctx) => const SplashPage(),
         FirstScreen.routeName: (ctx) => const FirstScreen(),
         // SignIn.routeName: (ctx) =>  SignIn(),
         SignUp.routeName: (ctx) => const SignUp(),
@@ -73,7 +73,8 @@ class MyApp extends StatelessWidget {
         SendReceive.routeName: (ctx) => SendReceive(),
         horizontalScroll.routeName: (ctx) => horizontalScroll(),
       },
-      home: SignIn(), //Use Outer home. We use Scaffold, since it has an AppBar.
+      home:
+          SplashPage(), //Use Outer home. We use Scaffold, since it has an AppBar.
     );
   }
 }
