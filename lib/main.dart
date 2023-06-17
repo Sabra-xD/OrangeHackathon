@@ -4,11 +4,8 @@ import 'package:flutter_cmp_developers/views/screens/create_account_child.dart';
 import 'package:flutter_cmp_developers/views/screens/forgot_password.dart';
 import 'package:flutter_cmp_developers/views/screens/horizontalScrollScreen.dart';
 import 'package:flutter_cmp_developers/views/screens/new_password_create.dart';
-import 'package:flutter_cmp_developers/views/screens/notification_screen.dart';
 import 'package:flutter_cmp_developers/views/screens/otp_screen.dart';
 import 'package:flutter_cmp_developers/views/screens/send_request.dart';
-import 'package:flutter_cmp_developers/views/screens/test.dart';
-import 'package:flutter_cmp_developers/views/widgets/settingScreen.dart';
 
 import 'views/screens/create_account.dart';
 import 'views/screens/first_screen.dart';
@@ -54,11 +51,19 @@ class MyApp extends StatelessWidget {
           name: "/SignUpChild",
           page: () => const CreateAccountChild(),
         ),
+        GetPage(name: "/SplashPage", page: () => const SplashPage()),
+        GetPage(name: "/FirstScreen", page: () => const FirstScreen()),
+        GetPage(name: "/ForgetPassword", page: () => const ForgotPassword()),
+        GetPage(
+            name: "/NewPasswordCreate", page: () => const NewPasswordCreate()),
+        GetPage(name: "/OneTimePassword", page: () => const OneTimePassword()),
+        GetPage(name: "/SebndReceive", page: () => SendReceive()),
+        GetPage(name: "/horizontalScroll", page: () => horizontalScroll()),
       ],
       routes: {
         SplashPage.routeName: (ctx) => const SplashPage(),
         FirstScreen.routeName: (ctx) => const FirstScreen(),
-        SignIn.routeName: (ctx) => const SignIn(),
+        // SignIn.routeName: (ctx) =>  SignIn(),
         SignUp.routeName: (ctx) => const SignUp(),
         CreateAccountChild.routeName: (ctx) => const CreateAccountChild(),
         ForgotPassword.routeName: (ctx) => const ForgotPassword(),
@@ -68,8 +73,7 @@ class MyApp extends StatelessWidget {
         SendReceive.routeName: (ctx) => SendReceive(),
         horizontalScroll.routeName: (ctx) => horizontalScroll(),
       },
-      home:
-          horizontalScroll(), //Use Outer home. We use Scaffold, since it has an AppBar.
+      home: SignIn(), //Use Outer home. We use Scaffold, since it has an AppBar.
     );
   }
 }
