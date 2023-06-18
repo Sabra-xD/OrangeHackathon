@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
-import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
 import 'package:flutter_cmp_developers/controllers/qr_code.dart';
 import 'package:get/get.dart';
 
@@ -31,33 +28,17 @@ class _qrtetstState extends State<qrtetst> {
                 children: [
                   Text(
                     controller.qrtest,
-                    style: TextStyle(color: Colors.blue),
+                    style: const TextStyle(color: Colors.blue),
                   ),
                   ElevatedButton(
                       onPressed: () {
                         controller.scanQR();
                       },
-                      child: Text("Scan Now")),
+                      child: const Text("Scan Now")),
                 ],
               ),
             ),
           );
         });
   }
-
-  // Future<void> scanQR2() async {
-  //   print("WE are IN!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1");
-  //   try {
-  //     FlutterBarcodeScanner.scanBarcode('#2A99CF', "Cancel", true, ScanMode.QR)
-  //         .then((value) {
-  //       setState(() {
-  //         qrtest = value;
-  //       });
-  //     });
-  //   } catch (e) {
-  //     setState(() {
-  //       qrtest = "Unable to get it";
-  //     });
-  //   }
-  // }
 }

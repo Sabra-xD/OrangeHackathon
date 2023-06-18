@@ -17,9 +17,10 @@ class SplashPage extends StatelessWidget {
           return GetBuilder<splashController>(
               init: splashController(),
               builder: (controller) {
+                controller.internetCheck(context);
+                print("Why does it keep on checking?");
                 //initializing the connection check.
 
-                controller.internetCheck();
                 return EasySplashScreen(
                   title: const Text(
                     "Tap Cash\n\ Dealing with Money has never been easier! =)",
@@ -39,7 +40,7 @@ class SplashPage extends StatelessWidget {
                           ? const Text("Loading... Please wait")
                           : const Text("Please check your internet connection")
                       : const Text("Please check your internet conenction"),
-                  durationInSeconds: 5,
+                  // durationInSeconds: 5,
                 );
               });
         });

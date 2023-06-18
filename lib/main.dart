@@ -6,11 +6,12 @@ import 'package:flutter_cmp_developers/views/screens/horizontalScrollScreen.dart
 import 'package:flutter_cmp_developers/views/screens/new_password_create.dart';
 import 'package:flutter_cmp_developers/views/screens/otp_screen.dart';
 import 'package:flutter_cmp_developers/views/screens/send_request.dart';
+import 'package:flutter_cmp_developers/views/screens/sign_in.dart';
 
 import 'views/screens/create_account.dart';
 import 'views/screens/first_screen.dart';
 import 'views/screens/home.dart';
-import 'views/screens/sign_in.dart';
+
 import 'package:get/get.dart';
 
 import 'views/screens/splash_screen.dart';
@@ -51,7 +52,8 @@ class MyApp extends StatelessWidget {
           name: "/SignUpChild",
           page: () => const CreateAccountChild(),
         ),
-        GetPage(name: "/SplashPage", page: () => SplashPage()),
+        GetPage(name: "/SignIn", page: () => SignIn()),
+        GetPage(name: "/SplashPage", page: () => const SplashPage()),
         GetPage(name: "/FirstScreen", page: () => const FirstScreen()),
         GetPage(name: "/ForgetPassword", page: () => const ForgotPassword()),
         GetPage(
@@ -61,9 +63,7 @@ class MyApp extends StatelessWidget {
         GetPage(name: "/horizontalScroll", page: () => horizontalScroll()),
       ],
       routes: {
-        // SplashPage.routeName: (ctx) => const SplashPage(),
         FirstScreen.routeName: (ctx) => const FirstScreen(),
-        // SignIn.routeName: (ctx) =>  SignIn(),
         SignUp.routeName: (ctx) => const SignUp(),
         CreateAccountChild.routeName: (ctx) => const CreateAccountChild(),
         ForgotPassword.routeName: (ctx) => const ForgotPassword(),
@@ -73,8 +73,7 @@ class MyApp extends StatelessWidget {
         SendReceive.routeName: (ctx) => SendReceive(),
         horizontalScroll.routeName: (ctx) => horizontalScroll(),
       },
-      home:
-          SplashPage(), //Use Outer home. We use Scaffold, since it has an AppBar.
+      home: const FirstScreen(),
     );
   }
 }

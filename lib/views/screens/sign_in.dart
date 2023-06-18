@@ -1,4 +1,5 @@
 import "package:flutter/material.dart";
+import 'package:flutter_cmp_developers/controllers/widgetFocus.dart';
 
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -8,16 +9,24 @@ import '../widgets/signInWidgets.dart';
 
 late SharedPreferences SignInPref;
 
-class SignIn extends StatelessWidget {
+class SignIn extends StatelessWidget with WidgetsBindingObserver {
   final _passwordInput = TextEditingController();
   final _phoneNumber = TextEditingController();
   final _formKey = GlobalKey<FormState>();
+  final AppLifeCycle _Cycle = AppLifeCycle();
   late int StatusCode = 0;
 
   SignIn({super.key});
 
   @override
   Widget build(BuildContext context) {
+    WidgetsBinding.instance?.addObserver(this);
+    @override
+    void didChangeAppLifecycleState(AppLifecycleState state) {
+      super.didChangeAppLifecycleState(state);
+      _Cycle.backGroundState(state);
+    }
+
     return Scaffold(
       body: SingleChildScrollView(
         child: Container(

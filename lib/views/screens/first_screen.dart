@@ -1,7 +1,6 @@
-import 'dart:ui';
-
 import "package:flutter/material.dart";
-import 'package:flutter_cmp_developers/controllers/qr_code.dart';
+import 'package:flutter_cmp_developers/controllers/widgetFocus.dart';
+import 'package:get/get.dart';
 import '../../constants/constants.dart';
 
 class FirstScreen extends StatefulWidget {
@@ -15,7 +14,23 @@ class FirstScreen extends StatefulWidget {
   State<FirstScreen> createState() => _FirstScreenState();
 }
 
-class _FirstScreenState extends State<FirstScreen> {
+class _FirstScreenState extends State<FirstScreen> with WidgetsBindingObserver {
+  final AppLifeCycle _Cycle = AppLifeCycle();
+  @override
+  void initState() {
+    WidgetsBinding.instance.addObserver(this);
+    print("Initiated");
+    super.initState();
+  }
+
+  //Embedded function that is called when Screen state is changed.
+
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    super.didChangeAppLifecycleState(state);
+    _Cycle.backGroundState(state);
+  }
+
   @override
   Widget build(BuildContext context) {
     bool display = false;
@@ -28,12 +43,7 @@ class _FirstScreenState extends State<FirstScreen> {
           SizedBox(
             width: double.infinity,
             height: double.infinity,
-            child: /*SvgPicture.asset(
-              'assets/image.svg',
-              semanticsLabel: 'My Image',
-              fit: BoxFit.fill,
-            )*/
-                Image.asset(
+            child: Image.asset(
               'assets/images/first_screen.png',
               fit: BoxFit.fill,
             ),
@@ -81,10 +91,7 @@ class _FirstScreenState extends State<FirstScreen> {
                     child: TextButton(
                       key: const Key("LOGIN_FIRST_SCREEN"),
                       onPressed: () {
-                        Navigator.pushNamed(
-                          context,
-                          '/SignInScreen',
-                        );
+                        Get.toNamed("/SignIn");
                       },
                       style: ButtonStyle(
                         backgroundColor:
@@ -124,10 +131,7 @@ class _FirstScreenState extends State<FirstScreen> {
                     child: TextButton(
                       key: const Key("SIGN_UP_FIRST_SCREEN"),
                       onPressed: () {
-                        Navigator.pushNamed(
-                          context,
-                          '/SignUpChild',
-                        );
+                        Get.toNamed("/SignUp");
                       },
                       style: ButtonStyle(
                         backgroundColor:
