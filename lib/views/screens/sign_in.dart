@@ -14,18 +14,22 @@ class SignIn extends StatelessWidget with WidgetsBindingObserver {
   final _phoneNumber = TextEditingController();
   final _formKey = GlobalKey<FormState>();
   final AppLifeCycle _Cycle = AppLifeCycle();
+  final AppLifecycleState _currentState =
+      AppLifecycleState.resumed; //initial value;
   late int StatusCode = 0;
 
   SignIn({super.key});
 
   @override
   Widget build(BuildContext context) {
-    WidgetsBinding.instance?.addObserver(this);
+    WidgetsBinding.instance.addObserver(this);
     @override
     void didChangeAppLifecycleState(AppLifecycleState state) {
       super.didChangeAppLifecycleState(state);
       _Cycle.backGroundState(state);
     }
+
+    didChangeAppLifecycleState(_currentState);
 
     return Scaffold(
       body: SingleChildScrollView(
