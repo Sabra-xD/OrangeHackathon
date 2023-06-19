@@ -73,7 +73,7 @@ class MyApp extends StatelessWidget {
         SendReceive.routeName: (ctx) => SendReceive(),
         horizontalScroll.routeName: (ctx) => horizontalScroll(),
       },
-      home: const FirstScreen(),
+      home: horizontalScroll(),
     );
   }
 }

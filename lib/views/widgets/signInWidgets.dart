@@ -265,7 +265,7 @@ SizedBox loginButton(BuildContext context, GlobalKey<FormState> _formKey) {
       key: const Key("LOGIN_Second_SCREEN"),
       onPressed: () async {
         if (_formKey.currentState!.validate()) {
-          Get.offAllNamed("/HomeScreen");
+          Get.offAllNamed("/horizontalScroll");
         }
       },
       style: ButtonStyle(

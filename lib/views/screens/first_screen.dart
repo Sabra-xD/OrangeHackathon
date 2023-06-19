@@ -19,21 +19,13 @@ class _FirstScreenState extends State<FirstScreen> with WidgetsBindingObserver {
   @override
   void initState() {
     WidgetsBinding.instance.addObserver(this);
-    print("Initiated");
     super.initState();
   }
 
   //Embedded function that is called when Screen state is changed.
 
   @override
-  void didChangeAppLifecycleState(AppLifecycleState state) {
-    super.didChangeAppLifecycleState(state);
-    _Cycle.backGroundState(state);
-  }
-
-  @override
   Widget build(BuildContext context) {
-    bool display = false;
     final size = MediaQuery.of(context).size;
     final width = size.width;
     final height = size.height;
