@@ -1,8 +1,9 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:gesture_password_widget/gesture_password_widget.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 
+// ignore: camel_case_types
 class expiredPasswordInput extends StatefulWidget {
   const expiredPasswordInput({super.key});
 
@@ -10,6 +11,7 @@ class expiredPasswordInput extends StatefulWidget {
   State<expiredPasswordInput> createState() => _expiredPasswordInputState();
 }
 
+// ignore: camel_case_types
 class _expiredPasswordInputState extends State<expiredPasswordInput> {
   List<int>? result;
   List<int>? answer = [0, 1, 2];
@@ -84,8 +86,9 @@ class _expiredPasswordInputState extends State<expiredPasswordInput> {
                 onComplete: (data) {
                   setState(() {
                     result = data.cast<int>();
-
-                    Get.offAllNamed("/HomeScreen");
+                    if (listEquals(result, answer)) {
+                      Get.offAllNamed("/horizontalScroll");
+                    }
                   });
                 },
               )

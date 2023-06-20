@@ -1,4 +1,4 @@
-#Mon Jun 19 06:29:22 EET 2023
+#Tue Jun 20 05:00:14 EET 2023
 base.0=E\:\\OrangeHackathon\\corss-platform\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\classes.dex
 path.0=classes.dex
 renamed.0=classes.dex

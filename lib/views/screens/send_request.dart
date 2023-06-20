@@ -3,6 +3,7 @@ import 'package:flutter_cmp_developers/constants/constants.dart';
 import 'package:flutter_cmp_developers/views/widgets/frequently_used_widgets.dart';
 
 import '../../controllers/create_account_controller.dart';
+import '../../controllers/test.dart';
 
 class SendReceive extends StatefulWidget {
   @override
@@ -25,18 +26,19 @@ class _SendReceive extends State<SendReceive> {
     return null;
   }
 
-  String? _validateEmail(String? value) {
-    if (value == null || value.isEmpty) {
-      return 'Please enter your email';
-    }
-    if (!value.contains('@')) {
-      return 'Please enter a valid email address';
-    }
-    return null;
-  }
+  // String? _validateEmail(String? value) {
+  //   if (value == null || value.isEmpty) {
+  //     return 'Please enter your email';
+  //   }
+  //   if (!value.contains('@')) {
+  //     return 'Please enter a valid email address';
+  //   }
+  //   return null;
+  // }
 
   @override
   Widget build(BuildContext context) {
+    test x = test();
     return Scaffold(
       body: SingleChildScrollView(
         child: Expanded(
@@ -163,11 +165,12 @@ class _SendReceive extends State<SendReceive> {
                                     int _xBalance = int.parse(Balance);
                                     int _xamount = int.parse(_amount.text);
                                     if (_xBalance >= _xamount) {
-                                      setState(() {
-                                        _xBalance = _xBalance - _xamount;
-                                        Balance = _xBalance.toString();
-                                        print(Balance);
-                                      });
+                                      // setState(() {
+                                      //   _xBalance = _xBalance - _xamount;
+                                      //   Balance = _xBalance.toString();
+                                      //   print(Balance);
+                                      // });
+                                      x.decrease(_xamount);
                                       snackbar = snackBarStatus(
                                           'assets/images/sucess.png',
                                           "Transaction has been processesed successfully!");
@@ -222,7 +225,6 @@ class _SendReceive extends State<SendReceive> {
         mess = _Message;
       });
     }
-    String f = "FUDK";
     return SnackBar(
       content: Column(
         children: [

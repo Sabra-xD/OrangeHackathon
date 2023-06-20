@@ -6,7 +6,8 @@ import 'package:flutter_cmp_developers/views/widgets/transaction_history.dart';
 
 import '../../struct/model.dart';
 
-Stack homePage(BuildContext context, String Response, String Income,
+// ignore: non_constant_identifier_names
+Stack homePage(BuildContext context, String Balance, String Income,
     String OutCome, PageController _pageController) {
   final transactionList = History.historyList();
   return Stack(

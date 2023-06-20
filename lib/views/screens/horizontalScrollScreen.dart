@@ -1,6 +1,7 @@
 // ignore_for_file: camel_case_types
 
 import 'package:flutter/material.dart';
+import 'package:flutter_cmp_developers/constants/constants.dart';
 import 'package:flutter_cmp_developers/controllers/widgetFocus.dart';
 import 'package:flutter_cmp_developers/views/widgets/homePage.dart';
 import 'package:flutter_cmp_developers/views/widgets/servicesScreen.dart';
@@ -36,12 +37,9 @@ class _horizontalScroll extends State<horizontalScroll>
   Future<void> didChangeAppLifecycleState(AppLifecycleState state) async {
     super.didChangeAppLifecycleState(state);
     _paused = _Cycle.backGroundState(state);
-    print(_paused);
     if (_paused) {
       await Future.delayed(Duration(seconds: 10));
-      print("PASSED THE 5 SECONDS WAITING");
       if (state == AppLifecycleState.paused) {
-        print("STOPPED WAITING AND FUCKED UP");
         _Cycle.checkfivesecondsPass(state);
       }
     }
@@ -67,12 +65,10 @@ class _horizontalScroll extends State<horizontalScroll>
         onPageChanged: (int pageIndex) {
           setState(() {
             _tabController.index = pageIndex;
-            print(_tabController.index);
           });
-          print("Current page index ${pageIndex}");
         },
         children: [
-          homePage(context, "150", "1050", "750", _pageController),
+          homePage(context, Balance, "1050", "750", _pageController),
           servicesScreen(context, _pageController),
           virtualCard(context),
           settings(context, _pageController),

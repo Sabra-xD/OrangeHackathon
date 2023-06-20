@@ -1,8 +1,10 @@
+// ignore: duplicate_ignore
+// ignore_for_file: non_constant_identifier_names
+
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_cmp_developers/constants/apiBack.dart';
-import 'package:flutter_cmp_developers/controllers/checkConnection.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:flutter_cmp_developers/controllers/test.dart';
+import 'package:get/get.dart';
 import '../../constants/constants.dart';
 import '../../controllers/create_account_controller.dart';
 
@@ -233,7 +235,7 @@ TextStyle uniformTextStyle() {
 ///
 
 TabBar bottomNavigatiohBar(BuildContext context, TabController controller,
-    PageController _pageController) {
+    PageController pageController) {
   return TabBar(
     controller: controller,
     indicatorSize: TabBarIndicatorSize.tab,
@@ -245,8 +247,7 @@ TabBar bottomNavigatiohBar(BuildContext context, TabController controller,
         icon: IconButton(
           icon: Image.asset('assets/images/homeIcon.png'),
           onPressed: () {
-            _pageController.jumpToPage(0);
-            // Navigator.pushReplacementNamed(context, "/HomeScreen");
+            pageController.jumpToPage(0);
           },
         ),
       ),
@@ -254,8 +255,7 @@ TabBar bottomNavigatiohBar(BuildContext context, TabController controller,
         icon: IconButton(
           icon: Image.asset('assets/images/settingIcon.png'),
           onPressed: () {
-            _pageController.jumpToPage(1);
-            // Navigator.pushReplacementNamed(context, '/myServices');
+            pageController.jumpToPage(1);
           },
         ),
       ),
@@ -263,7 +263,7 @@ TabBar bottomNavigatiohBar(BuildContext context, TabController controller,
         icon: IconButton(
           icon: Image.asset('assets/images/walletIcon.jpg'),
           onPressed: () {
-            _pageController.jumpToPage(2);
+            pageController.jumpToPage(2);
 
             // Navigator.pushReplacementNamed(context, "/VirtualCard");
           },
@@ -273,7 +273,7 @@ TabBar bottomNavigatiohBar(BuildContext context, TabController controller,
         icon: IconButton(
           icon: Image.asset('assets/images/menuIcon.png'),
           onPressed: () {
-            _pageController.jumpToPage(3);
+            pageController.jumpToPage(3);
             // Navigator.pushNamed(context, '/HomeScreen');
           },
         ),
@@ -288,7 +288,7 @@ TabBar bottomNavigatiohBar(BuildContext context, TabController controller,
 ///Home Slider that displays Total Balance, Income & OutCome etc.
 Widget coursal_Slider(
     BuildContext context, String Response, String Income, String OutCome) {
-  return Container(
+  return SizedBox(
     width: MediaQuery.of(context).size.height * 0.5,
     height: MediaQuery.of(context).size.height * 0.2,
     child: CarouselSlider(
@@ -305,26 +305,29 @@ Widget coursal_Slider(
                 const SizedBox(
                   height: 15,
                 ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      Response != ''
-                          ? Response
-                          : "Loading...", //Get the user's balance here.
-                      style: TextStyle(
-                        color: myWhite,
-                        fontSize: 16,
+                GetBuilder<test>(
+                  init: test(),
+                  builder: (controller) => Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        Response != ''
+                            ? Response
+                            : "Loading...", //Get the user's balance here.
+                        style: TextStyle(
+                          color: myWhite,
+                          fontSize: 16,
+                        ),
                       ),
-                    ),
-                    Text(
-                      'EGP',
-                      style: TextStyle(
-                        color: myWhite,
-                        fontSize: 12,
-                      ),
-                    )
-                  ],
+                      Text(
+                        'EGP',
+                        style: TextStyle(
+                          color: myWhite,
+                          fontSize: 12,
+                        ),
+                      )
+                    ],
+                  ),
                 ),
                 Text(
                   "Total Balance",
@@ -391,7 +394,7 @@ Widget coursal_Slider(
         aspectRatio: 16 / 9,
         autoPlayCurve: Curves.fastOutSlowIn,
         enableInfiniteScroll: true,
-        autoPlayAnimationDuration: Duration(milliseconds: 800),
+        autoPlayAnimationDuration: const Duration(milliseconds: 800),
         viewportFraction: 0.8,
       ),
     ),

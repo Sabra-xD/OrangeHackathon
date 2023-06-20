@@ -47,7 +47,9 @@ class MyApp extends StatelessWidget {
       ),
       initialRoute: '/',
       getPages: [
-        GetPage(name: "/HomeScreen", page: () => horizontalScroll()),
+        GetPage(
+            name: "/ExpiredScreen", page: () => const expiredPasswordInput()),
+        GetPage(name: "/HomeScreen", page: () => const horizontalScroll()),
         GetPage(name: "/SignUp", page: () => const SignUp()),
         GetPage(
           name: "/SignUpChild",
@@ -61,7 +63,8 @@ class MyApp extends StatelessWidget {
             name: "/NewPasswordCreate", page: () => const NewPasswordCreate()),
         GetPage(name: "/OneTimePassword", page: () => const OneTimePassword()),
         GetPage(name: "/SebndReceive", page: () => SendReceive()),
-        GetPage(name: "/horizontalScroll", page: () => horizontalScroll()),
+        GetPage(
+            name: "/horizontalScroll", page: () => const horizontalScroll()),
       ],
       routes: {
         FirstScreen.routeName: (ctx) => const FirstScreen(),
@@ -72,9 +75,9 @@ class MyApp extends StatelessWidget {
         OneTimePassword.routeName: (ctx) => const OneTimePassword(),
         HomeScreen.routeName: (ctx) => HomeScreen(),
         SendReceive.routeName: (ctx) => SendReceive(),
-        horizontalScroll.routeName: (ctx) => horizontalScroll(),
+        horizontalScroll.routeName: (ctx) => const horizontalScroll(),
       },
-      home: expiredPasswordInput(),
+      home: const SplashPage(),
     );
   }
 }

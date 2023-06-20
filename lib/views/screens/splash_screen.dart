@@ -31,7 +31,7 @@ class SplashPage extends StatelessWidget {
                         // color: Theme.of(context).primaryColor,
                         color: Colors.white),
                   ),
-                  logo: Image.asset("assets/images/splashIcon.jfif"),
+                  logo: Image.asset("assets/images/fingerprint.png"),
                   backgroundColor: splashScreenColor,
                   logoWidth: 70,
                   showLoader: true,
@@ -40,7 +40,6 @@ class SplashPage extends StatelessWidget {
                           ? const Text("Loading... Please wait")
                           : const Text("Please check your internet connection")
                       : const Text("Please check your internet conenction"),
-                  // durationInSeconds: 5,
                 );
               });
         });
