@@ -188,6 +188,12 @@
       "languageVersion": "2.17"
     },
     {
+      "name": "gesture_password_widget",
+      "rootUri": "file:///C:/Users/RTX/AppData/Local/Pub/Cache/hosted/pub.dev/gesture_password_widget-2.0.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "get",
       "rootUri": "file:///C:/Users/RTX/AppData/Local/Pub/Cache/hosted/pub.dev/get-4.6.5",
       "packageUri": "lib/",
@@ -476,7 +482,7 @@
       "languageVersion": "2.17"
     }
   ],
-  "generated": "2023-06-17T19:08:28.496875Z",
+  "generated": "2023-06-20T00:42:22.915567Z",
   "generator": "pub",
   "generatorVersion": "2.19.6"
 }

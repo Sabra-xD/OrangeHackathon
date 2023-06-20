@@ -243,6 +243,14 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  gesture_password_widget:
+    dependency: "direct main"
+    description:
+      name: gesture_password_widget
+      sha256: afdb3d4773de6b04292ffc51f8a4850e57a3c2257929d017b140172e89d8ef8e
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.0.1"
   get:
     dependency: "direct main"
     description:

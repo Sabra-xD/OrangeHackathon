@@ -6,6 +6,7 @@ import 'package:flutter_cmp_developers/views/screens/horizontalScrollScreen.dart
 import 'package:flutter_cmp_developers/views/screens/new_password_create.dart';
 import 'package:flutter_cmp_developers/views/screens/otp_screen.dart';
 import 'package:flutter_cmp_developers/views/screens/send_request.dart';
+import 'package:flutter_cmp_developers/views/screens/sessionexpired.dart';
 import 'package:flutter_cmp_developers/views/screens/sign_in.dart';
 
 import 'views/screens/create_account.dart';
@@ -73,7 +74,7 @@ class MyApp extends StatelessWidget {
         SendReceive.routeName: (ctx) => SendReceive(),
         horizontalScroll.routeName: (ctx) => horizontalScroll(),
       },
-      home: horizontalScroll(),
+      home: expiredPasswordInput(),
     );
   }
 }
