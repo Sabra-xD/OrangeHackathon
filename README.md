@@ -43,14 +43,17 @@ In the password input fields as well, a validation (validatePassword functiin) c
 Function Used : checkfivesecondsPass & backGroundState
 In this function, we use the ApplifeCycle to fetch its current state when it is changed. Once it is changed to Out Of  Focused (Paused), 5 seconds after, we check the state of the AppLifeCycle, if it is still paused then all previous pages are popped and we naviagte to the Expired Session screen.
 
-
-
 ## In App Screenshots:
 
 ### Splash Screen
 ![Splash Screen](https://github.com/Sabra-xD/OrangeHackathon/assets/52329758/02eb3c21-d6dd-4427-bb69-888ad6995e0d)
 ## Login
 ![loginValidation](https://github.com/Sabra-xD/OrangeHackathon/assets/52329758/528aafaf-a414-42d1-89c3-08a5c5a6fcbc)
+## Forgot Password
+![forgotpassword1](https://github.com/Sabra-xD/OrangeHackathon/assets/52329758/16c61517-e328-4d67-9701-b6156e32bd9c)
+
+![forgotpassword2](https://github.com/Sabra-xD/OrangeHackathon/assets/52329758/8cca668b-b3e6-4672-a2d4-97d1e1fa33d1)
+
 ## Sign Up as a child
 ![signUpChild](https://github.com/Sabra-xD/OrangeHackathon/assets/52329758/de608b0c-7984-4965-bc6b-0716887e5510)
 ## Sign Up as a parent
@@ -66,10 +69,13 @@ In this function, we use the ApplifeCycle to fetch its current state when it is 
 ##Sufficient Balance
 ![SendAccepted](https://github.com/Sabra-xD/OrangeHackathon/assets/52329758/18f92e98-9651-4cd9-a0b9-10e54eb2cd56)
 
-
-
 ## Request Sucess
 ![requestSuccess](https://github.com/Sabra-xD/OrangeHackathon/assets/52329758/5511d4a8-de8a-450c-855c-b7e995be4ad4)
+
+## Settings Screen
+![settings](https://github.com/Sabra-xD/OrangeHackathon/assets/52329758/00cd99aa-c556-4bf3-8e1d-0b4ced65ebf4)
+
+
 
 ## Session Expired
 ![sessionExpiredPattern](https://github.com/Sabra-xD/OrangeHackathon/assets/52329758/8390d21f-0ca5-4b2b-a89b-c5e352253975)
