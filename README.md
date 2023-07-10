@@ -47,20 +47,29 @@ In this function, we use the ApplifeCycle to fetch its current state when it is 
 
 ## In App Screenshots:
 
-
+### Splash Screen
 ![Splash Screen](https://github.com/Sabra-xD/OrangeHackathon/assets/52329758/02eb3c21-d6dd-4427-bb69-888ad6995e0d)
+## Login
 ![loginValidation](https://github.com/Sabra-xD/OrangeHackathon/assets/52329758/528aafaf-a414-42d1-89c3-08a5c5a6fcbc)
+## Sign Up as a child
 ![signUpChild](https://github.com/Sabra-xD/OrangeHackathon/assets/52329758/de608b0c-7984-4965-bc6b-0716887e5510)
+## Sign Up as a parent
 ![SignUpParent](https://github.com/Sabra-xD/OrangeHackathon/assets/52329758/adcff62a-100b-4210-8e29-69fea7638825)
 
+## Dashboard & history
 ![homeScreen](https://github.com/Sabra-xD/OrangeHackathon/assets/52329758/629783d4-259b-4150-aa71-b01586956f1a)
+## Send & Request
 ![SendReceiveScreen](https://github.com/Sabra-xD/OrangeHackathon/assets/52329758/425828ba-4340-4aed-a39d-efb0ed068dd2)
-Balance exceeding availiable balance.
+## Insufficient Balance
 ![SendDenied](https://github.com/Sabra-xD/OrangeHackathon/assets/52329758/966a4005-b1e0-446d-be86-1b2328de1259)
+
+##Sufficient Balance
 ![SendAccepted](https://github.com/Sabra-xD/OrangeHackathon/assets/52329758/18f92e98-9651-4cd9-a0b9-10e54eb2cd56)
 
-![sessionExpiredPattern](https://github.com/Sabra-xD/OrangeHackathon/assets/52329758/8390d21f-0ca5-4b2b-a89b-c5e352253975)
 
 
-
+## Request Sucess
 ![requestSuccess](https://github.com/Sabra-xD/OrangeHackathon/assets/52329758/5511d4a8-de8a-450c-855c-b7e995be4ad4)
+
+## Session Expired
+![sessionExpiredPattern](https://github.com/Sabra-xD/OrangeHackathon/assets/52329758/8390d21f-0ca5-4b2b-a89b-c5e352253975)
