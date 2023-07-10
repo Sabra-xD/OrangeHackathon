@@ -66,7 +66,7 @@ In this function, we use the ApplifeCycle to fetch its current state when it is 
 ## Insufficient Balance
 ![SendDenied](https://github.com/Sabra-xD/OrangeHackathon/assets/52329758/966a4005-b1e0-446d-be86-1b2328de1259)
 
-##Sufficient Balance
+## Sufficient Balance
 ![SendAccepted](https://github.com/Sabra-xD/OrangeHackathon/assets/52329758/18f92e98-9651-4cd9-a0b9-10e54eb2cd56)
 
 ## Request Sucess
